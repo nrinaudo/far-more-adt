@@ -1,0 +1,3461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Far more than you've ever wanted to know about ADTs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  </head>
+  <body>
+      <textarea id="source">
+class: center, middle
+
+# Far more than you've ever wanted to know about ADTs
+
+Nicolas Rinaudo • [@NicolasRinaudo] • [Besedo]
+
+---
+class: center, middle
+
+.center[![Our proud hero](img/gundam-hero.png)]
+
+---
+
+## Valid programs
+
+![Facing south](img/valid-command-south.png)
+
+---
+
+## Valid programs
+
+![Sending face north](img/valid-command-south-sending.png)
+
+```haskell
+face north
+```
+
+---
+
+## Valid programs
+
+![Facing north](img/valid-command-north.png)
+
+```haskell
+face north
+```
+
+---
+
+## Valid programs
+
+![Sending face west](img/valid-command-north-sending.png)
+
+```haskell
+face west
+```
+
+---
+
+## Valid programs
+
+![Facing west](img/valid-command-west.png)
+
+```haskell
+face west
+```
+
+---
+
+## Valid programs
+
+![Sending face south](img/valid-command-west-sending.png)
+
+```haskell
+face south
+```
+
+---
+
+## Valid programs
+
+![Facing south](img/valid-command-south.png)
+
+```haskell
+face south
+```
+
+---
+
+## Valid programs
+
+![Sending face east](img/valid-command-south-sending.png)
+
+```haskell
+face east
+```
+
+---
+
+## Valid programs
+
+![Facing east](img/valid-command-east.png)
+
+```haskell
+face east
+```
+
+---
+
+## Valid programs
+
+![Sending start](img/valid-command-east-sending.png)
+
+```haskell
+start
+```
+
+---
+
+## Valid programs
+
+![Started](img/valid-command-start.png)
+
+```haskell
+start
+```
+
+---
+
+## Valid programs
+
+![Sending stop](img/valid-command-start-sending.png)
+
+```haskell
+stop
+```
+
+---
+
+## Valid programs
+
+![Stopped](img/valid-command-stop.png)
+
+```haskell
+stop
+```
+
+---
+
+## Invalid programs
+
+![Sending triple_backflip](img/valid-command-stop-sending.png)
+
+```haskell
+triple_backflip
+```
+
+---
+
+## Invalid programs
+
+![Confused](img/valid-command-wat.png)
+
+```haskell
+triple_backflip
+```
+
+---
+
+## Invalid programs
+
+![Kaboom](img/valid-command-boom.png)
+
+```haskell
+triple_backflip
+```
+
+---
+
+## Invalid programs
+
+![Sending face -35](img/valid-command-stop-sending.png)
+
+```haskell
+face -35
+```
+---
+
+## Invalid programs
+
+![Rejected](img/valid-command-rejected.png)
+
+```haskell
+face -35
+```
+
+---
+
+## Invalid programs
+
+![Rejected](img/valid-command-rejected-2.png)
+
+```haskell
+face -35
+```
+
+---
+class: center, middle
+
+# Representing `Direction`
+
+---
+
+## Magic values
+
+```tut:silent
+object Direction {
+  val North: Int = 1
+  val East:  Int = 2
+  val South: Int = 3
+  val West:  Int = 4
+}
+```
+
+---
+
+## Magic values
+
+```scala
+object `Direction` {
+  val North: Int = 1
+  val East:  Int = 2
+  val South: Int = 3
+  val West:  Int = 4
+}
+```
+
+---
+
+## Magic values
+
+```scala
+object Direction {
+  `val North: Int = 1`
+  val East:  Int = 2
+  val South: Int = 3
+  val West:  Int = 4
+}
+```
+
+---
+
+## Magic values
+
+```scala
+object Direction {
+  val North: Int = 1
+  `val East:  Int = 2`
+  val South: Int = 3
+  val West:  Int = 4
+}
+```
+
+---
+
+## Magic values
+
+```scala
+object Direction {
+  val North: Int = 1
+  val East:  Int = 2
+  `val South: Int = 3`
+  val West:  Int = 4
+}
+```
+
+---
+
+## Magic values
+
+```scala
+object Direction {
+  val North: Int = 1
+  val East:  Int = 2
+  val South: Int = 3
+  `val West:  Int = 4`
+}
+```
+
+---
+
+## Magic values
+
+```tut:silent
+def label(d: Int) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Magic values
+
+```scala
+def label(`d: Int`) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Magic values
+
+```scala
+def label(d: Int) =
+  `d match` {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Magic values
+
+```scala
+def label(d: Int) =
+  d match {
+    `case Direction.North ⇒ "north"`
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Magic values
+
+```scala
+def label(d: Int) =
+  d match {
+    case Direction.North ⇒ "north"
+    `case Direction.East  ⇒ "east"`
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Magic values
+
+```scala
+def label(d: Int) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    `case Direction.South ⇒ "south"`
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Magic values
+
+```scala
+def label(d: Int) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    `case Direction.West  ⇒ "west"`
+  }
+```
+
+---
+
+## Magic values
+
+![Sending face -35](img/valid-command-east-sending.png)
+
+```scala
+label(-35)
+```
+
+---
+
+## Magic values
+
+![Kaboom](img/valid-command-boom.png)
+
+```tut:fail:book
+label(-35)
+```
+
+---
+
+## Type aliases
+
+```tut:silent
+type Direction = Int
+
+object Direction {
+  val North: Direction = 1
+  val East:  Direction = 2
+  val South: Direction = 3
+  val West:  Direction = 4
+}
+```
+
+---
+
+## Type aliases
+
+```scala
+&#x200B;`type Direction = Int`
+
+object Direction {
+  val North: Direction = 1
+  val East:  Direction = 2
+  val South: Direction = 3
+  val West:  Direction = 4
+}
+```
+
+---
+
+## Type aliases
+
+```scala
+type Direction = Int
+
+object Direction {
+  val North: `Direction` = 1
+  val East:  `Direction` = 2
+  val South: `Direction` = 3
+  val West:  `Direction` = 4
+}
+```
+
+---
+
+## Type aliases
+
+```tut:silent
+def label(d: Direction) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Type aliases
+
+```scala
+def label(`d: Direction`) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Type aliases
+
+![Sending face -35](img/valid-command-east-sending.png)
+
+```scala
+label(-35)
+```
+
+---
+
+## Type aliases
+
+![Kaboom](img/valid-command-boom.png)
+
+```tut:fail:book
+label(-35)
+```
+
+---
+
+## Scala's `Enumeration`
+
+```tut:silent
+object Direction extends Enumeration {
+  val North, East, South, West = Value
+}
+```
+
+---
+
+## Scala's `Enumeration`
+
+```scala
+object Direction extends Enumeration {
+  val `North, East, South, West` = Value
+}
+```
+
+---
+
+## Scala's `Enumeration`
+
+```scala
+object Direction extends Enumeration {
+  val North, East, South, West = `Value`
+}
+```
+
+---
+
+## Scala's `Enumeration`
+
+```scala
+object `Direction` extends Enumeration {
+  val North, East, South, West = Value
+}
+```
+
+---
+
+## Scala's `Enumeration`
+
+```scala
+object Direction `extends Enumeration` {
+  val North, East, South, West = Value
+}
+```
+
+---
+
+## Scala's `Enumeration`
+
+```tut:silent
+def label(d: Direction.Value) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Scala's `Enumeration`
+
+```scala
+def label(d: `Direction.Value`) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Scala's `Enumeration`
+
+![Sending face -35](img/valid-command-east-sending.png)
+
+```scala
+label(-35)
+```
+
+---
+
+## Scala's `Enumeration`
+
+![Rejected](img/valid-command-rejected.png)
+
+```tut:book:fail
+label(-35)
+```
+
+---
+
+## Scala's `Enumeration`
+
+```tut:silent
+def label(d: Direction.Value) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ // case Direction.West  ⇒ "west"
+  }
+```
+
+---
+
+## Scala's `Enumeration`
+
+```scala
+def label(d: Direction.Value) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ `// case Direction.West  ⇒ "west"`
+  }
+```
+
+---
+
+## Scala's `Enumeration`
+
+![Sending face west](img/valid-command-east-sending.png)
+
+```scala
+label(Direction.West)
+```
+
+---
+
+## Scala's `Enumeration`
+
+![Kaboom](img/valid-command-boom.png)
+
+```tut:book:fail
+label(Direction.West)
+```
+
+---
+
+## Hand-written enumeration
+
+```tut:silent
+trait Direction
+
+object Direction {
+  case object North extends Direction
+  case object East  extends Direction
+  case object South extends Direction
+  case object West  extends Direction
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```scala
+&#x200B;`trait Direction`
+
+object Direction {
+  case object North extends Direction
+  case object East  extends Direction
+  case object South extends Direction
+  case object West  extends Direction
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```scala
+trait Direction
+
+object `Direction` {
+  case object North extends Direction
+  case object East  extends Direction
+  case object South extends Direction
+  case object West  extends Direction
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```scala
+trait Direction
+
+object Direction {
+  case object `North extends Direction`
+  case object East  extends Direction
+  case object South extends Direction
+  case object West  extends Direction
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```scala
+trait Direction
+
+object Direction {
+  case object North extends Direction
+  case object `East  extends Direction`
+  case object South extends Direction
+  case object West  extends Direction
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```scala
+trait Direction
+
+object Direction {
+  case object North extends Direction
+  case object East  extends Direction
+  case object `South extends Direction`
+  case object West  extends Direction
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```scala
+trait Direction
+
+object Direction {
+  case object North extends Direction
+  case object East  extends Direction
+  case object South extends Direction
+  case object `West  extends Direction`
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```tut:silent
+def label(d: Direction) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ // case Direction.West  ⇒ "west"
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```scala
+def label(`d: Direction`) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ // case Direction.West  ⇒ "west"
+}
+```
+
+---
+
+## Hand-written enumeration
+
+![Sending face west](img/valid-command-east-sending.png)
+
+```scala
+label(Direction.West)
+```
+
+---
+
+## Hand-written enumeration
+
+![Kaboom](img/valid-command-boom.png)
+
+```tut:book:fail
+label(Direction.West)
+```
+
+---
+
+## Hand-written enumeration
+
+```tut:silent
+sealed trait Direction
+
+object Direction {
+  case object North extends Direction
+  case object East  extends Direction
+  case object South extends Direction
+  case object West  extends Direction
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```scala
+&#x200B;`sealed` trait Direction
+
+object Direction {
+  case object North extends Direction
+  case object East  extends Direction
+  case object South extends Direction
+  case object West  extends Direction
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```scala
+def label(d: Direction) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ // case Direction.West  ⇒ "west"
+}
+```
+
+---
+
+## Hand-written enumeration
+
+```tut:fail:book
+def label(d: Direction) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ // case Direction.West  ⇒ "west"
+}
+```
+
+---
+
+## Key takeaways
+
+--
+
+Enumerations&#x200B;:
+
+--
+* make nonsensical values impossible to represent.
+
+--
+* guarantee that our code handles all necessary cases.
+
+--
+* provided you're not using `scala.Enumeration` though...
+
+---
+class: center, middle
+
+# Representing `Command`
+
+---
+
+## Case class
+
+```tut:silent
+case class Command(
+  order: String,
+  dir  : Option[Direction]
+)
+```
+
+```tut:silent
+val cmd = Command(
+  "face",
+  Some(Direction.North)
+)
+```
+
+---
+
+## Case class
+
+```scala
+&#x200B;`case class Command`(
+  order: String,
+  dir  : Option[Direction]
+)
+```
+
+```scala
+val cmd = `Command`(
+  "face",
+  Some(Direction.North)
+)
+```
+
+---
+
+## Case class
+
+```scala
+case class Command(
+  `order: String`,
+  dir  : Option[Direction]
+)
+```
+
+```scala
+val cmd = Command(
+  `"face"`,
+  Some(Direction.North)
+)
+```
+
+---
+
+## Case class
+
+```scala
+case class Command(
+  order: String,
+  `dir  : Option[Direction]`
+)
+```
+
+```scala
+val cmd = Command(
+  "face",
+  `Some(Direction.North)`
+)
+```
+
+---
+
+## Case class
+
+![Triple backflip](img/valid-command-east-sending.png)
+
+```scala
+Command(
+  "triple backflip",
+  Some(Direction.South)
+)
+```
+
+---
+
+## Case class
+
+![Triple backflip](img/valid-command-east-sending.png)
+
+```scala
+Command(
+  `"triple backflip"`,
+  Some(Direction.South)
+)
+```
+
+---
+
+## Case class
+
+![Kaboom](img/valid-command-boom.png)
+
+```tut:silent
+Command(
+  "triple backflip",
+  Some(Direction.South)
+)
+```
+
+---
+
+## `Order` as enumeration
+
+```tut:silent
+sealed trait Order
+
+object Order {
+  case object Face  extends Order
+  case object Start extends Order
+  case object Stop  extends Order
+}
+```
+
+---
+
+## `Order` as enumeration
+
+```scala
+sealed trait `Order`
+
+object Order {
+  case object Face  extends Order
+  case object Start extends Order
+  case object Stop  extends Order
+}
+```
+
+---
+
+## `Order` as enumeration
+
+```scala
+sealed trait Order
+
+object Order {
+  case object `Face  extends Order`
+  case object Start extends Order
+  case object Stop  extends Order
+}
+```
+
+---
+
+## `Order` as enumeration
+
+```scala
+sealed trait Order
+
+object Order {
+  case object Face  extends Order
+  case object `Start extends Order`
+  case object Stop  extends Order
+}
+```
+
+---
+
+## `Order` as enumeration
+
+```scala
+sealed trait Order
+
+object Order {
+  case object Face  extends Order
+  case object Start extends Order
+  case object `Stop  extends Order`
+}
+```
+
+---
+
+## `Order` as enumeration
+
+```tut:silent
+case class Command(
+  order: Order,
+  dir: Option[Direction]
+)
+```
+
+```tut:silent
+val cmd = Command(
+  Order.Face,
+  Some(Direction.North)
+)
+```
+
+---
+
+## `Order` as enumeration
+
+```scala
+case class Command(
+  `order: Order`,
+  dir: Option[Direction]
+)
+```
+
+```scala
+val cmd = Command(
+  `Order.Face`,
+  Some(Direction.North)
+)
+```
+
+---
+
+## `Order` as enumeration
+
+![Sending triple backflip](img/valid-command-east-sending.png)
+
+```scala
+Command(
+  "triple backflip",
+  Some(Direction.South)
+)
+```
+
+---
+
+## `Order` as enumeration
+
+![Rejected](img/valid-command-rejected.png)
+
+```tut:book:fail
+Command(
+  "triple backflip",
+  Some(Direction.South)
+)
+```
+
+---
+
+## `Order` as enumeration
+
+![Sending start south](img/valid-command-east-sending.png)
+
+```scala
+Command(
+  Order.Start,
+  Some(Direction.South)
+)
+```
+
+---
+
+## `Order` as enumeration
+
+![Sending start south](img/valid-command-east-sending.png)
+
+```scala
+Command(
+  Order.`Start`,
+  Some(Direction.`South`)
+)
+```
+
+---
+
+## `Order` as enumeration
+
+![Kaboom](img/valid-command-boom.png)
+
+```tut:silent
+Command(
+  Order.Start,
+  Some(Direction.South)
+)
+```
+
+---
+
+## `Order` as "enumeration"
+
+```tut:silent
+sealed trait Order
+
+object Order {
+  case class Face(dir: Direction) extends Order
+  case object Start               extends Order
+  case object Stop                extends Order
+}
+```
+
+---
+
+## `Order` as "enumeration"
+
+```scala
+sealed trait Order
+
+object Order {
+  `case class Face(dir: Direction) extends Order`
+  case object Start               extends Order
+  case object Stop                extends Order
+}
+```
+
+---
+
+## `Order` as "enumeration"
+
+```scala
+sealed trait Order
+
+object Order {
+  case class Face(`dir: Direction`) extends Order
+  case object Start               extends Order
+  case object Stop                extends Order
+}
+```
+
+---
+
+## `Command` as "enumeration"
+
+```tut:silent
+sealed trait Command
+
+object Command {
+  case class Face(dir: Direction) extends Command
+  case object Start               extends Command
+  case object Stop                extends Command
+}
+```
+
+---
+
+## `Command` as "enumeration"
+
+```scala
+sealed trait `Command`
+
+object `Command` {
+  case class Face(dir: Direction) extends `Command`
+  case object Start               extends `Command`
+  case object Stop                extends `Command`
+}
+```
+
+---
+
+## `Command` as "enumeration"
+
+![Sending start south](img/valid-command-east-sending.png)
+
+```scala
+Command(
+  Order.Start,
+  Some(Direction.South)
+)
+```
+
+---
+
+## `Command` as "enumeration"
+
+![Rejected](img/valid-command-rejected.png)
+
+```tut:book:fail
+Command(
+  Order.Start,
+  Some(Direction.South)
+)
+```
+
+---
+
+## `Command` as "enumeration"
+
+![Sending](img/valid-command-east-sending.png)
+
+```scala
+Command.Start
+```
+
+---
+
+## `Command` as "enumeration"
+
+![Sending](img/valid-command-start.png)
+
+```tut:book
+Command.Start
+```
+
+---
+
+## Key takeaways
+
+--
+
+
+* Enumerations are everywhere.
+--
+
+* Enumerations are not enough.
+--
+
+* Something "like an enumeration" might be, however.
+
+---
+class: center, middle
+
+# Composing commands
+
+---
+
+## Script
+
+![Waiting command](img/valid-command-south.png)
+
+```haskell
+start
+```
+
+---
+
+## Script
+
+![Waiting command](img/valid-command-south.png)
+
+```haskell
+face east
+start
+stop
+```
+
+---
+
+## Script
+
+![Sending script](img/valid-command-south-sending.png)
+
+```haskell
+face east
+start
+stop
+```
+
+---
+
+## Script
+
+![Starting](img/valid-command-east.png)
+
+```haskell
+&#x200B;`face east`
+start
+stop
+```
+
+---
+
+## Script
+
+![Continue advancing](img/valid-command-start.png)
+
+```haskell
+face east
+&#x200B;`start`
+stop
+```
+
+---
+
+## Script
+
+![Stopping](img/valid-command-stop.png)
+
+```haskell
+face east
+start
+&#x200B;`stop`
+```
+
+---
+
+## Chaining commands
+
+```tut:silent
+sealed trait Command
+
+object Command {
+  case class Face(dir: Direction) extends Command
+  case object Start               extends Command
+  case object Stop                extends Command
+
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
+}
+```
+
+---
+
+## Chaining commands
+
+```scala
+sealed trait Command
+
+object Command {
+  case class Face(dir: Direction) extends Command
+  case object Start               extends Command
+  case object Stop                extends Command
+
+* case class Chain(
+*   cmd1: Command,
+*   cmd2: Command
+* ) extends Command
+}
+```
+
+---
+
+## Chaining commands
+
+```scala
+sealed trait Command
+
+object Command {
+  case class Face(dir: Direction) extends Command
+  case object Start               extends Command
+  case object Stop                extends Command
+
+  case `class Chain`(
+    cmd1: Command,
+    cmd2: Command
+  ) `extends Command`
+}
+```
+
+---
+
+## Chaining commands
+
+```scala
+sealed trait Command
+
+object Command {
+  case class Face(dir: Direction) extends Command
+  case object Start               extends Command
+  case object Stop                extends Command
+
+  case class Chain(
+    `cmd1: Command`,
+    cmd2: Command
+  ) extends Command
+}
+```
+
+---
+
+## Chaining commands
+
+```scala
+sealed trait Command
+
+object Command {
+  case class Face(dir: Direction) extends Command
+  case object Start               extends Command
+  case object Stop                extends Command
+
+  case class Chain(
+    cmd1: Command,
+    `cmd2: Command`
+  ) extends Command
+}
+```
+
+---
+
+## Chaining commands
+
+```tut:silent
+Command.Chain(
+  Command.Chain(
+    Command.Chain(
+      Command.Face(Direction.East),
+      Command.Chain(
+        Command.Start,
+        Command.Stop
+      )
+    ),
+    Command.Face(Direction.West)
+  ),
+  Command.Chain(
+    Command.Start,
+    Command.Stop
+  )
+)
+```
+
+---
+
+## Chaining commands
+
+```scala
+Command.Chain(
+  Command.Chain(
+    Command.Chain(
+      Command.`Face`(Direction.`East`),
+      Command.Chain(
+        Command.Start,
+        Command.Stop
+      )
+    ),
+    Command.Face(Direction.West)
+  ),
+  Command.Chain(
+    Command.Start,
+    Command.Stop
+  )
+)
+```
+
+---
+
+## Chaining commands
+
+```scala
+Command.Chain(
+  Command.Chain(
+    Command.Chain(
+      Command.Face(Direction.East),
+      Command.Chain(
+        Command.`Start`,
+        Command.Stop
+      )
+    ),
+    Command.Face(Direction.West)
+  ),
+  Command.Chain(
+    Command.Start,
+    Command.Stop
+  )
+)
+```
+
+---
+
+## Chaining commands
+
+```scala
+Command.Chain(
+  Command.Chain(
+    Command.Chain(
+      Command.Face(Direction.East),
+      Command.Chain(
+        Command.Start,
+        Command.`Stop`
+      )
+    ),
+    Command.Face(Direction.West)
+  ),
+  Command.Chain(
+    Command.Start,
+    Command.Stop
+  )
+)
+```
+
+---
+
+## Chaining commands
+
+```scala
+Command.Chain(
+  Command.Chain(
+    Command.Chain(
+      Command.Face(Direction.East),
+      Command.Chain(
+        Command.Start,
+        Command.Stop
+      )
+    ),
+    Command.`Face`(Direction.`West`)
+  ),
+  Command.Chain(
+    Command.Start,
+    Command.Stop
+  )
+)
+```
+---
+
+## Chaining commands
+
+```scala
+Command.Chain(
+  Command.Chain(
+    Command.Chain(
+      Command.Face(Direction.East),
+      Command.Chain(
+        Command.Start,
+        Command.Stop
+      )
+    ),
+    Command.Face(Direction.West)
+  ),
+  Command.Chain(
+    Command.`Start`,
+    Command.Stop
+  )
+)
+```
+
+---
+
+## Chaining commands
+
+```scala
+Command.Chain(
+  Command.Chain(
+    Command.Chain(
+      Command.Face(Direction.East),
+      Command.Chain(
+        Command.Start,
+        Command.Stop
+      )
+    ),
+    Command.Face(Direction.West)
+  ),
+  Command.Chain(
+    Command.Start,
+    Command.`Stop`
+  )
+)
+```
+
+---
+
+## DSL
+
+```tut:silent
+implicit class Compose(cmd1: Command) {
+  def ~>(cmd2: Command): Command =
+    Command.Chain(cmd1, cmd2)
+}
+```
+
+```tut:silent
+val startStop: Command =
+  Command.Start ~> Command.Stop
+```
+
+---
+
+## DSL
+
+```scala
+implicit class Compose(`cmd1: Command`) {
+  def ~>(cmd2: Command): Command =
+    Command.Chain(cmd1, cmd2)
+}
+```
+
+```scala
+val startStop: Command =
+  `Command.Start` ~> Command.Stop
+```
+
+---
+
+## DSL
+
+```scala
+implicit class Compose(cmd1: Command) {
+  def `~>`(cmd2: Command): Command =
+    Command.Chain(cmd1, cmd2)
+}
+```
+
+```scala
+val startStop: Command =
+  Command.Start `~>` Command.Stop
+```
+
+---
+
+## DSL
+
+```scala
+implicit class Compose(cmd1: Command) {
+  def ~>(`cmd2: Command`): Command =
+    Command.Chain(cmd1, cmd2)
+}
+```
+
+```scala
+val startStop: Command =
+  Command.Start ~> Command.`Stop`
+```
+
+---
+
+## DSL
+
+```scala
+implicit class Compose(cmd1: Command) {
+  def ~>(cmd2: Command): Command =
+    Command.`Chain(cmd1, cmd2)`
+}
+```
+
+```scala
+val `startStop`: Command =
+  Command.Start ~> Command.Stop
+```
+
+---
+
+## DSL
+
+```tut:silent
+val start                = Command.Start
+val stop                 = Command.Stop
+def face(dir: Direction) = Command.Face(dir)
+```
+
+---
+
+## DSL
+
+```scala
+&#x200B;`val start                = Command.Start`
+val stop                 = Command.Stop
+def face(dir: Direction) = Command.Face(dir)
+```
+
+---
+
+## DSL
+
+```scala
+val start                = Command.Start
+&#x200B;`val stop                 = Command.Stop`
+def face(dir: Direction) = Command.Face(dir)
+```
+
+---
+
+## DSL
+
+```scala
+val start                = Command.Start
+val stop                 = Command.Stop
+&#x200B;`def face(dir: Direction) = Command.Face(dir)`
+```
+
+---
+
+## DSL
+
+```tut:silent
+val north = Direction.North
+val east  = Direction.East
+val south = Direction.South
+val west  = Direction.West
+```
+
+---
+
+## DSL
+
+```scala
+&#x200B;`val north = Direction.North`
+val east  = Direction.East
+val south = Direction.South
+val west  = Direction.West
+```
+
+---
+
+## DSL
+
+```scala
+val north = Direction.North
+&#x200B;`val east  = Direction.East`
+val south = Direction.South
+val west  = Direction.West
+```
+
+---
+
+## DSL
+
+```scala
+val north = Direction.North
+val east  = Direction.East
+&#x200B;`val south = Direction.South`
+val west  = Direction.West
+```
+
+---
+
+## DSL
+
+```scala
+val north = Direction.North
+val east  = Direction.East
+val south = Direction.South
+&#x200B;`val west  = Direction.West`
+```
+
+---
+
+## Compound commands
+
+```tut:silent
+def move(d: Direction) =
+  face(d) ~> start ~> stop
+```
+
+---
+
+## Compound commands
+
+```scala
+def move(`d: Direction`) =
+  face(d) ~> start ~> stop
+```
+
+---
+
+## Compound commands
+
+```scala
+def move(d: Direction) =
+  `face(d)` ~> start ~> stop
+```
+
+---
+
+## Compound commands
+
+```scala
+def move(d: Direction) =
+  face(d) ~> `start` ~> stop
+```
+
+---
+
+## Compound commands
+
+```scala
+def move(d: Direction) =
+  face(d) ~> start ~> `stop`
+```
+
+---
+
+## Compound commands
+
+![Sending script](img/valid-command-south-sending.png)
+
+```scala
+ move(east) ~> move(west)
+```
+
+---
+
+## Compound commands
+
+![Sending script](img/valid-command-south-sending.png)
+
+```tut:book
+ move(east) ~> move(west)
+```
+
+---
+
+## Compound commands
+
+![Sending script](img/valid-command-east.png)
+
+```scala
+ `move(east)` ~> move(west)
+```
+
+---
+
+## Compound commands
+
+![Sending script](img/valid-command-start.png)
+
+```scala
+ `move(east)` ~> move(west)
+```
+
+---
+
+## Compound commands
+
+![Sending script](img/valid-command-stop.png)
+
+```scala
+ `move(east)` ~> move(west)
+```
+
+---
+
+## Compound commands
+
+![Sending script](img/valid-command-west.png)
+
+```scala
+ move(east) ~> `move(west)`
+```
+
+---
+
+## Compound commands
+
+![Sending script](img/valid-command-start-4.png)
+
+```scala
+ move(east) ~> `move(west)`
+```
+
+---
+
+## Compound commands
+
+![Sending script](img/valid-command-stop-3.png)
+
+```scala
+ move(east) ~> `move(west)`
+```
+
+---
+
+## Key takeaways
+
+--
+
+We've completed our data structure by using:
+
+--
+
+* case classes (`Chain`, `Face`) - *product types*.
+--
+
+* enumerated types (`Command`, `Direction`) - *sum types*.
+--
+
+* recursive types (`Command` is expressed in terms of itself).
+
+---
+class: center, middle
+
+# Algebraic Data Types
+
+---
+
+## Sum types
+
+> A sum type is a discriminated union of values, and can be thought of as an `OR` on types.
+
+--
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
+```
+
+---
+
+## Sum types
+
+> A sum type is a discriminated union of values, and can be thought of as an `OR` on types.
+
+```scala
+Command = Face
+        `⋁` Start
+        `⋁` Stop
+        `⋁` Chain
+```
+
+---
+
+## Product types
+
+> A product type is an aggregation of values, and can be thought of as an `AND` on types.
+
+--
+
+```scala
+Chain = Command ⋀ Command
+```
+
+---
+
+## Product types
+
+> A product type is an aggregation of values, and can be thought of as an `AND` on types.
+
+```scala
+Chain = Command `⋀` Command
+```
+
+---
+
+## Algebraic Data Types
+
+> An ADT is a potentially recursive sum type of product types.
+
+--
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Command ⋀ Command
+```
+
+---
+
+## Algebraic Data Types
+
+> An ADT is a potentially recursive .highlight[sum type] of product types.
+
+```scala
+Command = Face
+        `⋁` Start
+        `⋁` Stop
+        `⋁` Command ⋀ Command
+```
+
+---
+
+## Algebraic Data Types
+
+> An ADT is a potentially recursive .highlight[sum type] of product types.
+
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Command `⋀` Command
+```
+
+---
+
+## Algebraic Data Types
+
+> An ADT is a potentially recursive .highlight[sum type] of product types.
+
+```scala
+&#x200B;`Command` = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ `Command` ⋀ Command
+```
+
+---
+class: center, middle
+
+# Safe command composition
+
+---
+
+## Illegal state transition
+
+![Start ](img/valid-command-east-sending.png)
+
+```scala
+ start ~> start
+```
+
+---
+
+## Illegal state transition
+
+![Start ](img/valid-command-start.png)
+
+```scala
+ `start` ~> start
+```
+
+---
+
+## Illegal state transition
+
+![Start ](img/valid-command-start-wat.png)
+
+```scala
+ start ~> `start`
+```
+
+---
+
+## Illegal state transition
+
+![Start ](img/valid-command-boom.png)
+
+```scala
+ start ~> start
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-start-sending.png)
+
+```scala
+ stop ~> stop
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-stop.png)
+
+```scala
+ `stop` ~> stop
+```
+
+---
+
+## Illegal state transition
+
+![Start ](img/valid-command-wat.png)
+
+```scala
+ stop ~> `stop`
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-boom.png)
+
+```scala
+ stop ~> stop
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-east-sending.png)
+
+```scala
+ start ~> face(north)
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-start.png)
+
+```scala
+ `start` ~> face(north)
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-start-wtf.png)
+
+```scala
+ start ~> `face(north)`
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-boom.png)
+.foreground[![Big badaboom](img/large-explosion.png)]
+
+```scala
+ start ~> face(north)
+```
+
+---
+
+## Tracking state
+
+```tut:silent
+final abstract class Idle
+final abstract class Moving
+```
+
+---
+
+## Tracking state
+
+```scala
+&#x200B;`final abstract class Idle`
+final abstract class Moving
+```
+
+---
+
+## Tracking state
+
+```scala
+final abstract class Idle
+&#x200B;`final abstract class Moving`
+```
+
+---
+
+## Tracking state
+
+```tut:silent
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+
+---
+
+## Tracking state
+
+```scala
+sealed trait `Command[Before, After]`
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  `Face`(dir: Direction) extends `Command[Idle, Idle]`
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object `Start`                extends `Command[Idle, Moving]`
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object `Stop`                 extends `Command[Moving, Idle]`
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class `Chain[A, B, C]`(
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+
+```scala
+val cmd: Command[Idle, Idle] =
+  Command.`Chain`(Command.Start, Command.Stop)
+```
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain[A, B, C](
+    `cmd1: Command[A, B]`,
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+
+```scala
+val cmd: Command[Idle, Idle] =
+  Command.Chain(Command.`Start`, Command.Stop)
+```
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    `cmd2: Command[B, C]`
+  ) extends Command[A, C]
+}
+```
+
+```scala
+val cmd: Command[Idle, Idle] =
+  Command.Chain(Command.Start, Command.`Stop`)
+```
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, `Moving`]
+  case object Stop                 extends Command[`Moving`, Idle]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, `B`],
+    cmd2: Command[`B`, C]
+  ) extends Command[A, C]
+}
+```
+
+```scala
+val cmd: Command[Idle, Idle] =
+  Command.Chain(Command.Start, Command.Stop)
+```
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends `Command[A, C]`
+}
+```
+
+```scala
+val `cmd: Command[Idle, Idle]` =
+  Command.Chain(Command.Start, Command.Stop)
+```
+
+---
+
+## DSL
+
+```tut:silent
+implicit class Compose[A, B](cmd: Command[A, B]) {
+  def ~>[C](cmd2: Command[B, C]): Command[A, C] =
+    Command.Chain(cmd, cmd2)
+}
+```
+
+```tut:silent
+val startStop: Command[Idle, Idle] =
+  Command.Start ~> Command.Stop
+```
+
+---
+
+## DSL
+
+```scala
+implicit class Compose[A, B](`cmd: Command[A, B]`) {
+  def ~>[C](cmd2: Command[B, C]): Command[A, C] =
+    Command.Chain(cmd, cmd2)
+}
+```
+
+```scala
+val startStop: Command[Idle, Idle] =
+  Command.`Start` ~> Command.Stop
+```
+
+---
+
+## DSL
+
+```scala
+implicit class Compose[A, B](cmd: Command[A, B]) {
+  def `~>`[C](cmd2: Command[B, C]): Command[A, C] =
+    Command.Chain(cmd, cmd2)
+}
+```
+
+```scala
+val startStop: Command[Idle, Idle] =
+  Command.Start `~>` Command.Stop
+```
+
+---
+
+## DSL
+
+```scala
+implicit class Compose[A, B](cmd: Command[A, B]) {
+  def ~>[C](`cmd2: Command[B, C]`): Command[A, C] =
+    Command.Chain(cmd, cmd2)
+}
+```
+
+```scala
+val startStop: Command[Idle, Idle] =
+  Command.Start ~> Command.`Stop`
+```
+
+---
+
+## DSL
+
+```scala
+implicit class Compose[A, B](cmd: Command[A, B]) {
+  def ~>[C](cmd2: Command[B, C]): `Command[A, C]` =
+    Command.Chain(cmd, cmd2)
+}
+```
+
+```scala
+val startStop: `Command[Idle, Idle]` =
+  Command.Start ~> Command.Stop
+```
+
+```tut:invisible
+val start                = Command.Start
+val stop                 = Command.Stop
+def face(dir: Direction) = Command.Face(dir)
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-east-sending.png)
+
+```scala
+start ~> start
+```
+
+---
+
+## Illegal state transition
+
+![Start ](img/valid-command-rejected.png)
+
+```tut:book:fail
+start ~> start
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-east-sending.png)
+
+```scala
+stop ~> stop
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-rejected.png)
+
+```tut:book:fail
+stop ~> stop
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-east-sending.png)
+
+```scala
+start ~> face(north)
+```
+
+---
+
+## Illegal state transition
+
+![Start](img/valid-command-rejected.png)
+
+```tut:book:fail
+start ~> face(north)
+```
+
+---
+
+## Safe state transition
+
+![Start](img/valid-command-south-sending.png)
+
+```scala
+ face(east) ~> start ~> stop
+```
+
+---
+
+## Safe state transition
+
+![Start](img/valid-command-south-sending.png)
+
+```tut:book
+ face(east) ~> start ~> stop
+```
+
+---
+
+## Safe state transition
+
+![Start](img/valid-command-east.png)
+
+```scala
+ `face(east)` ~> start ~> stop
+```
+
+---
+
+## Safe state transition
+
+![Start](img/valid-command-start.png)
+
+```scala
+ face(east) ~> `start` ~> stop
+```
+
+---
+
+## Safe state transition
+
+![Start](img/valid-command-stop.png)
+
+```scala
+ face(east) ~> start ~> `stop`
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```tut:silent
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: Command.Chain[_, _, _] => "chain"
+  }
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```scala
+def movingLabel(cmd: `Command[Moving, _]`): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: Command.Chain[_, _, _] => "chain"
+  }
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case `Command.Stop`              => "stop"
+    case _: Command.Chain[_, _, _] => "chain"
+  }
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: `Command.Chain[_, _, _]` => "chain"
+  }
+```
+
+---
+
+## Smarter exhaustivity checks
+
+![Start](img/valid-command-east-sending.png)
+
+```scala
+movingLabel(Command.Start)
+```
+
+---
+
+## Smarter exhaustivity checks
+
+![Start](img/valid-command-rejected.png)
+
+```tut:fail:book
+movingLabel(Command.Start)
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+ // case _: Command.Chain[_, _, _] => "chain"
+  }
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+ `// case _: Command.Chain[_, _, _] => "chain"`
+  }
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```tut:book:fail
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+ // case _: Command.Chain[_, _, _] => "chain"
+  }
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: Command.Chain[_, _, _] => "chain"
+    case Command.Start             => "start"
+  }
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: Command.Chain[_, _, _] => "chain"
+    `case Command.Start             => "start"`
+  }
+```
+
+---
+
+## Smarter exhaustivity checks
+
+```tut:book:fail
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: Command.Chain[_, _, _] => "chain"
+    case Command.Start             => "start"
+  }
+```
+
+---
+
+## Type extraction
+
+```tut:silent
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: Command.Chain[t, _, _] =>
+      implicitly[Moving =:= t]
+      "chain"
+  }
+```
+
+---
+
+## Type extraction
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: `Command.Chain[t, _, _]` =>
+      implicitly[Moving =:= t]
+      "chain"
+  }
+```
+
+---
+
+## Type extraction
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: Command.Chain[`t`, _, _] =>
+      implicitly[Moving =:= t]
+      "chain"
+  }
+```
+
+---
+
+## Type extraction
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+    case _: Command.Chain[t, _, _] =>
+      `implicitly[Moving =:= t]`
+      "chain"
+  }
+```
+
+---
+
+## Key takeaways
+
+--
+
+We used type constraints on our sum type's members to:
+
+--
+
+* make illegal state transitions impossible to represent.
+--
+
+* guarantee that our code handles all necessary cases.
+--
+
+* guarantee that our code handles *only* necessary cases.
+
+---
+class: center, middle
+
+# Generalised Algebraic Data Types
+
+---
+
+## Twitter wisdom
+
+.fleft[![Christophe Calves](img/christophe-gadt.png)]
+
+--
+
+.fright[![Rob Norris](img/tpolecat-gadt.png)]
+
+--
+
+.fright[![Raul Raja](img/raul-gadt.png)]
+
+--
+
+.fleft[![Ruben Berenguel](img/ruben-gadt.png)]
+
+---
+
+## GADT
+
+> A GADT is a sum type with one or more witness types, each equipped with a type equality.
+
+---
+
+## Witness type
+
+> A witness type describes properties of a sum type's branches at the type level.
+
+---
+
+## Witness type
+
+```scala
+sealed trait Command[`Before`, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[`Idle`, Idle]
+  case object Start                extends Command[`Idle`, Moving]
+  case object Stop                 extends Command[`Moving`, Idle]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[`A`, C]
+}
+```
+
+---
+
+## Witness type
+
+```scala
+sealed trait Command[Before, `After`]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, `Idle`]
+  case object Start                extends Command[Idle, `Moving`]
+  case object Stop                 extends Command[Moving, `Idle`]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, `C`]
+}
+```
+
+---
+
+## Type equality
+
+> Type equality is information available to the compiler about each witness type, allowing it to refine pattern matches.
+
+---
+
+## Type equality
+
+```scala
+def movingLabel(cmd: Command[`Moving`, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+ // case _: Command.Chain[_, _, _] => "chain"
+    case Command.Start             => "start"
+  }
+```
+
+---
+
+## Type equality
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+ `// case _: Command.Chain[_, _, _] => "chain"`
+    case Command.Start             => "start"
+  }
+```
+
+---
+
+## Type equality
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+ // case _: Command.Chain[_, _, _] => "chain"
+    `case Command.Start             => "start"`
+  }
+```
+
+---
+
+## Sum type in Scala
+
+```tut:silent
+sealed trait Option[A]
+case class Some[A](value: A) extends Option[A]
+case class None[A]() extends Option[A]
+```
+
+---
+
+## Sum type in Scala
+
+```scala
+&#x200B;`sealed trait Option[A]`
+case class Some[A](value: A) extends Option[A]
+case class None[A]() extends Option[A]
+```
+
+---
+
+## Sum type in Scala
+
+```scala
+sealed trait Option[A]
+&#x200B;`case class Some[A](value: A) extends Option[A]`
+case class None[A]() extends Option[A]
+```
+
+---
+
+## Sum type in Scala
+
+```scala
+sealed trait Option[A]
+case class Some[A](value: A) extends Option[A]
+&#x200B;`case class None[A]() extends Option[A]`
+```
+
+---
+
+## Sum type in Scala
+
+```scala
+sealed trait Option[A]
+case class `Some`[A](value: A) extends Option[A]
+case class `None`[A]() extends Option[A]
+```
+
+---
+
+## Sum type in Scala
+
+```tut:silent
+def safeGet[A](oa: Some[A]): A =
+  oa match {
+    case Some(a) => a
+ // case None    => ???
+  }
+```
+
+---
+
+## Sum type in Scala
+
+```scala
+def safeGet[A](oa: `Some`[A]): A =
+  oa match {
+    case `Some`(a) => a
+ // case `None`    => ???
+  }
+```
+
+---
+
+## Key takeaways
+
+--
+
+* We're all a little bit strange about GADTs.
+--
+
+* They have an actual, "easy" to understand definition.
+--
+
+* Scala is bad at helping us see it.
+
+---
+class: center, middle
+
+# How about some Haskell?
+
+---
+
+## `Option` in Haskell
+
+```haskell
+data Option a = Some a
+              | None
+```
+
+---
+
+## `Option` in Haskell
+
+```haskell
+data `Option a` = Some a
+              | None
+```
+
+---
+
+## `Option` in Haskell
+
+```haskell
+data Option a = `Some a`
+              | None
+```
+
+---
+
+## `Option` in Haskell
+
+```haskell
+data Option a = Some a
+              | `None`
+```
+
+---
+
+## `Option` in Haskell
+
+```haskell
+safe_get :: ??? -> a
+```
+
+---
+
+## `Option` with witness
+
+```haskell
+{-#LANGUAGE EmptyDataDecls #-}
+module Option (Option, Empty, NonEmpty, some, none) where
+
+data Empty
+data NonEmpty
+
+data Option phantom a = Some a
+                      | None
+
+some :: a -> Option NonEmpty a
+some a = Some a
+
+none :: Option Empty a
+none = None
+```
+
+---
+
+## `Option` with witness
+
+```haskell
+{-#LANGUAGE EmptyDataDecls #-}
+module Option (Option, Empty, NonEmpty, some, none) where
+
+data Empty
+data NonEmpty
+
+data `Option phantom a` = Some a
+                      | None
+
+some :: a -> Option NonEmpty a
+some a = Some a
+
+none :: Option Empty a
+none = None
+```
+
+---
+
+## `Option` with witness
+
+```haskell
+{-#LANGUAGE EmptyDataDecls #-}
+module Option (Option, Empty, NonEmpty, some, none) where
+
+*data Empty
+*data NonEmpty
+
+data Option phantom a = Some a
+                      | None
+
+some :: a -> Option NonEmpty a
+some a = Some a
+
+none :: Option Empty a
+none = None
+```
+
+---
+
+## `Option` with witness
+
+```haskell
+{-#LANGUAGE EmptyDataDecls #-}
+module Option (Option, Empty, NonEmpty, some, none) where
+
+data Empty
+data NonEmpty
+
+data Option phantom a = Some a
+                      | None
+
+*some :: a -> Option NonEmpty a
+*some a = Some a
+
+none :: Option Empty a
+none = None
+```
+
+---
+
+## `Option` with witness
+
+```haskell
+{-#LANGUAGE EmptyDataDecls #-}
+module Option (Option, Empty, NonEmpty, some, none) where
+
+data Empty
+data NonEmpty
+
+data Option phantom a = Some a
+                      | None
+
+some :: a -> Option NonEmpty a
+some a = Some a
+
+*none :: Option Empty a
+*none = None
+```
+---
+
+## `Option` with witness
+
+```haskell
+{-#LANGUAGE EmptyDataDecls #-}
+module Option (`Option, Empty, NonEmpty, some, none`) where
+
+data Empty
+data NonEmpty
+
+data Option phantom a = `Some` a
+                      | `None`
+
+some :: a -> Option NonEmpty a
+some a = Some a
+
+none :: Option Empty a
+none = None
+```
+
+---
+
+## `Option` with witness
+
+```haskell
+safe_get :: Option NonEmpty a -> a
+safe_get (Some a) = a
+safe_get None = error "this can't happen"
+```
+
+---
+
+## `Option` with witness
+
+```haskell
+safe_get :: `Option NonEmpty a` -> a
+safe_get (Some a) = a
+safe_get None = error "this can't happen"
+```
+
+---
+
+## `Option` with witness
+
+```haskell
+safe_get :: Option NonEmpty a -> a
+&#x200B;`safe_get (Some a) = a`
+safe_get None = error "this can't happen"
+```
+
+---
+
+## `Option` with witness
+
+```haskell
+safe_get :: Option NonEmpty a -> a
+safe_get (Some a) = a
+&#x200B;`safe_get None = error "this can't happen"`
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+{-#LANGUAGE GADTs, EmptyDataDecls #-}
+
+data Empty
+data NonEmpty
+
+data Option phantom a where
+  Some :: a -> Option NonEmpty a
+  None :: Option Empty a
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+{-#LANGUAGE GADTs, EmptyDataDecls #-}
+
+data Empty
+data NonEmpty
+
+data `Option phantom a` where
+  Some :: a -> Option NonEmpty a
+  None :: Option Empty a
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+{-#LANGUAGE GADTs, EmptyDataDecls #-}
+
+data Empty
+data NonEmpty
+
+data Option phantom a where
+  `Some :: a -> Option NonEmpty a`
+  None :: Option Empty a
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+{-#LANGUAGE GADTs, EmptyDataDecls #-}
+
+data Empty
+data NonEmpty
+
+data Option phantom a where
+  Some :: a -> Option NonEmpty a
+  `None :: Option Empty a`
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+safe_get :: Option NonEmpty a -> a
+safe_get (Some a) = a
+--safe_get None = error "this can't happen"
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+safe_get :: Option NonEmpty a -> a
+safe_get (Some a) = a
+&#x200B;`--safe_get None = error "this can't happen"`
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+full_get :: a -> Option phantom a -> a
+full_get zero opt = case opt of
+    None     -> zero
+    (Some _) -> safe_get opt
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+full_get :: a -> Option phantom a -> a
+full_get zero opt = case `opt` of
+    None     -> zero
+    (Some _) -> safe_get opt
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+full_get :: a -> `Option phantom a` -> a
+full_get zero opt = case opt of
+    None     -> zero
+    (Some _) -> safe_get opt
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+full_get :: a -> Option phantom a -> a
+full_get zero opt = case opt of
+    None     -> zero
+    `(Some _) -> safe_get opt`
+```
+
+---
+
+## `Option` as a GADT
+
+```haskell
+full_get :: a -> Option phantom a -> a
+full_get zero opt = case opt of
+    None     -> zero
+    (Some _) -> `safe_get opt`
+```
+
+```haskell
+safe_get :: Option NonEmpty a -> a
+```
+
+---
+
+## Key takeaways
+
+--
+
+Haskell makes GADTs very clear:
+
+--
+
+* Sum types.
+--
+
+* Witness types.
+--
+
+* Type equality.
+
+---
+
+class: center, middle
+
+# In closing
+
+---
+
+## If you only remember 1 slide...
+
+--
+
+* ADTs and GADTs make illegal values impossible to represent.
+--
+
+* They allow the compiler to ensure we're dealing with all necessary cases.
+--
+
+* But only necessary cases.
+
+---
+
+class: center, middle
+
+# Questions?
+
+Nicolas Rinaudo • [@NicolasRinaudo] • [Besedo]
+
+---
+## Bonus Material!
+
+* [The algebra of types](./algebra-of-types.html)
+* [What does discriminated mean?](./union-types.html)
+
+[Besedo]:https://twitter.com/besedo_official
+[@NicolasRinaudo]:https://twitter.com/NicolasRinaudo
+    </textarea>
+    <script src="js/remark.js" type="text/javascript"></script>
+    <script src="js/katex.js"></script>
+    <script src="js/auto-render.js"></script>
+    <link rel="stylesheet" href="css/katex.css">
+
+    <script type="text/javascript">
+var renderMath = function() {
+  renderMathInElement(document.body);
+}
+var slideshow = remark.create({
+  highlightStyle: 'github',
+  highlightSpans: true,
+  highlightLines: true
+}, renderMath);
+    </script>
+  </body>
+</html>
