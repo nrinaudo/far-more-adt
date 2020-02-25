@@ -1812,8 +1812,8 @@ val stop                 = Command.Stop
 
 ```scala
 val north = Direction.North
-val south = Direction.South
 val east  = Direction.East
+val south = Direction.South
 val west  = Direction.West
 ```
 
@@ -1823,8 +1823,8 @@ val west  = Direction.West
 
 ```scala
 *val north = Direction.North
-val south = Direction.South
 val east  = Direction.East
+val south = Direction.South
 val west  = Direction.West
 ```
 
@@ -1834,19 +1834,8 @@ val west  = Direction.West
 
 ```scala
 val north = Direction.North
-*val south = Direction.South
-val east  = Direction.East
-val west  = Direction.West
-```
-
----
-
-## DSL
-
-```scala
-val north = Direction.North
-val south = Direction.South
 *val east  = Direction.East
+val south = Direction.South
 val west  = Direction.West
 ```
 
@@ -1856,8 +1845,19 @@ val west  = Direction.West
 
 ```scala
 val north = Direction.North
-val south = Direction.South
 val east  = Direction.East
+*val south = Direction.South
+val west  = Direction.West
+```
+
+---
+
+## DSL
+
+```scala
+val north = Direction.North
+val east  = Direction.East
+val south = Direction.South
 *val west  = Direction.West
 ```
 
