@@ -1319,7 +1319,7 @@ class: center, middle
 
 ## Script
 
-![Waiting command](img/valid-command-east.png)
+![Waiting command](img/valid-command-south.png)
 
 ```haskell
 start
@@ -1329,10 +1329,10 @@ start
 
 ## Script
 
-![Waiting command](img/valid-command-east.png)
+![Waiting command](img/valid-command-south.png)
 
 ```haskell
-start
+face east
 start
 stop
 ```
@@ -1341,10 +1341,10 @@ stop
 
 ## Script
 
-![Sending script](img/valid-command-east-sending.png)
+![Sending script](img/valid-command-south-sending.png)
 
 ```haskell
-start
+face east
 start
 stop
 ```
@@ -1353,11 +1353,23 @@ stop
 
 ## Script
 
-![Starting](img/valid-command-start.png)
+![Starting](img/valid-command-east.png)
 
 ```haskell
+*face east
+start
+stop
+```
+
+---
+
+## Script
+
+![Continue advancing](img/valid-command-start.png)
+
+```haskell
+face east
 *start
-start
 stop
 ```
 
@@ -1365,22 +1377,10 @@ stop
 
 ## Script
 
-![Continue advancing](img/valid-command-start-2.png)
+![Stopping](img/valid-command-stop.png)
 
 ```haskell
-start
-*start
-stop
-```
-
----
-
-## Script
-
-![Stopping](img/valid-command-stop-2.png)
-
-```haskell
-start
+face east
 start
 *stop
 ```
@@ -1490,14 +1490,14 @@ Command.Chain(
     Command.Chain(
       Command.Face(Direction.East),
       Command.Chain(
-        Command.Chain(Command.Start, Command.Start),
+        Command.Start,
         Command.Stop
       )
     ),
     Command.Face(Direction.West)
   ),
   Command.Chain(
-    Command.Chain(Command.Start, Command.Start),
+    Command.Start,
     Command.Stop
   )
 )
@@ -1513,14 +1513,14 @@ Command.Chain(
     Command.Chain(
       Command.`Face`(Direction.`East`),
       Command.Chain(
-        Command.Chain(Command.Start, Command.Start),
+        Command.Start,
         Command.Stop
       )
     ),
     Command.Face(Direction.West)
   ),
   Command.Chain(
-    Command.Chain(Command.Start, Command.Start),
+    Command.Start,
     Command.Stop
   )
 )
@@ -1536,14 +1536,14 @@ Command.Chain(
     Command.Chain(
       Command.Face(Direction.East),
       Command.Chain(
-        Command.Chain(Command.`Start`, Command.Start),
+        Command.`Start`,
         Command.Stop
       )
     ),
     Command.Face(Direction.West)
   ),
   Command.Chain(
-    Command.Chain(Command.Start, Command.Start),
+    Command.Start,
     Command.Stop
   )
 )
@@ -1559,41 +1559,19 @@ Command.Chain(
     Command.Chain(
       Command.Face(Direction.East),
       Command.Chain(
-        Command.Chain(Command.Start, Command.`Start`),
-        Command.Stop
-      )
-    ),
-    Command.Face(Direction.West)
-  ),
-  Command.Chain(
-    Command.Chain(Command.Start, Command.Start),
-    Command.Stop
-  )
-)
-```
-
----
-
-## Chaining commands
-
-```scala
-Command.Chain(
-  Command.Chain(
-    Command.Chain(
-      Command.Face(Direction.East),
-      Command.Chain(
-        Command.Chain(Command.Start, Command.Start),
+        Command.Start,
         Command.`Stop`
       )
     ),
     Command.Face(Direction.West)
   ),
   Command.Chain(
-    Command.Chain(Command.Start, Command.Start),
+    Command.Start,
     Command.Stop
   )
 )
 ```
+
 ---
 
 ## Chaining commands
@@ -1604,14 +1582,36 @@ Command.Chain(
     Command.Chain(
       Command.Face(Direction.East),
       Command.Chain(
-        Command.Chain(Command.Start, Command.Start),
+        Command.Start,
         Command.Stop
       )
     ),
     Command.`Face`(Direction.`West`)
   ),
   Command.Chain(
-    Command.Chain(Command.Start, Command.Start),
+    Command.Start,
+    Command.Stop
+  )
+)
+```
+---
+
+## Chaining commands
+
+```scala
+Command.Chain(
+  Command.Chain(
+    Command.Chain(
+      Command.Face(Direction.East),
+      Command.Chain(
+        Command.Start,
+        Command.Stop
+      )
+    ),
+    Command.Face(Direction.West)
+  ),
+  Command.Chain(
+    Command.`Start`,
     Command.Stop
   )
 )
@@ -1627,60 +1627,14 @@ Command.Chain(
     Command.Chain(
       Command.Face(Direction.East),
       Command.Chain(
-        Command.Chain(Command.Start, Command.Start),
+        Command.Start,
         Command.Stop
       )
     ),
     Command.Face(Direction.West)
   ),
   Command.Chain(
-    Command.Chain(Command.`Start`, Command.Start),
-    Command.Stop
-  )
-)
-```
-
----
-
-## Chaining commands
-
-```scala
-Command.Chain(
-  Command.Chain(
-    Command.Chain(
-      Command.Face(Direction.East),
-      Command.Chain(
-        Command.Chain(Command.Start, Command.Start),
-        Command.Stop
-      )
-    ),
-    Command.Face(Direction.West)
-  ),
-  Command.Chain(
-    Command.Chain(Command.Start, Command.`Start`),
-    Command.Stop
-  )
-)
-```
-
----
-
-## Chaining commands
-
-```scala
-Command.Chain(
-  Command.Chain(
-    Command.Chain(
-      Command.Face(Direction.East),
-      Command.Chain(
-        Command.Chain(Command.Start, Command.Start),
-        Command.Stop
-      )
-    ),
-    Command.Face(Direction.West)
-  ),
-  Command.Chain(
-    Command.Chain(Command.Start, Command.Start),
+    Command.Start,
     Command.`Stop`
   )
 )
@@ -1863,154 +1817,93 @@ val south = Direction.South
 
 ---
 
-## Script
-
-![Sending script](img/valid-command-east-sending.png)
+## Compound commands
 
 ```scala
-val move2 = start ~> start  ~> stop
+def move(d: Direction) =
+  face(d) ~> start ~> stop
 ```
 
 ---
 
-## Script
-
-![Sending script](img/valid-command-east-sending.png)
-
-```scala
-val move2 = `start` ~> start  ~> stop
-```
-
----
-
-## Script
-
-![Sending script](img/valid-command-east-sending.png)
-
-```scala
-val move2 = start ~> `start`  ~> stop
-```
-
----
-
-## Script
-
-![Sending script](img/valid-command-east-sending.png)
-
-```scala
-val move2 = start ~> start  ~> `stop`
-```
-
----
-
-## Script
-
-![Accepted](img/valid-command-accepted.png)
-
-```scala
-val move2 = start ~> start  ~> stop
-// move2: Command = Chain(Chain(Start,Start),Stop)
-```
-
----
-
-## Script
+## Compound commands
 
 ![Sending script](img/valid-command-south-sending.png)
 
 ```scala
- face(east) ~> move2 ~> face(west) ~> move2
+ move(east) ~> move(west)
 ```
 
 ---
 
-## Script
+## Compound commands
 
-![Sending script](img/valid-command-south.png)
+![Sending script](img/valid-command-south-sending.png)
 
 ```scala
- face(east) ~> move2 ~> face(west) ~> move2
-// res11: Command = Chain(Chain(Chain(Face(East),Chain(Chain(Start,Start),Stop)),Face(West)),Chain(Chain(Start,Start),Stop))
+ move(east) ~> move(west)
+// res11: Command = Chain(Chain(Chain(Face(East),Start),Stop),Chain(Chain(Face(West),Start),Stop))
 ```
 
 ---
 
-## Script
+## Compound commands
 
 ![Sending script](img/valid-command-east.png)
 
 ```scala
- `face(east)` ~> move2 ~> face(west) ~> move2
+ `move(east)` ~> move(west)
 ```
 
 ---
 
-## Script
+## Compound commands
 
 ![Sending script](img/valid-command-start.png)
 
 ```scala
- face(east) ~> `move2` ~> face(west) ~> move2
+ `move(east)` ~> move(west)
 ```
 
 ---
 
-## Script
+## Compound commands
 
-![Sending script](img/valid-command-start-2.png)
+![Sending script](img/valid-command-stop.png)
 
 ```scala
- face(east) ~> `move2` ~> face(west) ~> move2
+ `move(east)` ~> move(west)
 ```
+
 
 ---
 
-## Script
+## Compound commands
 
-![Sending script](img/valid-command-stop-2.png)
+![Sending script](img/valid-command-west.png)
 
 ```scala
- face(east) ~> `move2` ~> face(west) ~> move2
+ move(east) ~> `move(west)`
 ```
 
 ---
 
-## Script
-
-![Sending script](img/valid-command-west-2.png)
-
-```scala
- face(east) ~> move2 ~> `face(west)` ~> move2
-```
-
----
-
-## Script
-
-![Sending script](img/valid-command-start-3.png)
-
-```scala
- face(east) ~> move2 ~> face(west) ~> `move2`
-```
-
----
-
-## Script
+## Compound commands
 
 ![Sending script](img/valid-command-start-4.png)
 
 ```scala
- face(east) ~> move2 ~> face(west) ~> `move2`
+ move(east) ~> `move(west)`
 ```
 
 ---
 
-## Script
+## Compound commands
 
 ![Sending script](img/valid-command-stop-3.png)
 
 ```scala
- face(east) ~> move2 ~> face(west) ~> `move2`
+ move(east) ~> `move(west)`
 ```
 
 ---
@@ -2446,46 +2339,6 @@ val `cmd: Command[Idle, Idle]` =
 
 ---
 
-## Tracking state
-
-```scala
-sealed trait Command[Before, After]
-
-object Command {
-  case class  Face(dir: Direction) extends Command[Idle, Idle]
-  case object Start                extends Command[Idle, Moving]
-  case object Stop                 extends Command[Moving, Idle]
-  case class  Continue[A]()        extends Command[A, A]
-
-  case class Chain[A, B, C](
-    cmd1: Command[A, B],
-    cmd2: Command[B, C]
-  ) extends Command[A, C]
-}
-```
-
----
-
-## Tracking state
-
-```scala
-sealed trait Command[Before, After]
-
-object Command {
-  case class  Face(dir: Direction) extends Command[Idle, Idle]
-  case object Start                extends Command[Idle, Moving]
-  case object Stop                 extends Command[Moving, Idle]
-* case class  Continue[A]()        extends Command[A, A]
-
-  case class Chain[A, B, C](
-    cmd1: Command[A, B],
-    cmd2: Command[B, C]
-  ) extends Command[A, C]
-}
-```
-
----
-
 ## DSL
 
 ```scala
@@ -2571,18 +2424,6 @@ val startStop: `Command[Idle, Idle]` =
 ```scala
 val start                = Command.Start
 val stop                 = Command.Stop
-def continue[A]          = Command.Continue[A]
-def face(dir: Direction) = Command.Face(dir)
-```
-
----
-
-## DSL
-
-```scala
-val start                = Command.Start
-val stop                 = Command.Stop
-*def continue[A]          = Command.Continue[A]
 def face(dir: Direction) = Command.Face(dir)
 ```
 
@@ -2668,18 +2509,18 @@ start ~> face(north)
 ![Start](img/valid-command-south-sending.png)
 
 ```scala
- face(east) ~> start ~> continue ~> stop
+ face(east) ~> start ~> stop
 ```
 
 ---
 
 ## Safe state transition
 
-![Start](img/valid-command-south.png)
+![Start](img/valid-command-south-sending.png)
 
 ```scala
- face(east) ~> start ~> continue ~> stop
-// res15: Command[Idle,Idle] = Chain(Chain(Chain(Face(East),Start),Continue()),Stop)
+ face(east) ~> start ~> stop
+// res15: Command[Idle,Idle] = Chain(Chain(Face(East),Start),Stop)
 ```
 
 ---
@@ -2689,7 +2530,7 @@ start ~> face(north)
 ![Start](img/valid-command-east.png)
 
 ```scala
- `face(east)` ~> start ~> continue ~> stop
+ `face(east)` ~> start ~> stop
 ```
 
 ---
@@ -2699,27 +2540,17 @@ start ~> face(north)
 ![Start](img/valid-command-start.png)
 
 ```scala
- face(east) ~> `start` ~> continue ~> stop
+ face(east) ~> `start` ~> stop
 ```
 
 ---
 
 ## Safe state transition
 
-![Start](img/valid-command-start-2.png)
+![Start](img/valid-command-stop.png)
 
 ```scala
- face(east) ~> start ~> `continue` ~> stop
-```
-
----
-
-## Safe state transition
-
-![Start](img/valid-command-stop-2.png)
-
-```scala
- face(east) ~> start ~> continue ~> `stop`
+ face(east) ~> start ~> `stop`
 ```
 
 ---
@@ -2729,9 +2560,8 @@ start ~> face(north)
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: Command.Continue[_]    => "continue"
+    case _: Command.Chain[_, _, _] => "chain"
   }
 ```
 
@@ -2742,9 +2572,8 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: `Command[Moving, _]`): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: Command.Continue[_]    => "continue"
+    case _: Command.Chain[_, _, _] => "chain"
   }
 ```
 
@@ -2755,22 +2584,8 @@ def movingLabel(cmd: `Command[Moving, _]`): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: `Command.Chain[_, _, _]` => "chain"
-    case Command.Stop              => "stop"
-    case _: Command.Continue[_]    => "continue"
-  }
-```
-
----
-
-## Smarter exhaustivity checks
-
-```scala
-def movingLabel(cmd: Command[Moving, _]): String =
-  cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case `Command.Stop`              => "stop"
-    case _: Command.Continue[_]    => "continue"
+    case _: Command.Chain[_, _, _] => "chain"
   }
 ```
 
@@ -2781,9 +2596,8 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: `Command.Continue[_]`    => "continue"
+    case _: `Command.Chain[_, _, _]` => "chain"
   }
 ```
 
@@ -2819,9 +2633,8 @@ movingLabel(Command.Start)
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
- // case _: Command.Continue[_]    => "continue"
+ // case _: Command.Chain[_, _, _] => "chain"
   }
 ```
 
@@ -2832,9 +2645,8 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
- `// case _: Command.Continue[_]    => "continue"`
+ `// case _: Command.Chain[_, _, _] => "chain"`
   }
 ```
 
@@ -2845,12 +2657,11 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
- // case _: Command.Continue[_]    => "continue"
+ // case _: Command.Chain[_, _, _] => "chain"
   }
 // <console>:20: warning: match may not be exhaustive.
-// It would fail on the following input: Continue()
+// It would fail on the following input: Chain(_, _)
 //          cmd match {
 //          ^
 // error: No warnings can be incurred under -Xfatal-warnings.
@@ -2863,9 +2674,8 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: Command.Continue[_]    => "continue"
+    case _: Command.Chain[_, _, _] => "chain"
     case Command.Start             => "start"
   }
 ```
@@ -2877,9 +2687,8 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: Command.Continue[_]    => "continue"
+    case _: Command.Chain[_, _, _] => "chain"
     `case Command.Start             => "start"`
   }
 ```
@@ -2891,12 +2700,11 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: Command.Continue[_]    => "continue"
+    case _: Command.Chain[_, _, _] => "chain"
     case Command.Start             => "start"
   }
-// <console>:24: error: pattern type is incompatible with expected type;
+// <console>:23: error: pattern type is incompatible with expected type;
 //  found   : Command.Start.type
 //  required: Command[Moving,_$1] where type _$1
 //            case Command.Start             => "start"
@@ -2910,11 +2718,10 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: Command.Continue[t]    =>
+    case _: Command.Chain[t, _, _] =>
       implicitly[Moving =:= t]
-      "continue"
+      "chain"
   }
 ```
 
@@ -2925,11 +2732,10 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: `Command.Continue[t]`    =>
+    case _: `Command.Chain[t, _, _]` =>
       implicitly[Moving =:= t]
-      "continue"
+      "chain"
   }
 ```
 
@@ -2940,11 +2746,10 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: Command.Continue[`t`]    =>
+    case _: Command.Chain[`t`, _, _] =>
       implicitly[Moving =:= t]
-      "continue"
+      "chain"
   }
 ```
 
@@ -2955,14 +2760,12 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
-    case _: Command.Continue[t]    =>
+    case _: Command.Chain[t, _, _] =>
       `implicitly[Moving =:= t]`
-      "continue"
+      "chain"
   }
 ```
-
 
 ---
 
@@ -3027,7 +2830,6 @@ object Command {
   case class  Face(dir: Direction) extends Command[`Idle`, Idle]
   case object Start                extends Command[`Idle`, Moving]
   case object Stop                 extends Command[`Moving`, Idle]
-  case class  Continue[A]()        extends Command[`A`, A]
 
   case class Chain[A, B, C](
     cmd1: Command[A, B],
@@ -3047,7 +2849,6 @@ object Command {
   case class  Face(dir: Direction) extends Command[Idle, `Idle`]
   case object Start                extends Command[Idle, `Moving`]
   case object Stop                 extends Command[Moving, `Idle`]
-  case class  Continue[A]()        extends Command[A, `A`]
 
   case class Chain[A, B, C](
     cmd1: Command[A, B],
@@ -3069,9 +2870,8 @@ object Command {
 ```scala
 def movingLabel(cmd: Command[`Moving`, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
- // case _: Command.Continue[_]    => "continue"
+ // case _: Command.Chain[_, _, _] => "chain"
     case Command.Start             => "start"
   }
 ```
@@ -3083,9 +2883,8 @@ def movingLabel(cmd: Command[`Moving`, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
- `// case _: Command.Continue[_]    => "continue"`
+ `// case _: Command.Chain[_, _, _] => "chain"`
     case Command.Start             => "start"
   }
 ```
@@ -3097,9 +2896,8 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
-    case _: Command.Chain[_, _, _] => "chain"
     case Command.Stop              => "stop"
- // case _: Command.Continue[_]    => "continue"
+ // case _: Command.Chain[_, _, _] => "chain"
     `case Command.Start             => "start"`
   }
 ```
@@ -3159,9 +2957,9 @@ case class `None`[A]() extends Option[A]
 ## Sum type in Scala
 
 ```scala
-def safeGet[A](oa: Some[A]): Unit =
+def safeGet[A](oa: Some[A]): A =
   oa match {
-    case Some(a) => println(a)
+    case Some(a) => a
  // case None    => ???
   }
 ```
@@ -3171,9 +2969,9 @@ def safeGet[A](oa: Some[A]): Unit =
 ## Sum type in Scala
 
 ```scala
-def safeGet[A](oa: `Some`[A]): Unit =
+def safeGet[A](oa: `Some`[A]): A =
   oa match {
-    case `Some`(a) => println(a)
+    case `Some`(a) => a
  // case `None`    => ???
   }
 ```
