@@ -24,7 +24,6 @@ class: center, middle
 
 ![Facing south](img/valid-command-south.png)
 
-
 ---
 
 ## Valid programs
@@ -149,7 +148,6 @@ stop
 
 ## Invalid programs
 
-
 ![Sending triple_backflip](img/valid-command-stop-sending.png)
 
 ```haskell
@@ -159,7 +157,6 @@ triple_backflip
 ---
 
 ## Invalid programs
-
 
 ![Confused](img/valid-command-wat.png)
 
@@ -171,7 +168,6 @@ triple_backflip
 
 ## Invalid programs
 
-
 ![Kaboom](img/valid-command-boom.png)
 
 ```haskell
@@ -182,7 +178,6 @@ triple_backflip
 
 ## Invalid programs
 
-
 ![Sending face -35](img/valid-command-stop-sending.png)
 
 ```haskell
@@ -191,7 +186,6 @@ face -35
 ---
 
 ## Invalid programs
-
 
 ![Rejected](img/valid-command-rejected.png)
 
@@ -202,7 +196,6 @@ face -35
 ---
 
 ## Invalid programs
-
 
 ![Rejected](img/valid-command-rejected-2.png)
 
@@ -321,7 +314,6 @@ def label(`d: Int`) =
   }
 ```
 
-
 ---
 
 ## Magic values
@@ -401,7 +393,6 @@ def label(d: Int) =
 ```scala
 label(-35)
 ```
-
 
 ---
 
@@ -548,6 +539,16 @@ object Direction extends Enumeration {
 
 ```scala
 object `Direction` extends Enumeration {
+  val North, East, South, West = Value
+}
+```
+
+---
+
+## Scala's `Enumeration`
+
+```scala
+object Direction `extends Enumeration` {
   val North, East, South, West = Value
 }
 ```
@@ -832,7 +833,7 @@ object Direction {
 ## Hand-written enumeration
 
 ```scala
-*sealed trait Direction
+&#x200B;`sealed` trait Direction
 
 object Direction {
   case object North extends Direction
@@ -879,6 +880,8 @@ def label(d: Direction) =
 
 ## Key takeaways
 
+--
+
 We used enumerations to:
 
 --
@@ -915,7 +918,7 @@ val cmd = Command(
 ## Case class
 
 ```scala
-case `class Command`(
+&#x200B;`case class Command`(
   order: String,
   dir  : Option[Direction]
 )
@@ -945,7 +948,6 @@ val cmd = Command(
   Some(Direction.North)
 )
 ```
-
 
 ---
 
@@ -1236,7 +1238,6 @@ object Command {
 }
 ```
 
-
 ---
 
 ## `Command` as "enumeration"
@@ -1304,6 +1305,8 @@ Command.Start
 ---
 
 ## Key takeaways
+
+--
 
 * Enumerations are not enough to make nonsensical values impossible to represent.
 --
@@ -1828,6 +1831,42 @@ def move(d: Direction) =
 
 ## Compound commands
 
+```scala
+def move(`d: Direction`) =
+  face(d) ~> start ~> stop
+```
+
+---
+
+## Compound commands
+
+```scala
+def move(d: Direction) =
+  `face(d)` ~> start ~> stop
+```
+
+---
+
+## Compound commands
+
+```scala
+def move(d: Direction) =
+  face(d) ~> `start` ~> stop
+```
+
+---
+
+## Compound commands
+
+```scala
+def move(d: Direction) =
+  face(d) ~> start ~> `stop`
+```
+
+---
+
+## Compound commands
+
 ![Sending script](img/valid-command-south-sending.png)
 
 ```scala
@@ -1875,7 +1914,6 @@ def move(d: Direction) =
  `move(east)` ~> move(west)
 ```
 
-
 ---
 
 ## Compound commands
@@ -1909,6 +1947,8 @@ def move(d: Direction) =
 ---
 
 ## Key takeaways
+
+--
 
 We've completed our data structure by using:
 
@@ -1944,6 +1984,19 @@ Command = Face
 
 ---
 
+## Sum types
+
+> A sum type is a discriminated union of values, and can be thought of as an `OR` on types.
+
+```scala
+Command = Face
+        `⋁` Start
+        `⋁` Stop
+        `⋁` Chain
+```
+
+---
+
 ## Product types
 
 > A product type is an aggregation of values, and can be thought of as an `AND` on types.
@@ -1952,6 +2005,16 @@ Command = Face
 
 ```scala
 Chain = Command ⋀ Command
+```
+
+---
+
+## Product types
+
+> A product type is an aggregation of values, and can be thought of as an `AND` on types.
+
+```scala
+Chain = Command `⋀` Command
 ```
 
 ---
@@ -1967,6 +2030,46 @@ Command = Face
         ⋁ Start
         ⋁ Stop
         ⋁ Command ⋀ Command
+```
+
+---
+
+## Algebraic Data Types
+
+> An ADT is a potentially recursive .highlight[sum type] of product types.
+
+```scala
+Command = Face
+        `⋁` Start
+        `⋁` Stop
+        `⋁` Command ⋀ Command
+```
+
+---
+
+## Algebraic Data Types
+
+> An ADT is a potentially recursive .highlight[sum type] of product types.
+
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Command `⋀` Command
+```
+
+---
+
+## Algebraic Data Types
+
+> An ADT is a potentially recursive .highlight[sum type] of product types.
+
+```scala
+&#x200B;`Command` = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ `Command` ⋀ Command
 ```
 
 ---
@@ -2417,15 +2520,8 @@ val startStop: `Command[Idle, Idle]` =
   Command.Start ~> Command.Stop
 ```
 
----
 
-## DSL
 
-```scala
-val start                = Command.Start
-val stop                 = Command.Stop
-def face(dir: Direction) = Command.Face(dir)
-```
 
 ---
 
@@ -2769,8 +2865,9 @@ def movingLabel(cmd: Command[Moving, _]): String =
 
 ---
 
-
 ## Key takeaways
+
+--
 
 We used type constraints on our sum type's members to:
 
@@ -2979,6 +3076,8 @@ def safeGet[A](oa: `Some`[A]): A =
 ---
 
 ## Key takeaways
+
+--
 
 * We're all a little bit strange about GADTs.
 --
@@ -3345,6 +3444,8 @@ safe_get :: Option NonEmpty a -> a
 
 ## Key takeaways
 
+--
+
 * Haskell is more explicit about what GADTs are and what they help solve.
 --
 
@@ -3359,6 +3460,8 @@ class: center, middle
 ---
 
 ## If you only remember 1 slide...
+
+--
 
 * ADTs make illegal values impossible to represent.
 --
