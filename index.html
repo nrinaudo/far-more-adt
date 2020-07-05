@@ -403,7 +403,7 @@ label(-35)
 ```scala
 label(-35)
 // scala.MatchError: -35 (of class java.lang.Integer)
-//   at .label(<console>:14)
+//   at .label(<console>:3)
 //   ... 42 elided
 ```
 
@@ -427,7 +427,7 @@ object Direction {
 ## Type aliases
 
 ```scala
-*type Direction = Int
+&#x200B;`type Direction = Int`
 
 object Direction {
   val North: Direction = 1
@@ -499,7 +499,7 @@ label(-35)
 ```scala
 label(-35)
 // scala.MatchError: -35 (of class java.lang.Integer)
-//   at .label(<console>:15)
+//   at .label(<console>:3)
 //   ... 42 elided
 ```
 
@@ -599,11 +599,11 @@ label(-35)
 
 ```scala
 label(-35)
-// <console>:14: error: type mismatch;
-//  found   : Int(-35)
-//  required: Direction.Value
 //        label(-35)
 //              ^
+// On line 2: error: type mismatch;
+//         found   : Int(-35)
+//         required: Direction.Value
 ```
 
 ---
@@ -653,7 +653,7 @@ label(Direction.West)
 ```scala
 label(Direction.West)
 // scala.MatchError: West (of class scala.Enumeration$Val)
-//   at .label(<console>:14)
+//   at .label(<console>:3)
 //   ... 42 elided
 ```
 
@@ -677,7 +677,7 @@ object Direction {
 ## Hand-written enumeration
 
 ```scala
-*trait Direction
+&#x200B;`trait Direction`
 
 object Direction {
   case object North extends Direction
@@ -809,7 +809,7 @@ label(Direction.West)
 ```scala
 label(Direction.West)
 // scala.MatchError: West (of class Direction$West$)
-//   at .label(<console>:15)
+//   at .label(<console>:3)
 //   ... 42 elided
 ```
 
@@ -869,11 +869,11 @@ def label(d: Direction) =
     case Direction.South ⇒ "south"
  // case Direction.West  ⇒ "west"
 }
-// <console>:15: warning: match may not be exhaustive.
-// It would fail on the following input: West
 //          d match {
 //          ^
-// error: No warnings can be incurred under -Xfatal-warnings.
+// On line 3: warning: match may not be exhaustive.
+//        It would fail on the following input: West
+// error: No warnings can be incurred under -Werror.
 ```
 
 ---
@@ -882,13 +882,16 @@ def label(d: Direction) =
 
 --
 
-We used enumerations to:
+Enumerations&#x200B;:
 
 --
 * make nonsensical values impossible to represent.
 
 --
 * guarantee that our code handles all necessary cases.
+
+--
+* provided you're not using `scala.Enumeration` though...
 
 ---
 class: center, middle
@@ -1136,11 +1139,11 @@ Command(
   "triple backflip",
   Some(Direction.South)
 )
-// <console>:17: error: type mismatch;
-//  found   : String("triple backflip")
-//  required: Order
 //          "triple backflip",
 //          ^
+// On line 3: error: type mismatch;
+//         found   : String("triple backflip")
+//         required: Order
 ```
 
 ---
@@ -1204,7 +1207,7 @@ object Order {
 sealed trait Order
 
 object Order {
-* case class Face(dir: Direction) extends Order
+  `case class Face(dir: Direction) extends Order`
   case object Start               extends Order
   case object Stop                extends Order
 }
@@ -1276,9 +1279,9 @@ Command(
   Order.Start,
   Some(Direction.South)
 )
-// <console>:16: error: Command.type does not take parameters
 //        Command(
 //               ^
+// On line 2: error: Command.type does not take parameters
 ```
 
 ---
@@ -1308,7 +1311,11 @@ Command.Start
 
 --
 
-* Enumerations are not enough to make nonsensical values impossible to represent.
+
+* Enumerations are everywhere.
+--
+
+* Enumerations are not enough.
 --
 
 * Something "like an enumeration" might be, however.
@@ -1359,7 +1366,7 @@ stop
 ![Starting](img/valid-command-east.png)
 
 ```haskell
-*face east
+&#x200B;`face east`
 start
 stop
 ```
@@ -1372,7 +1379,7 @@ stop
 
 ```haskell
 face east
-*start
+&#x200B;`start`
 stop
 ```
 
@@ -1385,7 +1392,7 @@ stop
 ```haskell
 face east
 start
-*stop
+&#x200B;`stop`
 ```
 
 ---
@@ -1738,7 +1745,7 @@ def face(dir: Direction) = Command.Face(dir)
 ## DSL
 
 ```scala
-*val start                = Command.Start
+&#x200B;`val start                = Command.Start`
 val stop                 = Command.Stop
 def face(dir: Direction) = Command.Face(dir)
 ```
@@ -1749,7 +1756,7 @@ def face(dir: Direction) = Command.Face(dir)
 
 ```scala
 val start                = Command.Start
-*val stop                 = Command.Stop
+&#x200B;`val stop                 = Command.Stop`
 def face(dir: Direction) = Command.Face(dir)
 ```
 
@@ -1760,7 +1767,7 @@ def face(dir: Direction) = Command.Face(dir)
 ```scala
 val start                = Command.Start
 val stop                 = Command.Stop
-*def face(dir: Direction) = Command.Face(dir)
+&#x200B;`def face(dir: Direction) = Command.Face(dir)`
 ```
 
 ---
@@ -1779,7 +1786,7 @@ val west  = Direction.West
 ## DSL
 
 ```scala
-*val north = Direction.North
+&#x200B;`val north = Direction.North`
 val east  = Direction.East
 val south = Direction.South
 val west  = Direction.West
@@ -1791,7 +1798,7 @@ val west  = Direction.West
 
 ```scala
 val north = Direction.North
-*val east  = Direction.East
+&#x200B;`val east  = Direction.East`
 val south = Direction.South
 val west  = Direction.West
 ```
@@ -1803,7 +1810,7 @@ val west  = Direction.West
 ```scala
 val north = Direction.North
 val east  = Direction.East
-*val south = Direction.South
+&#x200B;`val south = Direction.South`
 val west  = Direction.West
 ```
 
@@ -1815,7 +1822,7 @@ val west  = Direction.West
 val north = Direction.North
 val east  = Direction.East
 val south = Direction.South
-*val west  = Direction.West
+&#x200B;`val west  = Direction.West`
 ```
 
 ---
@@ -2212,7 +2219,7 @@ final abstract class Moving
 ## Tracking state
 
 ```scala
-*final abstract class Idle
+&#x200B;`final abstract class Idle`
 final abstract class Moving
 ```
 
@@ -2222,7 +2229,7 @@ final abstract class Moving
 
 ```scala
 final abstract class Idle
-*final abstract class Moving
+&#x200B;`final abstract class Moving`
 ```
 
 ---
@@ -2541,11 +2548,11 @@ start ~> start
 
 ```scala
 start ~> start
-// <console>:17: error: type mismatch;
-//  found   : Command.Start.type
-//  required: Command[Moving,?]
 //        start ~> start
 //                 ^
+// On line 2: error: type mismatch;
+//         found   : Command.Start.type
+//         required: Command[Moving,?]
 ```
 
 ---
@@ -2566,11 +2573,11 @@ stop ~> stop
 
 ```scala
 stop ~> stop
-// <console>:17: error: type mismatch;
-//  found   : Command.Stop.type
-//  required: Command[Idle,?]
 //        stop ~> stop
 //                ^
+// On line 2: error: type mismatch;
+//         found   : Command.Stop.type
+//         required: Command[Idle,?]
 ```
 
 ---
@@ -2591,11 +2598,11 @@ start ~> face(north)
 
 ```scala
 start ~> face(north)
-// <console>:19: error: type mismatch;
-//  found   : Command.Face
-//  required: Command[Moving,?]
 //        start ~> face(north)
 //                     ^
+// On line 2: error: type mismatch;
+//         found   : Command.Face
+//         required: Command[Moving,?]
 ```
 
 ---
@@ -2715,11 +2722,11 @@ movingLabel(Command.Start)
 
 ```scala
 movingLabel(Command.Start)
-// <console>:18: error: type mismatch;
-//  found   : Command.Start.type
-//  required: Command[Moving, _]
 //        movingLabel(Command.Start)
 //                            ^
+// On line 2: error: type mismatch;
+//         found   : Command.Start.type
+//         required: Command[Moving, _]
 ```
 
 ---
@@ -2756,11 +2763,11 @@ def movingLabel(cmd: Command[Moving, _]): String =
     case Command.Stop              => "stop"
  // case _: Command.Chain[_, _, _] => "chain"
   }
-// <console>:20: warning: match may not be exhaustive.
-// It would fail on the following input: Chain(_, _)
 //          cmd match {
 //          ^
-// error: No warnings can be incurred under -Xfatal-warnings.
+// On line 3: warning: match may not be exhaustive.
+//        It would fail on the following input: Chain(_, _)
+// error: No warnings can be incurred under -Werror.
 ```
 
 ---
@@ -2800,11 +2807,11 @@ def movingLabel(cmd: Command[Moving, _]): String =
     case _: Command.Chain[_, _, _] => "chain"
     case Command.Start             => "start"
   }
-// <console>:23: error: pattern type is incompatible with expected type;
-//  found   : Command.Start.type
-//  required: Command[Moving,_$1] where type _$1
 //            case Command.Start             => "start"
 //                         ^
+// On line 6: error: pattern type is incompatible with expected type;
+//         found   : Command.Start.type
+//         required: Command[Moving,_$1] where type _$1
 ```
 
 ---
@@ -3014,7 +3021,7 @@ case class None[A]() extends Option[A]
 ## Sum type in Scala
 
 ```scala
-*sealed trait Option[A]
+&#x200B;`sealed trait Option[A]`
 case class Some[A](value: A) extends Option[A]
 case class None[A]() extends Option[A]
 ```
@@ -3025,7 +3032,7 @@ case class None[A]() extends Option[A]
 
 ```scala
 sealed trait Option[A]
-*case class Some[A](value: A) extends Option[A]
+&#x200B;`case class Some[A](value: A) extends Option[A]`
 case class None[A]() extends Option[A]
 ```
 
@@ -3036,7 +3043,7 @@ case class None[A]() extends Option[A]
 ```scala
 sealed trait Option[A]
 case class Some[A](value: A) extends Option[A]
-*case class None[A]() extends Option[A]
+&#x200B;`case class None[A]() extends Option[A]`
 ```
 
 ---
@@ -3287,7 +3294,7 @@ safe_get None = error "this can't happen"
 
 ```haskell
 safe_get :: Option NonEmpty a -> a
-*safe_get (Some a) = a
+&#x200B;`safe_get (Some a) = a`
 safe_get None = error "this can't happen"
 ```
 
@@ -3298,7 +3305,7 @@ safe_get None = error "this can't happen"
 ```haskell
 safe_get :: Option NonEmpty a -> a
 safe_get (Some a) = a
-*safe_get None = error "this can't happen"
+&#x200B;`safe_get None = error "this can't happen"`
 ```
 
 ---
@@ -3378,7 +3385,7 @@ safe_get (Some a) = a
 ```haskell
 safe_get :: Option NonEmpty a -> a
 safe_get (Some a) = a
-*--safe_get None = error "this can't happen"
+&#x200B;`--safe_get None = error "this can't happen"`
 ```
 
 ---
@@ -3422,7 +3429,7 @@ full_get zero opt = case opt of
 full_get :: a -> Option phantom a -> a
 full_get zero opt = case opt of
     None     -> zero
-*   (Some _) -> safe_get opt
+    `(Some _) -> safe_get opt`
 ```
 
 ---
@@ -3446,10 +3453,17 @@ safe_get :: Option NonEmpty a -> a
 
 --
 
-* Haskell is more explicit about what GADTs are and what they help solve.
+Haskell makes GADTs very clear:
+
 --
 
-* I really should have written this entire talk in Haskell.
+* Sum types.
+--
+
+* Witness types.
+--
+
+* Type equality.
 
 ---
 
@@ -3463,16 +3477,14 @@ class: center, middle
 
 --
 
-* ADTs make illegal values impossible to represent.
+* ADTs and GADTs make illegal values impossible to represent.
 --
 
 * They allow the compiler to ensure we're dealing with all necessary cases.
 --
 
 * But only necessary cases.
---
 
-* GADTs too, only more so.
 ---
 
 class: center, middle
