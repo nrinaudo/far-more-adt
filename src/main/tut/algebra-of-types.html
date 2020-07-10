@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The algebra of types</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  </head>
+  <body>
+      <textarea id="source">
+class: center, middle
+
+# The algebra of types
+
+---
+
+## Cardinality
+
+> The cardinality of type `A` is written \\(\\vert A \\vert\\) and is the number of values of type `A`.
+
+---
+
+## Cardinality
+
+.fix3[
+ Type            | Inhabitants     | Cardinality
+-----------------|-----------------|-------------
+ `Nothing`      | &nbsp;          | ???
+]
+
+---
+
+## Cardinality
+
+.fix3[
+ Type            | Inhabitants     | Cardinality
+-----------------|-----------------|-------------
+ `Nothing`      | &nbsp;          | \\(0\\)
+]
+
+---
+
+## Cardinality
+
+.fix3[
+ Type            | Inhabitants     | Cardinality
+-----------------|-----------------|-------------
+ `Nothing`      | &nbsp;          | \\(0\\)
+ `Unit`          | `()`           | ???
+]
+
+---
+
+## Cardinality
+
+.fix3[
+ Type            | Inhabitants     | Cardinality
+-----------------|-----------------|-------------
+ `Nothing`      | &nbsp;          | \\(0\\)
+ `Unit`          | `()`           | \\(1\\)
+]
+
+---
+
+## Cardinality
+
+.fix3[
+ Type            | Inhabitants     | Cardinality
+-----------------|-----------------|-------------
+ `Nothing`      | &nbsp;          | \\(0\\)
+ `Unit`          | `()`           | \\(1\\)
+ `Boolean`      | `true`, `false`| ???
+]
+
+---
+
+## Cardinality
+
+.fix3[
+ Type            | Inhabitants     | Cardinality
+-----------------|-----------------|-------------
+ `Nothing`      | &nbsp;          | \\(0\\)
+ `Unit`          | `()`           | \\(1\\)
+ `Boolean`      | `true`, `false`| \\(2\\)
+]
+
+---
+
+## Sum types
+
+ Type            | Inhabitants              | Cardinality
+-----------------|--------------------------|-------------
+ `Either[A, B]` | `Left[A]`, `Right[B]` | ???
+
+---
+
+## Sum types
+
+ Type            | Inhabitants              | Cardinality
+-----------------|--------------------------|-------------
+ `Either[A, B]` | `Left[A]`, `Right[B]` | ???
+ `Left[A]`      | `Left(a: A)`           | ???
+ `Right[B]`     | `Right(b: B)`          | ???
+
+---
+
+## Sum types
+
+ Type            | Inhabitants              | Cardinality
+-----------------|--------------------------|-------------
+ `Either[A, B]` | `Left[A]`, `Right[B]` | ???
+ `Left[A]`      | `Left(a: A)`            | \\(\vert A \\vert\\)
+ `Right[B]`     | `Right(b: B)`          | ???
+
+---
+
+## Sum types
+
+ Type            | Inhabitants              | Cardinality
+-----------------|--------------------------|-------------
+ `Either[A, B]` | `Left[A]`, `Right[B]` | ???
+ `Left[A]`      | `Left(a: A)`            | \\(\vert A \\vert\\)
+ `Right[B]`     | `Right(b: B)`          | \\(\vert B \\vert\\)
+
+---
+
+## Sum types
+
+ Type            | Inhabitants               | Cardinality
+-----------------|---------------------------|-------------
+ `Either[A, B]` | `Left[A]`, `Right[B]`  | \\(\vert A \vert + \vert B \\vert\\)
+ `Left[A]`      | `Left(a: A)`            | \\(\vert A \\vert\\)
+ `Right[B]`     | `Right(b: B)`          | \\(\vert B \\vert\\)
+
+---
+
+## Type equivalence
+
+> We'll say that types `A` and `B` are equivalent if they have the same cardinality, and write `A ~= B`.
+
+---
+
+## Sum types
+
+.section[Algebra]
+
+\\(1 + 1 = 2\\)
+
+--
+
+.section[Types]
+```scala
+Either[Unit, Unit] ~= Boolean
+```
+
+--
+
+.section[Correspondence]
+
+`Either[Unit, Unit]` | `Boolean`
+-----------------------|-----------------
+`Left(())`             | `false`
+`Right(())`          | `true`
+
+---
+
+## Sum types associativity
+
+.section[Algebra]
+
+\\(a + (b + c) = (a + b) + c\\)
+
+--
+
+.section[Types]
+```scala
+Either[A, Either[B, C]] ~= Either[Either[A, B], C]
+```
+
+--
+
+.section[Correspondence]
+
+`Either[A, Either[B, C]]` | `Either[Either[A, B], C]`
+-----------------------------|-----------------
+`Left(a)`                   | `Left(Left(a))`
+`Right(Left(b))`           | `Left(Right(b))`
+`Right(Right(c))`          | `Right(c)`
+
+---
+
+## Sum types commutativity
+
+.section[Algebra]
+
+\\(a + b = b + a\\)
+
+--
+
+.section[Types]
+
+```scala
+Either[A, B] ~= Either[B, A]
+```
+
+--
+
+.section[Correspondence]
+
+`Either[A, B]` | `Either[B, A]`
+-----------------|-----------------
+`Left(a)`       | `Right(a)`
+`Right(b)`      | `Left(b)`
+
+---
+
+## Sum types neutral element
+
+.section[Algebra]
+
+\\(a + 0 = a\\)
+
+--
+
+.section[Types]
+
+```scala
+Either[A, Nothing] ~= A
+```
+
+--
+
+.section[Correspondence]
+
+`Either[A, Nothing]` | `A`
+-----------------------|----------
+`Left(a)`             | `a`
+
+---
+
+## Product types
+
+ Type      | Inhabitants      | Cardinality
+-----------|------------------|-------------
+ `(A, B)` | `(a: A, b: B)` | ???
+
+---
+
+## Product types
+
+ Type      | Inhabitants      | Cardinality
+-----------|------------------|-------------
+ `(A, B)` | `(a: A, b: B)` | \\(\\vert A \\vert \times \\vert B \\vert\\)
+
+
+---
+
+## Product types
+
+.section[Algebra]
+
+\\(a + a = 2 \times a\\)
+
+--
+
+.section[Types]
+
+```scala
+Either[A, A] ~= (Boolean, A)
+```
+
+--
+
+.section[Correspondence]
+
+`Either[A, A]` | `(Boolean, A)`
+-----------------|-----------------
+`Left(a)`       | `(false, a)`
+`Right(a)`      | `(true, a)`
+
+---
+
+## Product types associativity
+
+.section[Algebra]
+
+\\((a \times b) \times c = a \times (b \times c)\\)
+
+--
+
+.section[Types]
+
+```scala
+((A, B), C) ~= (A, (B, C))
+```
+
+--
+
+.section[Correspondence]
+
+`((A, B), C)` | `(A, (B, C))`
+----------------|-----------------
+`((a, b), c)` | `(a, (b, c))`
+
+
+---
+
+## Product types commutativity
+
+.section[Algebra]
+
+\\(a \times b = b \times a\\)
+
+--
+
+.section[Types]
+
+```scala
+(A, B) ~= (B, A)
+```
+
+--
+
+.section[Correspondence]
+
+`(A, B)` | `(B, A)`
+----------|----------
+`(a, b)` | `(b, a)`
+
+
+---
+
+## Product types neutral element
+
+.section[Algebra]
+
+\\(a \times 1 = a\\)
+
+--
+
+.section[Types]
+
+```scala
+(A, Unit) ~= A
+```
+
+--
+
+.section[Correspondence]
+
+`(A, Unit)`  | `A`
+--------------|----------
+`(a, ())`    | `a`
+
+---
+
+## Recursive types
+
+```tut:silent
+sealed trait List[A]
+
+case class Nil[A]() extends List[A]
+
+case class ::[A](
+  head: A,
+  tail: List[A]
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+*sealed trait List[A]
+
+case class Nil[A]() extends List[A]
+
+case class ::[A](
+  head: A,
+  tail: List[A]
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait List[A]
+
+*case class Nil[A]() extends List[A]
+
+case class ::[A](
+  head: A,
+  tail: List[A]
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait List[A]
+
+case class Nil[A]() extends List[A]
+
+case `class ::`[A](
+  head: A,
+  tail: List[A]
+) `extends List[A]`
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait List[A]
+
+case class Nil[A]() extends List[A]
+
+case class ::[A](
+  `head: A`,
+  tail: List[A]
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait List[A]
+
+case class Nil[A]() extends List[A]
+
+case class ::[A](
+  head: A,
+  `tail: List[A]`
+) extends List[A]
+```
+
+
+---
+
+## Recursive types
+
+.fix2[
+ Type                     | Cardinality
+--------------------------|--------------
+ `Nil`                    | \\(1\\)
+]
+
+---
+
+## Recursive types
+
+.fix2[
+ Type                     | Cardinality
+--------------------------|--------------
+ `Nil`                    | \\(1\\)
+ `A :: Nil`              | \\(\vert A \vert\\)
+]
+
+---
+
+## Recursive types
+
+.fix2[
+ Type                     | Cardinality
+--------------------------|--------------
+ `Nil`                    | \\(1\\)
+ `A :: Nil`              | \\(\vert A \vert\\)
+ `A :: A :: Nil`        | \\(\vert A \vert^2\\)
+]
+
+---
+
+## Recursive types
+
+.fix2[
+ Type                     | Cardinality
+--------------------------|--------------
+ `Nil`                    | \\(1\\)
+ `A :: Nil`              | \\(\vert A \vert\\)
+ `A :: A :: Nil`        | \\(\vert A \vert^2\\)
+...                       | ...
+ `List[A]` (of size `n`) | \\(\vert A \vert^n\\)
+]
+
+---
+
+## Recursive types
+
+\\(\\vert List[A]^n \\vert = \displaystyle\sum_{i = 0}^n \vert A \vert^i\\)
+
+---
+
+## Recursive types
+
+\\(\\vert List[A]^n \\vert = \frac{\vert A \vert^{n + 1} - 1}{\vert A \vert - 1}\\)
+
+--
+
+ Type                     | Cardinality | Detail
+--------------------------|-------------|--------------------
+ \\(List[Boolean]^2)\\)   | \\(7\\)     | `Nil`, `Boolean :: Nil`, `Boolean :: Boolean :: Nil`
+
+---
+
+## Recursive types
+
+\\(\\vert List[A]^n \\vert = \frac{\vert A \vert^{n + 1} - 1}{\vert A \vert - 1}\\)
+
+ Type                     | Cardinality | Detail
+--------------------------|-------------|--------------------
+ \\(List[Boolean]^2)\\)   | \\(7\\)     | `Nil`, `Boolean :: Nil`, `Boolean :: Boolean :: Nil`
+ \\(List[Boolean]^3)\\)   | \\(15\\)   | `Nil`, `Boolean :: Nil`, `Boolean :: Boolean :: Nil`, `Boolean :: Boolean :: Boolean :: Nil`
+
+---
+
+## Key takeaways
+
+* ADTs have a deep connection to the algebra you know.
+--
+
+* you can use this connection to prove fun facts about types.
+--
+
+* you can also use it to pad talks and look clever.
+
+
+[Besedo]:https://twitter.com/besedo_official
+[@NicolasRinaudo]:https://twitter.com/NicolasRinaudo
+    </textarea>
+    <script src="js/remark.js" type="text/javascript"></script>
+    <script src="js/katex.js"></script>
+    <script src="js/auto-render.js"></script>
+    <link rel="stylesheet" href="css/katex.css">
+
+    <script type="text/javascript">
+var renderMath = function() {
+  renderMathInElement(document.body);
+}
+var slideshow = remark.create({
+  highlightStyle: 'github',
+  highlightSpans: true,
+  highlightLines: true
+}, renderMath);
+    </script>
+  </body>
+</html>
