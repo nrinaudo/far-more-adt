@@ -2420,9 +2420,9 @@ val `cmd: Command[Idle, Idle]` =
 ## DSL
 
 ```tut:silent
-implicit class Compose[A, B](cmd: Command[A, B]) {
+implicit class Compose[A, B](cmd1: Command[A, B]) {
   def ~>[C](cmd2: Command[B, C]): Command[A, C] =
-    Command.Chain(cmd, cmd2)
+    Command.Chain(cmd1, cmd2)
 }
 ```
 
@@ -2436,9 +2436,9 @@ val startStop: Command[Idle, Idle] =
 ## DSL
 
 ```scala
-implicit class Compose[A, B](`cmd: Command[A, B]`) {
+implicit class Compose[A, B](`cmd1: Command[A, B]`) {
   def ~>[C](cmd2: Command[B, C]): Command[A, C] =
-    Command.Chain(cmd, cmd2)
+    Command.Chain(cmd1, cmd2)
 }
 ```
 
@@ -2452,9 +2452,9 @@ val startStop: Command[Idle, Idle] =
 ## DSL
 
 ```scala
-implicit class Compose[A, B](cmd: Command[A, B]) {
+implicit class Compose[A, B](cmd1: Command[A, B]) {
   def `~>`[C](cmd2: Command[B, C]): Command[A, C] =
-    Command.Chain(cmd, cmd2)
+    Command.Chain(cmd1, cmd2)
 }
 ```
 
@@ -2468,9 +2468,9 @@ val startStop: Command[Idle, Idle] =
 ## DSL
 
 ```scala
-implicit class Compose[A, B](cmd: Command[A, B]) {
+implicit class Compose[A, B](cmd1: Command[A, B]) {
   def ~>[C](`cmd2: Command[B, C]`): Command[A, C] =
-    Command.Chain(cmd, cmd2)
+    Command.Chain(cmd1, cmd2)
 }
 ```
 
@@ -2484,9 +2484,9 @@ val startStop: Command[Idle, Idle] =
 ## DSL
 
 ```scala
-implicit class Compose[A, B](cmd: Command[A, B]) {
+implicit class Compose[A, B](cmd1: Command[A, B]) {
   def ~>[C](cmd2: Command[B, C]): `Command[A, C]` =
-    Command.Chain(cmd, cmd2)
+    Command.Chain(cmd1, cmd2)
 }
 ```
 
