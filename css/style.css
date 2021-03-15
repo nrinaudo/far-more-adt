@@ -1,8 +1,8 @@
 @import './fira_code/fira_code.css';
+@import './inter/inter.css';
 
 body {
-    /* I like the way https://plfa.github.io/ looks, so I basically stole this magical incantation. */
-    font:           400 16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font:           400 16px/1.5 'Inter';
     margin:         0;
 	padding:        0;
 	border:         0;
@@ -12,27 +12,14 @@ body {
 .remark-inline-code, .remark-code {
     font-family:  "Fira Code";
     color:         #586e75;
-    background:    #fdf6e3;
 }
 
 a .remark-inline-code {
     color: #268bd2;
 }
 
-.remark-inline-code {
-    border:        1px solid #eee8d5;
-    font-size:     0.9em;
-    padding:       2px 5px 2px 5px;
-    border-radius: 5px;
-}
-
-h1 .remark-inline-code, h2 .remark-inline-code, h3 .remark-inline-code {
-    font-weight: normal;
-}
-
 .remark-code {
     border-radius: 5px;
-    border:        1px solid #dfdedc;
     white-space:   pre-wrap;       /* CSS 3 */
     white-space:   -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space:   -pre-wrap;      /* Opera 4-6 */
@@ -49,7 +36,8 @@ h1 .remark-inline-code, h2 .remark-inline-code, h3 .remark-inline-code {
 }
 
 h1, h2, h3, .section {
-    color: #2980b9;
+    color:       #111111;
+    line-height: 100%;
 }
 
 .super {
@@ -65,12 +53,13 @@ h1, h2, h3, .section {
     content: ":";
 }
 
-h2, h3 {
-    border-bottom: 1px solid #2980b9;
+h2 {
+    margin: 32px 0;
+    font-weight: 100;
 }
 
 a {
-    color:           #2980b9;
+    color:           #111111;
     text-decoration: none;
 }
 
@@ -148,15 +137,20 @@ th .remark-inline-code {
     display: none;
 }
 
-.remark-code-span-highlighted, .remark-code-line-highlighted {
+.remark-code-span-highlighted, .remark-code-line-highlighted, .highlight {
     padding         : 0;
-    background-color: #02ebf2;
+    background-color: #ffca40;
 }
 
-.remark-code-span-highlighted .hljs-comment, .remark-code-line-highlighted .hljs-comment,
-.hljs-comment .remark-code-span-highlighted, .hljs-comment .remark-code-line-highlighted {
-    color      : #000;
-    font-weight: bold;
+.highlight {
+    padding-bottom  : 1px;
+}
+
+.highlight .remark-inline-code, .highlight .remark-code {
+    color:         inherit;
+    background:    inherit;
+    border:        1px solid #52f2c5;
+    padding-bottom: 0;
 }
 
 .annotated img {
@@ -164,4 +158,26 @@ th .remark-inline-code {
     position: absolute;
     right   : 100px;
     top     : 100px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.diff-rm .remark-code-span-highlighted, .highlight {
+    background-color: #fdb8c0;
+}
+
+.diff-rm .remark-code-line-highlighted {
+    background-color: #ffeef0;
+    position: relative;
+}
+
+.diff-add .remark-code-span-highlighted, .highlight {
+    background-color: #acf2bd;
+}
+
+.diff-add .remark-code-line-highlighted {
+    background-color: #e6ffed;
+    position: relative;
 }
