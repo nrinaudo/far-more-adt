@@ -1,0 +1,26 @@
+digraph {
+    bgcolor=transparent
+
+    // Default theme: enabled
+    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
+    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+
+    AorB[label="A ⋁ B"]
+    LeftA[label="Left(aᵢ)" fillcolor="#ffffff" fontcolor="#586E75"]
+    RightB[label="Right(bⱼ)" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    AorB -> LeftA
+    AorB -> RightB
+
+    BorA[label="B ⋁ A"]
+    LeftB[label="Left(bⱼ)" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    RightA[label="Right(aᵢ)" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    LeftB -> BorA[dir=back style=invis]
+    RightA -> BorA[dir=back]
+
+    LeftA -> RightA[style=invis]
+    RightA -> LeftA[style=invis]
+    LeftB -> RightB[style=invis]
+    RightB -> LeftB[style=invis]
+}

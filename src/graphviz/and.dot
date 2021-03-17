@@ -1,0 +1,31 @@
+digraph {
+    bgcolor=transparent
+
+    // Default theme: enabled
+    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
+    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+
+    AndAB[label="A ⋀ B"]
+
+    AndA1B1[label="a₁ ⋀ b₁" fillcolor="#ffffff" fontcolor="#586E75"]
+    AndA1BE[label="a₁ ⋀ ⋯" fillcolor="#ffffff" fontcolor="#586E75"]
+    AndA1BN[label="a₁ ⋀ bₙ" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    AndAEBE[label="⋯ ⋀ ⋯" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    AndANB1[label="aₙ ⋀ b₁" fillcolor="#ffffff" fontcolor="#586E75"]
+    AndANBE[label="aₙ ⋀ ⋯" fillcolor="#ffffff" fontcolor="#586E75"]
+    AndANBN[label="aₙ ⋀ bₙ" fillcolor="#ffffff" fontcolor="#586E75"]
+
+
+    AndAB -> AndA1B1
+    AndAB -> AndA1BE
+    AndAB -> AndA1BN
+
+    AndAB -> AndAEBE
+
+    AndAB -> AndANB1
+    AndAB -> AndANBE
+    AndAB -> AndANBN
+
+}

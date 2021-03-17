@@ -1,0 +1,29 @@
+digraph {
+    bgcolor=transparent
+
+    // Default theme: enabled
+    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
+    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+
+    AndAB[label="A ⋀ B" fillcolor="#dddddd" color="#dddddd" fontcolor="#eeeeee"]
+
+    AndA1B1[label="a₁ ⋀ b₁" fillcolor="#ffffff" fontcolor="#586E75"]
+    AndA1BE[label="a₁ ⋀ ⋯" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
+    AndA1BN[label="a₁ ⋀ bₙ" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
+
+    AndAEBE[label="⋯ ⋀ ⋯" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    AndANB1[label="aₙ ⋀ b₁" fillcolor="#ffffff" fontcolor="#586E75"]
+    AndANBE[label="aₙ ⋀ ⋯" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
+    AndANBN[label="aₙ ⋀ bₙ" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
+
+    AndAB -> AndA1B1[fillcolor="#dddddd" color="#dddddd"]
+    AndAB -> AndA1BE[fillcolor="#dddddd" color="#dddddd"]
+    AndAB -> AndA1BN[fillcolor="#dddddd" color="#dddddd"]
+
+    AndAB -> AndAEBE[fillcolor="#dddddd" color="#dddddd"]
+
+    AndAB -> AndANB1[fillcolor="#dddddd" color="#dddddd"]
+    AndAB -> AndANBE[fillcolor="#dddddd" color="#dddddd"]
+    AndAB -> AndANBN[fillcolor="#dddddd" color="#dddddd"]
+}

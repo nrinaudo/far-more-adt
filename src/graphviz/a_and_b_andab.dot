@@ -1,0 +1,20 @@
+digraph {
+    bgcolor=transparent
+
+    // Default theme: enabled
+    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
+    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+
+    AandB[label="A ⋀ B"]
+    AndAB[label="aᵢ ⋀ bⱼ" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    AandB -> AndAB
+
+    BandA[label="B ⋀ A"]
+    AndBA[label="bⱼ ⋀ aᵢ" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+
+    AndBA -> BandA[dir=back style=invis]
+
+    AndAB -> AndBA[style=invis]
+    AndBA -> AndAB[style=invis]
+}

@@ -1,0 +1,20 @@
+digraph {
+    bgcolor=transparent
+
+    // Default theme: enabled
+    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
+    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+
+    LeftAssoc[label="A ⋀ (B ⋀ C)"]
+    Aand[label="aᵢ ⋀ (bⱼ ⋀ cₖ)" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    LeftAssoc -> Aand
+
+    RightAssoc[label="(A ⋀ B) ⋀ C"]
+    andC[label="(aᵢ ⋀ bⱼ) ⋀ cₖ" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    andC -> RightAssoc[dir=back]
+
+    Aand -> andC[style=invis]
+    andC -> Aand[style=invis]
+}

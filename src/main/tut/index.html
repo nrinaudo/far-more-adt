@@ -214,10 +214,6 @@ class: center, middle
 
 ```tut:silent
 object Direction {
-  val North: Int = 1
-  val East:  Int = 2
-  val South: Int = 3
-  val West:  Int = 4
 }
 ```
 
@@ -225,64 +221,66 @@ object Direction {
 
 ## Magic values
 
-```scala
-object `Direction` {
-  val North: Int = 1
-  val East:  Int = 2
-  val South: Int = 3
-  val West:  Int = 4
-}
-```
-
----
-
-## Magic values
-
+.diff-add[
 ```scala
 object Direction {
-  `val North: Int = 1`
-  val East:  Int = 2
-  val South: Int = 3
-  val West:  Int = 4
+* `val North: Int = 1`
 }
 ```
+]
 
 ---
 
 ## Magic values
 
+.diff-add[
 ```scala
 object Direction {
   val North: Int = 1
-  `val East:  Int = 2`
-  val South: Int = 3
-  val West:  Int = 4
+* `val East:  Int = 2`
 }
 ```
+]
 
 ---
 
 ## Magic values
 
+.diff-add[
 ```scala
 object Direction {
   val North: Int = 1
   val East:  Int = 2
-  `val South: Int = 3`
-  val West:  Int = 4
+* `val South: Int = 3`
 }
 ```
+]
 
 ---
 
 ## Magic values
 
+.diff-add[
 ```scala
 object Direction {
   val North: Int = 1
   val East:  Int = 2
   val South: Int = 3
-  `val West:  Int = 4`
+* `val West:  Int = 4`
+}
+```
+]
+
+---
+
+## Magic values
+
+```tut:silent
+object Direction {
+  val North: Int = 1
+  val East:  Int = 2
+  val South: Int = 3
+  val West:  Int = 4
 }
 ```
 
@@ -335,10 +333,10 @@ def label(d: Int) =
 ```scala
 def label(d: Int) =
   d match {
-    `case Direction.North ⇒ "north"`
-    case Direction.East  ⇒ "east"
-    case Direction.South ⇒ "south"
-    case Direction.West  ⇒ "west"
+    case `Direction.North` ⇒ "north"
+    case `Direction.East`  ⇒ "east"
+    case `Direction.South` ⇒ "south"
+    case `Direction.West`  ⇒ "west"
   }
 ```
 
@@ -349,38 +347,10 @@ def label(d: Int) =
 ```scala
 def label(d: Int) =
   d match {
-    case Direction.North ⇒ "north"
-    `case Direction.East  ⇒ "east"`
-    case Direction.South ⇒ "south"
-    case Direction.West  ⇒ "west"
-  }
-```
-
----
-
-## Magic values
-
-```scala
-def label(d: Int) =
-  d match {
-    case Direction.North ⇒ "north"
-    case Direction.East  ⇒ "east"
-    `case Direction.South ⇒ "south"`
-    case Direction.West  ⇒ "west"
-  }
-```
-
----
-
-## Magic values
-
-```scala
-def label(d: Int) =
-  d match {
-    case Direction.North ⇒ "north"
-    case Direction.East  ⇒ "east"
-    case Direction.South ⇒ "south"
-    `case Direction.West  ⇒ "west"`
+    case Direction.North ⇒ `"north"`
+    case Direction.East  ⇒ `"east"`
+    case Direction.South ⇒ `"south"`
+    case Direction.West  ⇒ `"west"`
   }
 ```
 
@@ -409,6 +379,69 @@ label(-35)
 ## Type aliases
 
 ```tut:silent
+object Direction {
+  val North: Int = 1
+  val East:  Int = 2
+  val South: Int = 3
+  val West:  Int = 4
+}
+```
+
+---
+
+## Type aliases
+
+.diff-add[
+```scala
+*&#x200B;`type Direction = Int`
+*
+object Direction {
+  val North: Int = 1
+  val East:  Int = 2
+  val South: Int = 3
+  val West:  Int = 4
+}
+```
+]
+
+---
+
+## Type aliases
+
+.diff-rm[
+```scala
+type Direction = Int
+
+object Direction {
+* val North: `Int` = 1
+* val East:  `Int` = 2
+* val South: `Int` = 3
+* val West:  `Int` = 4
+}
+```
+]
+---
+
+## Type aliases
+
+.diff-add[
+```scala
+type Direction = Int
+
+object Direction {
+* val North: `Direction` = 1
+* val East:  `Direction` = 2
+* val South: `Direction` = 3
+* val West:  `Direction` = 4
+}
+```
+]
+
+---
+
+## Type aliases
+
+```tut:silent
 type Direction = Int
 
 object Direction {
@@ -423,31 +456,33 @@ object Direction {
 
 ## Type aliases
 
+.diff-rm[
 ```scala
-&#x200B;`type Direction = Int`
-
-object Direction {
-  val North: Direction = 1
-  val East:  Direction = 2
-  val South: Direction = 3
-  val West:  Direction = 4
-}
+*def label(d: `Int`) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
 ```
+]
 
 ---
 
 ## Type aliases
 
+.diff-add[
 ```scala
-type Direction = Int
-
-object Direction {
-  val North: `Direction` = 1
-  val East:  `Direction` = 2
-  val South: `Direction` = 3
-  val West:  `Direction` = 4
-}
+*def label(d: `Direction`) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
 ```
+]
 
 ---
 
@@ -467,20 +502,6 @@ def label(d: Direction) =
 
 ## Type aliases
 
-```scala
-def label(`d: Direction`) =
-  d match {
-    case Direction.North ⇒ "north"
-    case Direction.East  ⇒ "east"
-    case Direction.South ⇒ "south"
-    case Direction.West  ⇒ "west"
-  }
-```
-
----
-
-## Type aliases
-
 ![Sending face -35](img/valid-command-east-sending.png)
 
 ```scala
@@ -502,8 +523,7 @@ label(-35)
 ## Scala's `Enumeration`
 
 ```tut:silent
-object Direction extends Enumeration {
-  val North, East, South, West = Value
+object Direction {
 }
 ```
 
@@ -511,48 +531,78 @@ object Direction extends Enumeration {
 
 ## Scala's `Enumeration`
 
+.diff-add[
+```scala
+*object Direction `extends Enumeration` {
+}
+```
+]
+
+---
+
+## Scala's `Enumeration`
+
+.diff-add[
 ```scala
 object Direction extends Enumeration {
-  val `North, East, South, West` = Value
+* `val North = Value`
 }
 ```
+]
 
 ---
 
 ## Scala's `Enumeration`
 
+.diff-add[
 ```scala
 object Direction extends Enumeration {
-  val North, East, South, West = `Value`
+* val North`, East` = Value
 }
 ```
+]
 
 ---
 
 ## Scala's `Enumeration`
 
+.diff-add[
 ```scala
-object `Direction` extends Enumeration {
-  val North, East, South, West = Value
+object Direction extends Enumeration {
+* val North, East`, South` = Value
 }
 ```
+]
 
 ---
 
 ## Scala's `Enumeration`
 
+.diff-add[
 ```scala
-object Direction `extends Enumeration` {
-  val North, East, South, West = Value
+object Direction extends Enumeration {
+* val North, East, South`, West` = Value
 }
 ```
+]
 
 ---
 
 ## Scala's `Enumeration`
 
 ```tut:silent
-def label(d: Direction.Value) =
+object Direction extends Enumeration {
+  val North, East, South, West = Value
+}
+```
+
+---
+
+## Scala's `Enumeration`
+
+.diff-rm[
+```scala
+*def label(d: `Direction`) =
   d match {
     case Direction.North ⇒ "north"
     case Direction.East  ⇒ "east"
@@ -560,13 +610,30 @@ def label(d: Direction.Value) =
     case Direction.West  ⇒ "west"
   }
 ```
+]
 
 ---
 
 ## Scala's `Enumeration`
 
+.diff-add[
 ```scala
-def label(d: `Direction.Value`) =
+*def label(d: `Direction.Value`) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+    case Direction.West  ⇒ "west"
+  }
+```
+]
+
+---
+
+## Scala's `Enumeration`
+
+```tut:silent
+def label(d: Direction.Value) =
   d match {
     case Direction.North ⇒ "north"
     case Direction.East  ⇒ "east"
@@ -599,13 +666,13 @@ label(-35)
 
 ## Scala's `Enumeration`
 
-```tut:silent
+```scala
 def label(d: Direction.Value) =
   d match {
     case Direction.North ⇒ "north"
     case Direction.East  ⇒ "east"
     case Direction.South ⇒ "south"
- // case Direction.West  ⇒ "west"
+    case Direction.West  ⇒ "west"
   }
 ```
 
@@ -613,13 +680,45 @@ def label(d: Direction.Value) =
 
 ## Scala's `Enumeration`
 
+.diff-rm[
 ```scala
 def label(d: Direction.Value) =
   d match {
     case Direction.North ⇒ "north"
     case Direction.East  ⇒ "east"
     case Direction.South ⇒ "south"
- `// case Direction.West  ⇒ "west"`
+*   `case Direction.West  ⇒ "west"`
+  }
+```
+]
+
+---
+
+## Scala's `Enumeration`
+
+.diff-add[
+```scala
+def label(d: Direction.Value) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+*&#x200B; `// case Direction.West  ⇒ "west"`
+  }
+```
+]
+
+---
+
+## Scala's `Enumeration`
+
+```tut:silent
+def label(d: Direction.Value) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ // case Direction.West  ⇒ "west"
   }
 ```
 
@@ -647,6 +746,101 @@ label(Direction.West)
 
 ## Hand-written enumeration
 
+```scala
+trait Direction
+```
+
+---
+
+## Hand-written enumeration
+
+.diff-add[
+```scala
+trait Direction
+*
+&#x200B;`object Direction {`
+&#x200B;`}`
+```
+]
+
+---
+
+## Hand-written enumeration
+
+.diff-add[
+```scala
+trait Direction
+
+object Direction {
+* `case object North extends Direction`
+}
+```
+]
+
+---
+
+## Hand-written enumeration
+
+```scala
+trait Direction
+
+object Direction {
+  case object North `extends Direction`
+}
+```
+
+---
+
+## Hand-written enumeration
+
+.diff-add[
+```scala
+trait Direction
+
+object Direction {
+  case object North extends Direction
+* `case object East  extends Direction`
+}
+```
+]
+
+---
+
+## Hand-written enumeration
+
+.diff-add[
+```scala
+trait Direction
+
+object Direction {
+  case object North extends Direction
+  case object East  extends Direction
+* `case object South extends Direction`
+}
+```
+]
+
+---
+
+## Hand-written enumeration
+
+.diff-add[
+```scala
+trait Direction
+
+object Direction {
+  case object North extends Direction
+  case object East  extends Direction
+  case object South extends Direction
+* `case object West  extends Direction`
+}
+```
+]
+
+---
+
+## Hand-written enumeration
+
 ```tut:silent
 trait Direction
 
@@ -663,13 +857,12 @@ object Direction {
 ## Hand-written enumeration
 
 ```scala
-&#x200B;`trait Direction`
-
-object Direction {
-  case object North extends Direction
-  case object East  extends Direction
-  case object South extends Direction
-  case object West  extends Direction
+def label(d: Direction.Value) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ // case Direction.West  ⇒ "west"
 }
 ```
 
@@ -677,76 +870,33 @@ object Direction {
 
 ## Hand-written enumeration
 
+.diff-rm[
 ```scala
-trait Direction
-
-object `Direction` {
-  case object North extends Direction
-  case object East  extends Direction
-  case object South extends Direction
-  case object West  extends Direction
+*def label(d: `Direction.Value`) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ // case Direction.West  ⇒ "west"
 }
 ```
+]
 
 ---
 
 ## Hand-written enumeration
 
+.diff-add[
 ```scala
-trait Direction
-
-object Direction {
-  case object `North extends Direction`
-  case object East  extends Direction
-  case object South extends Direction
-  case object West  extends Direction
+*def label(d: `Direction`) =
+  d match {
+    case Direction.North ⇒ "north"
+    case Direction.East  ⇒ "east"
+    case Direction.South ⇒ "south"
+ // case Direction.West  ⇒ "west"
 }
 ```
-
----
-
-## Hand-written enumeration
-
-```scala
-trait Direction
-
-object Direction {
-  case object North extends Direction
-  case object `East  extends Direction`
-  case object South extends Direction
-  case object West  extends Direction
-}
-```
-
----
-
-## Hand-written enumeration
-
-```scala
-trait Direction
-
-object Direction {
-  case object North extends Direction
-  case object East  extends Direction
-  case object `South extends Direction`
-  case object West  extends Direction
-}
-```
-
----
-
-## Hand-written enumeration
-
-```scala
-trait Direction
-
-object Direction {
-  case object North extends Direction
-  case object East  extends Direction
-  case object South extends Direction
-  case object `West  extends Direction`
-}
-```
+]
 
 ---
 
@@ -766,20 +916,6 @@ def label(d: Direction) =
 
 ## Hand-written enumeration
 
-```scala
-def label(`d: Direction`) =
-  d match {
-    case Direction.North ⇒ "north"
-    case Direction.East  ⇒ "east"
-    case Direction.South ⇒ "south"
- // case Direction.West  ⇒ "west"
-}
-```
-
----
-
-## Hand-written enumeration
-
 ![Sending face west](img/valid-command-east-sending.png)
 
 ```scala
@@ -800,8 +936,8 @@ label(Direction.West)
 
 ## Hand-written enumeration
 
-```tut:silent
-sealed trait Direction
+```scala
+trait Direction
 
 object Direction {
   case object North extends Direction
@@ -815,8 +951,25 @@ object Direction {
 
 ## Hand-written enumeration
 
+.diff-add[
 ```scala
 &#x200B;`sealed` trait Direction
+
+object Direction {
+  case object North extends Direction
+  case object East  extends Direction
+  case object South extends Direction
+  case object West  extends Direction
+}
+```
+]
+
+---
+
+## Hand-written enumeration
+
+```tut:silent
+sealed trait Direction
 
 object Direction {
   case object North extends Direction
@@ -863,12 +1016,15 @@ def label(d: Direction) =
 Enumerations&#x200B;:
 
 --
+
 * make nonsensical values impossible to represent.
 
 --
+
 * guarantee that our code handles all necessary cases.
 
 --
+
 * provided you're not using `scala.Enumeration` though...
 
 ---
@@ -1006,7 +1162,7 @@ object Order {
 ## `Order` as enumeration
 
 ```scala
-sealed trait `Order`
+&#x200B;`sealed trait Order`
 
 object Order {
   case object Face  extends Order
@@ -1061,16 +1217,16 @@ object Order {
 
 ## `Order` as enumeration
 
-```tut:silent
+```scala
 case class Command(
-  order: Order,
-  dir: Option[Direction]
+  order: String,
+  dir  : Option[Direction]
 )
 ```
 
-```tut:silent
+```scala
 val cmd = Command(
-  Order.Face,
+  "face",
   Some(Direction.North)
 )
 ```
@@ -1079,16 +1235,56 @@ val cmd = Command(
 
 ## `Order` as enumeration
 
+.diff-rm[
 ```scala
 case class Command(
-  `order: Order`,
-  dir: Option[Direction]
+* order: `String`,
+  dir  : Option[Direction]
 )
 ```
 
 ```scala
 val cmd = Command(
-  `Order.Face`,
+* `"face"`,
+  Some(Direction.North)
+)
+```
+]
+
+---
+
+## `Order` as enumeration
+
+.diff-add[
+```scala
+case class Command(
+* order: `Order`,
+  dir  : Option[Direction]
+)
+```
+
+```scala
+val cmd = Command(
+* `Order.Face`,
+  Some(Direction.North)
+)
+```
+]
+
+---
+
+## `Order` as enumeration
+
+```tut:silent
+case class Command(
+  order: Order,
+  dir  : Option[Direction]
+)
+```
+
+```tut:silent
+val cmd = Command(
+  Order.Face,
   Some(Direction.North)
 )
 ```
@@ -1162,13 +1358,59 @@ Command(
 
 ## `Order` as "enumeration"
 
+```scala
+sealed trait Order
+
+object Order {
+  case object Face  extends Order
+  case object Start extends Order
+  case object Stop  extends Order
+}
+```
+
+---
+
+## `Order` as "enumeration"
+
+.diff-rm[
+```scala
+sealed trait Order
+
+object Order {
+* case `object Face`  extends Order
+  case object Start extends Order
+  case object Stop  extends Order
+}
+```
+]
+
+---
+
+## `Order` as "enumeration"
+
+.diff-add[
+```scala
+sealed trait Order
+
+object Order {
+* case `class  Face(dir: Direction)` extends Order
+* case object Start `               `extends Order
+* case object Stop  `               `extends Order
+}
+```
+]
+
+---
+
+## `Order` as "enumeration"
+
 ```tut:silent
 sealed trait Order
 
 object Order {
-  case class Face(dir: Direction) extends Order
-  case object Start               extends Order
-  case object Stop                extends Order
+  case class  Face(dir: Direction) extends Order
+  case object Start                extends Order
+  case object Stop                 extends Order
 }
 ```
 
@@ -1176,29 +1418,33 @@ object Order {
 
 ## `Order` as "enumeration"
 
+.diff-rm[
 ```scala
-sealed trait Order
+*sealed trait `Order`
 
-object Order {
-  `case class Face(dir: Direction) extends Order`
-  case object Start               extends Order
-  case object Stop                extends Order
+*object `Order` {
+* case class  Face(dir: Direction) extends `Order`
+* case object Start                extends `Order`
+* case object Stop                 extends `Order`
 }
 ```
+]
 
 ---
 
-## `Order` as "enumeration"
+## `Command` as "enumeration"
 
+.diff-add[
 ```scala
-sealed trait Order
+*sealed trait `Command`
 
-object Order {
-  case class Face(`dir: Direction`) extends Order
-  case object Start               extends Order
-  case object Stop                extends Order
+*object `Command` {
+* case class  Face(dir: Direction) extends `Command`
+* case object Start                extends `Command`
+* case object Stop                 extends `Command`
 }
 ```
+]
 
 ---
 
@@ -1208,23 +1454,9 @@ object Order {
 sealed trait Command
 
 object Command {
-  case class Face(dir: Direction) extends Command
-  case object Start               extends Command
-  case object Stop                extends Command
-}
-```
-
----
-
-## `Command` as "enumeration"
-
-```scala
-sealed trait `Command`
-
-object `Command` {
-  case class Face(dir: Direction) extends `Command`
-  case object Start               extends `Command`
-  case object Stop                extends `Command`
+  case class  Face(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
 }
 ```
 
@@ -1280,11 +1512,12 @@ Command.Start
 
 --
 
-
 * Enumerations are everywhere.
+
 --
 
 * Enumerations are not enough.
+
 --
 
 * Something "like an enumeration" might be, however.
@@ -1372,89 +1605,87 @@ start
 sealed trait Command
 
 object Command {
-  case class Face(dir: Direction) extends Command
-  case object Start               extends Command
-  case object Stop                extends Command
+  case class  Face(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
+}
+```
+
+---
+
+## Chaining commands
+
+.diff-add[
+```scala
+sealed trait Command
+
+object Command {
+  case class  Face(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
+*
+* `case class Chain(`
+* `) extends Command`
+}
+```
+]
+
+---
+
+## Chaining commands
+
+.diff-add[
+```scala
+sealed trait Command
+
+object Command {
+  case class  Face(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
 
   case class Chain(
-    cmd1: Command,
-    cmd2: Command
+*   `cmd1: Command`
   ) extends Command
 }
 ```
+]
 
 ---
 
 ## Chaining commands
 
+.diff-add[
 ```scala
 sealed trait Command
 
 object Command {
-  case class Face(dir: Direction) extends Command
-  case object Start               extends Command
-  case object Stop                extends Command
-
-* case class Chain(
-*   cmd1: Command,
-*   cmd2: Command
-* ) extends Command
-}
-```
-
----
-
-## Chaining commands
-
-```scala
-sealed trait Command
-
-object Command {
-  case class Face(dir: Direction) extends Command
-  case object Start               extends Command
-  case object Stop                extends Command
-
-  case `class Chain`(
-    cmd1: Command,
-    cmd2: Command
-  ) `extends Command`
-}
-```
-
----
-
-## Chaining commands
-
-```scala
-sealed trait Command
-
-object Command {
-  case class Face(dir: Direction) extends Command
-  case object Start               extends Command
-  case object Stop                extends Command
+  case class  Face(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
 
   case class Chain(
-    `cmd1: Command`,
-    cmd2: Command
+*   cmd1: Command`,`
+*   `cmd2: Command`
   ) extends Command
 }
 ```
+]
 
 ---
 
 ## Chaining commands
 
-```scala
+```tut:silent
 sealed trait Command
 
 object Command {
-  case class Face(dir: Direction) extends Command
-  case object Start               extends Command
-  case object Stop                extends Command
+  case class  Face(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
 
   case class Chain(
     cmd1: Command,
-    `cmd2: Command`
+    cmd2: Command
   ) extends Command
 }
 ```
@@ -1843,9 +2074,9 @@ def move(d: Direction) =
 
 ## Compound commands
 
-![Sending script](img/valid-command-south-sending.png)
+![Sending script](img/valid-command-south.png)
 
-```scala
+```tut:silent
  move(east) ~> move(west)
 ```
 
@@ -1855,7 +2086,7 @@ def move(d: Direction) =
 
 ![Sending script](img/valid-command-south-sending.png)
 
-```tut:book
+```tut:silent
  move(east) ~> move(west)
 ```
 
@@ -1929,10 +2160,12 @@ We've completed our data structure by using:
 
 --
 
-* case classes (`Chain`, `Face`) - *product types*.
+* records (`Chain`, `Face`).
+
 --
 
-* enumerated types (`Command`, `Direction`) - *sum types*.
+* enumerated types (`Command`, `Direction`).
+
 --
 
 * recursive types (`Command` is expressed in terms of itself).
@@ -1946,10 +2179,6 @@ class: center, middle
 
 ## Sum types
 
-> A sum type is a discriminated union of values, and can be thought of as an `OR` on types.
-
---
-
 ```scala
 Command = Face
         ⋁ Start
@@ -1961,7 +2190,62 @@ Command = Face
 
 ## Sum types
 
+```scala
+Command = `Face`
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
+```
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ `Start`
+        ⋁ Stop
+        ⋁ Chain
+```
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ `Stop`
+        ⋁ Chain
+```
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ `Chain`
+```
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
+```
+
 > A sum type is a discriminated union of values, and can be thought of as an `OR` on types.
+
+---
+
+## Sum types
 
 ```scala
 Command = Face
@@ -1970,35 +2254,503 @@ Command = Face
         `⋁` Chain
 ```
 
+> A sum type is a discriminated union of values, and can be thought of as an .highlight[`OR`] on types.
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
+```
+
+> A sum type is a .highlight[discriminated] union of values, and can be thought of as an `OR` on types.
+
+---
+
+## Union types
+
+```c
+union int_or_string {
+  int   as_int;
+  char* as_string;
+};
+```
+
+---
+
+## Union types
+
+```c
+union `int_or_string` {
+  int   as_int;
+  char* as_string;
+};
+```
+
+---
+
+## Union types
+
+```c
+union int_or_string {
+  `int   as_int;`
+  char* as_string;
+};
+```
+
+---
+
+## Union types
+
+```c
+union int_or_string {
+  int   as_int;
+  `char* as_string;`
+};
+```
+
+---
+
+## Union types
+
+```c
+#include<stdio.h>
+
+void print_union(union int_or_string e) {
+    ???
+}
+```
+
+---
+
+## Union types
+
+```c
+#include<stdio.h>
+
+void print_union(union int_or_string e) {
+    `???`
+}
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+enum typetag {
+    int_tag,
+    string_tag
+};
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+enum `typetag` {
+    int_tag,
+    string_tag
+};
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+enum typetag {
+    `int_tag`,
+    string_tag
+};
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+enum typetag {
+    int_tag,
+    `string_tag`
+};
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+union int_or_string {
+    int   as_int;
+    char* as_string;
+};
+```
+
+---
+
+## Manually discriminated union types
+
+.diff-add[
+```c
+union int_or_string {
+*   `enum typetag discriminator;`
+*
+    int   as_int;
+    char* as_string;
+};
+```
+]
+
+---
+
+## Manually discriminated union types
+
+.diff-rm[
+```c
+*&#x200B;`union` int_or_string {
+    enum typetag discriminator;
+
+    int   as_int;
+    char* as_string;
+};
+```
+]
+
+---
+
+## Manually discriminated union types
+
+.diff-add[
+```c
+*&#x200B;`struct` int_or_string {
+    enum typetag discriminator;
+
+    int   as_int;
+    char* as_string;
+};
+```
+]
+
+---
+
+## Manually discriminated union types
+
+.diff-rm[
+```c
+struct int_or_string {
+    enum typetag discriminator;
+
+*   `int   as_int;`
+*   `char* as_string;`
+};
+```
+]
+
+---
+
+## Manually discriminated union types
+
+.diff-add[
+```c
+struct int_or_string {
+    enum typetag discriminator;
+
+*   `union {`
+*   `    int   as_int;`
+*   `    char* as_string;`
+*   `} value;`
+};
+```
+]
+
+---
+
+## Manually discriminated union types
+
+```c
+struct int_or_string {
+    enum typetag discriminator;
+
+    union {
+        int   as_int;
+        char* as_string;
+    } value;
+};
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+struct int_or_string {
+    enum typetag discriminator;
+
+*   union {
+*       int   as_int;
+*       char* as_string;
+*   } value;
+};
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+struct int_or_string {
+*   enum typetag discriminator;
+
+    union {
+        int   as_int;
+        char* as_string;
+    } value;
+};
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+#include<stdio.h>
+
+void print_union(union int_or_string e) {
+    ???
+}
+```
+
+---
+
+## Manually discriminated union types
+
+.diff-rm[
+```c
+#include<stdio.h>
+
+*void print_union(`union` int_or_string e) {
+    ???
+}
+```
+]
+
+---
+
+## Manually discriminated union types
+
+.diff-add[
+```c
+#include<stdio.h>
+
+*void print_union(`struct` int_or_string e) {
+    ???
+}
+```
+]
+
+---
+
+## Manually discriminated union types
+
+.diff-rm[
+```c
+#include<stdio.h>
+
+void print_union(struct int_or_string e) {
+*   `???`
+}
+```
+]
+
+---
+
+## Manually discriminated union types
+
+.diff-add[
+```c
+#include<stdio.h>
+
+void print_union(struct int_or_string e) {
+*   `if(e.discriminator == int_tag) {`
+*       `printf("int: %i", e.value.as_int);`
+*   `}`
+*   `else {`
+*       `printf("string: %s", e.value.as_string);`
+*   `}`
+}
+```
+]
+
+---
+
+## Manually discriminated union types
+
+```c
+#include<stdio.h>
+
+void print_union(struct int_or_string e) {
+    if(`e.discriminator == int_tag`) {
+        printf("int: %i", e.value.as_int);
+    }
+    else {
+        printf("string: %s", e.value.as_string);
+    }
+}
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+#include<stdio.h>
+
+void print_union(struct int_or_string e) {
+    if(e.discriminator == int_tag) {
+        printf("int: %i", `e.value.as_int`);
+    }
+    else {
+        printf("string: %s", e.value.as_string);
+    }
+}
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+#include<stdio.h>
+
+void print_union(struct int_or_string e) {
+    if(e.discriminator == int_tag) {
+        printf("int: %i", e.value.as_int);
+    }
+    else {
+        printf("string: %s", `e.value.as_string`);
+    }
+}
+```
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
+```
+
+> A sum type is a .highlight[discriminated] union of values, and can be thought of as an `OR` on types.
+
+---
+
+## Sum types
+
+> An ADT is a sum type [...]
+
 ---
 
 ## Product types
 
-> A product type is an aggregation of values, and can be thought of as an `AND` on types.
-
---
-
 ```scala
-Chain = Command ⋀ Command
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
 ```
 
 ---
 
 ## Product types
 
-> A product type is an aggregation of values, and can be thought of as an `AND` on types.
+.diff-rm[
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+*       ⋁ `Chain`
+```
+]
+
+---
+
+## Product types
+
+.diff-add[
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+*       ⋁ `Command ⋀ Command`
+```
+]
+
+---
+
+## Product types
 
 ```scala
-Chain = Command `⋀` Command
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ `Command` ⋀ Command
 ```
+
+---
+
+## Product types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Command ⋀ `Command`
+```
+
+---
+
+## Product types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Command ⋀ Command
+```
+
+> A product type is an aggregation of values, and can be thought of as an `AND` on types.
+
+---
+
+## Product types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Command `⋀` Command
+```
+
+> A product type is an aggregation of values, and can be thought of as an .highlight[`AND`] on types.
+
+---
+
+## Product types
+
+> An ADT is a sum type of product types [...]
 
 ---
 
 ## Algebraic Data Types
-
-> An ADT is a potentially recursive sum type of product types.
-
---
 
 ```scala
 Command = Face
@@ -2011,41 +2763,49 @@ Command = Face
 
 ## Algebraic Data Types
 
-> An ADT is a potentially recursive .highlight[sum type] of product types.
-
-```scala
-Command = Face
-        `⋁` Start
-        `⋁` Stop
-        `⋁` Command ⋀ Command
-```
-
----
-
-## Algebraic Data Types
-
-> An ADT is a potentially recursive .highlight[sum type] of product types.
-
-
-```scala
-Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Command `⋀` Command
-```
-
----
-
-## Algebraic Data Types
-
-> An ADT is a potentially recursive .highlight[sum type] of product types.
-
 ```scala
 &#x200B;`Command` = Face
         ⋁ Start
         ⋁ Stop
-        ⋁ `Command` ⋀ Command
+        ⋁ Command ⋀ Command
 ```
+
+---
+
+## Algebraic Data Types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ `Command` ⋀ `Command`
+```
+
+---
+
+## Algebraic Data Types
+
+> An ADT is a potentially recursive sum type of product types.
+
+---
+
+## Key takeaways
+
+--
+
+Algebraic Data Types are:
+
+--
+
+* sum types.
+
+--
+
+* product types.
+
+--
+
+* potentially recursive.
 
 ---
 class: center, middle
@@ -2205,17 +2965,17 @@ final abstract class Idle
 ## Tracking state
 
 ```tut:silent
-sealed trait Command[Before, After]
+sealed trait Command
 
 object Command {
-  case class  Face(dir: Direction) extends Command[Idle, Idle]
-  case object Start                extends Command[Idle, Moving]
-  case object Stop                 extends Command[Moving, Idle]
+  case class  Face(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
 
-  case class Chain[A, B, C](
-    cmd1: Command[A, B],
-    cmd2: Command[B, C]
-  ) extends Command[A, C]
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
 }
 ```
 
@@ -2223,39 +2983,22 @@ object Command {
 
 ## Tracking state
 
+.diff-add[
 ```scala
-sealed trait `Command[Before, After]`
+*sealed trait Command`[Before, After]`
 
 object Command {
-  case class  Face(dir: Direction) extends Command[Idle, Idle]
-  case object Start                extends Command[Idle, Moving]
-  case object Stop                 extends Command[Moving, Idle]
+  case class  Face(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
 
-  case class Chain[A, B, C](
-    cmd1: Command[A, B],
-    cmd2: Command[B, C]
-  ) extends Command[A, C]
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
 }
 ```
-
----
-
-## Tracking state
-
-```scala
-sealed trait Command[Before, After]
-
-object Command {
-  case class  `Face`(dir: Direction) extends `Command[Idle, Idle]`
-  case object Start                extends Command[Idle, Moving]
-  case object Stop                 extends Command[Moving, Idle]
-
-  case class Chain[A, B, C](
-    cmd1: Command[A, B],
-    cmd2: Command[B, C]
-  ) extends Command[A, C]
-}
-```
+]
 
 ---
 
@@ -2265,14 +3008,14 @@ object Command {
 sealed trait Command[Before, After]
 
 object Command {
-  case class  Face(dir: Direction) extends Command[Idle, Idle]
-  case object `Start`                extends `Command[Idle, Moving]`
-  case object Stop                 extends Command[Moving, Idle]
+  case class  `Face`(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
 
-  case class Chain[A, B, C](
-    cmd1: Command[A, B],
-    cmd2: Command[B, C]
-  ) extends Command[A, C]
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
 }
 ```
 
@@ -2280,20 +3023,22 @@ object Command {
 
 ## Tracking state
 
+.diff-add[
 ```scala
 sealed trait Command[Before, After]
 
 object Command {
-  case class  Face(dir: Direction) extends Command[Idle, Idle]
-  case object Start                extends Command[Idle, Moving]
-  case object `Stop`                 extends `Command[Moving, Idle]`
+* case class  Face(dir: Direction) extends Command`[Idle, Idle]`
+  case object Start                extends Command
+  case object Stop                 extends Command
 
-  case class Chain[A, B, C](
-    cmd1: Command[A, B],
-    cmd2: Command[B, C]
-  ) extends Command[A, C]
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
 }
 ```
+]
 
 ---
 
@@ -2304,44 +3049,36 @@ sealed trait Command[Before, After]
 
 object Command {
   case class  Face(dir: Direction) extends Command[Idle, Idle]
-  case object Start                extends Command[Idle, Moving]
-  case object Stop                 extends Command[Moving, Idle]
+  case object `Start`                extends Command
+  case object Stop                 extends Command
 
-  case class `Chain[A, B, C]`(
-    cmd1: Command[A, B],
-    cmd2: Command[B, C]
-  ) extends Command[A, C]
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
 }
-```
-
-```scala
-val cmd: Command[Idle, Idle] =
-  Command.`Chain`(Command.Start, Command.Stop)
 ```
 
 ---
 
 ## Tracking state
 
+.diff-add[
 ```scala
 sealed trait Command[Before, After]
 
 object Command {
   case class  Face(dir: Direction) extends Command[Idle, Idle]
-  case object Start                extends Command[Idle, Moving]
-  case object Stop                 extends Command[Moving, Idle]
+* case object Start                extends Command`[Idle, Moving]`
+  case object Stop                 extends Command
 
-  case class Chain[A, B, C](
-    `cmd1: Command[A, B]`,
-    cmd2: Command[B, C]
-  ) extends Command[A, C]
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
 }
 ```
-
-```scala
-val cmd: Command[Idle, Idle] =
-  Command.Chain(Command.`Start`, Command.Stop)
-```
+]
 
 ---
 
@@ -2353,19 +3090,35 @@ sealed trait Command[Before, After]
 object Command {
   case class  Face(dir: Direction) extends Command[Idle, Idle]
   case object Start                extends Command[Idle, Moving]
-  case object Stop                 extends Command[Moving, Idle]
+  case object `Stop`                 extends Command
 
-  case class Chain[A, B, C](
-    cmd1: Command[A, B],
-    `cmd2: Command[B, C]`
-  ) extends Command[A, C]
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
 }
 ```
 
+---
+
+## Tracking state
+
+.diff-add[
 ```scala
-val cmd: Command[Idle, Idle] =
-  Command.Chain(Command.Start, Command.`Stop`)
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+* case object Stop                 extends Command`[Moving, Idle]`
+
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
+}
 ```
+]
 
 ---
 
@@ -2376,26 +3129,124 @@ sealed trait Command[Before, After]
 
 object Command {
   case class  Face(dir: Direction) extends Command[Idle, Idle]
-  case object Start                extends Command[Idle, `Moving`]
-  case object Stop                 extends Command[`Moving`, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
 
-  case class Chain[A, B, C](
+* case class Chain(
+*   cmd1: Command,
+*   cmd2: Command
+* ) extends Command
+}
+```
+
+---
+
+## Tracking state
+
+.diff-add[
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain(
+*   cmd1: Command`[A, B]`,
+    cmd2: Command
+  ) extends Command
+}
+```
+]
+
+---
+
+## Tracking state
+
+.diff-add[
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain(
+    cmd1: Command[A, B],
+*   cmd2: Command`[B, C]`
+  ) extends Command
+}
+```
+]
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain(
     cmd1: Command[A, `B`],
     cmd2: Command[`B`, C]
-  ) extends Command[A, C]
+  ) extends Command
 }
-```
-
-```scala
-val cmd: Command[Idle, Idle] =
-  Command.Chain(Command.Start, Command.Stop)
 ```
 
 ---
 
 ## Tracking state
 
+.diff-add[
 ```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain(
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+* ) extends Command`[A, C]`
+}
+```
+]
+
+---
+
+## Tracking state
+
+.diff-add[
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+* case class Chain`[A, B, C]`(
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+]
+
+---
+
+## Tracking state
+
+```tut:silent
 sealed trait Command[Before, After]
 
 object Command {
@@ -2406,93 +3257,95 @@ object Command {
   case class Chain[A, B, C](
     cmd1: Command[A, B],
     cmd2: Command[B, C]
-  ) extends `Command[A, C]`
+  ) extends Command[A, C]
 }
 ```
 
+---
+
+## DSL
+
 ```scala
-val `cmd: Command[Idle, Idle]` =
-  Command.Chain(Command.Start, Command.Stop)
+implicit class Compose(cmd1: Command) {
+  def ~>(cmd2: Command): Command =
+    Command.Chain(cmd1, cmd2)
+}
 ```
+
+---
+
+## DSL
+
+.diff-add[
+```scala
+*implicit class Compose(cmd1: Command`[A, B]`) {
+  def ~>(cmd2: Command): Command =
+    Command.Chain(cmd1, cmd2)
+}
+```
+]
+
+---
+
+## DSL
+
+.diff-add[
+```scala
+*implicit class Compose`[A, B]`(cmd1: Command[A, B]) {
+  def ~>(cmd2: Command): Command =
+    Command.Chain(cmd1, cmd2)
+}
+```
+]
+
+---
+
+## DSL
+
+.diff-add[
+```scala
+implicit class Compose[A, B](cmd1: Command[A, B]) {
+* def ~>(cmd2: Command`[B, C]`): Command =
+    Command.Chain(cmd1, cmd2)
+}
+```
+]
+
+---
+
+## DSL
+
+.diff-add[
+```scala
+implicit class Compose[A, B](cmd1: Command[A, B]) {
+* def ~>[`C`](cmd2: Command[B, C]): Command =
+    Command.Chain(cmd1, cmd2)
+}
+```
+]
+
+---
+
+## DSL
+
+.diff-add[
+```scala
+implicit class Compose[A, B](cmd1: Command[A, B]) {
+* def ~>[C](cmd2: Command[B, C]): Command`[A, C]` =
+    Command.Chain(cmd1, cmd2)
+}
+```
+]
 
 ---
 
 ## DSL
 
 ```tut:silent
-implicit class Compose[A, B](cmd: Command[A, B]) {
+implicit class Compose[A, B](cmd1: Command[A, B]) {
   def ~>[C](cmd2: Command[B, C]): Command[A, C] =
-    Command.Chain(cmd, cmd2)
+    Command.Chain(cmd1, cmd2)
 }
-```
-
-```tut:silent
-val startStop: Command[Idle, Idle] =
-  Command.Start ~> Command.Stop
-```
-
----
-
-## DSL
-
-```scala
-implicit class Compose[A, B](`cmd: Command[A, B]`) {
-  def ~>[C](cmd2: Command[B, C]): Command[A, C] =
-    Command.Chain(cmd, cmd2)
-}
-```
-
-```scala
-val startStop: Command[Idle, Idle] =
-  Command.`Start` ~> Command.Stop
-```
-
----
-
-## DSL
-
-```scala
-implicit class Compose[A, B](cmd: Command[A, B]) {
-  def `~>`[C](cmd2: Command[B, C]): Command[A, C] =
-    Command.Chain(cmd, cmd2)
-}
-```
-
-```scala
-val startStop: Command[Idle, Idle] =
-  Command.Start `~>` Command.Stop
-```
-
----
-
-## DSL
-
-```scala
-implicit class Compose[A, B](cmd: Command[A, B]) {
-  def ~>[C](`cmd2: Command[B, C]`): Command[A, C] =
-    Command.Chain(cmd, cmd2)
-}
-```
-
-```scala
-val startStop: Command[Idle, Idle] =
-  Command.Start ~> Command.`Stop`
-```
-
----
-
-## DSL
-
-```scala
-implicit class Compose[A, B](cmd: Command[A, B]) {
-  def ~>[C](cmd2: Command[B, C]): `Command[A, C]` =
-    Command.Chain(cmd, cmd2)
-}
-```
-
-```scala
-val startStop: `Command[Idle, Idle]` =
-  Command.Start ~> Command.Stop
 ```
 
 ```tut:invisible
@@ -2565,9 +3418,9 @@ start ~> face(north)
 
 ## Safe state transition
 
-![Start](img/valid-command-south-sending.png)
+![Start](img/valid-command-south.png)
 
-```scala
+```tut:silent
  face(east) ~> start ~> stop
 ```
 
@@ -2577,7 +3430,7 @@ start ~> face(north)
 
 ![Start](img/valid-command-south-sending.png)
 
-```tut:book
+```tut:silent
  face(east) ~> start ~> stop
 ```
 
@@ -2687,9 +3540,37 @@ movingLabel(Command.Start)
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
     case Command.Stop              => "stop"
- // case _: Command.Chain[_, _, _] => "chain"
+    case _: Command.Chain[_, _, _] => "chain"
   }
 ```
+
+---
+
+## Smarter exhaustivity checks
+
+.diff-rm[
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+*   `case _: Command.Chain[_, _, _] => "chain"`
+  }
+```
+]
+
+---
+
+## Smarter exhaustivity checks
+
+.diff-add[
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+*&#x200B; `// case _: Command.Chain[_, _, _] => "chain"`
+  }
+```
+]
 
 ---
 
@@ -2699,7 +3580,7 @@ def movingLabel(cmd: Command[Moving, _]): String =
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
     case Command.Stop              => "stop"
- `// case _: Command.Chain[_, _, _] => "chain"`
+ // case _: Command.Chain[_, _, _] => "chain"
   }
 ```
 
@@ -2719,27 +3600,44 @@ def movingLabel(cmd: Command[Moving, _]): String =
 
 ## Smarter exhaustivity checks
 
+.diff-rm[
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
     case Command.Stop              => "stop"
-    case _: Command.Chain[_, _, _] => "chain"
-    case Command.Start             => "start"
+*&#x200B; `// case _: Command.Chain[_, _, _] => "chain"`
   }
 ```
+]
 
 ---
 
 ## Smarter exhaustivity checks
 
+.diff-add[
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+*   `case _: Command.Chain[_, _, _] => "chain"`
+  }
+```
+]
+
+---
+
+## Smarter exhaustivity checks
+
+.diff-add[
 ```scala
 def movingLabel(cmd: Command[Moving, _]): String =
   cmd match {
     case Command.Stop              => "stop"
     case _: Command.Chain[_, _, _] => "chain"
-    `case Command.Start             => "start"`
+*   `case Command.Start             => "start"`
   }
 ```
+]
 
 ---
 
@@ -2821,9 +3719,11 @@ We used type constraints on our sum type's members to:
 --
 
 * make illegal state transitions impossible to represent.
+
 --
 
 * guarantee that our code handles all necessary cases.
+
 --
 
 * guarantee that our code handles *only* necessary cases.
@@ -2835,33 +3735,66 @@ class: center, middle
 
 ---
 
-## Twitter wisdom
+## Sum type
 
-.fleft[![Christophe Calves](img/christophe-gadt.png)]
+```tut:silent
+sealed trait Command[Before, After]
 
---
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
 
-.fright[![Rob Norris](img/tpolecat-gadt.png)]
-
---
-
-.fright[![Raul Raja](img/raul-gadt.png)]
-
---
-
-.fleft[![Ruben Berenguel](img/ruben-gadt.png)]
-
----
-
-## GADT
-
-> A GADT is a sum type with one or more witness types, each equipped with a type equality.
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
 
 ---
 
-## Witness type
+## Sum type
 
-> A witness type describes properties of a sum type's branches at the type level.
+```scala
+&#x200B;`sealed trait Command`[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+
+---
+
+## Sum type
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  `Face`(dir: Direction) extends Command[Idle, Idle]
+  case object `Start`                extends Command[Idle, Moving]
+  case object `Stop`                 extends Command[Moving, Idle]
+
+  case class `Chain`[A, B, C](
+    cmd1: Command[A, B],
+    cmd2: Command[B, C]
+  ) extends Command[A, C]
+}
+```
+
+---
+
+## Sum type
+
+> A GADT is a sum type [...]
 
 ---
 
@@ -2903,9 +3836,15 @@ object Command {
 
 ---
 
-## Type equality
+## Witness type
 
-> Type equality is information available to the compiler about each witness type, allowing it to refine pattern matches.
+> A witness type describes properties of a sum type's branches at the type level.
+
+---
+
+## GADT
+
+> A GADT is a sum type with one or more witness types [...]
 
 ---
 
@@ -2945,6 +3884,18 @@ def movingLabel(cmd: Command[Moving, _]): String =
     `case Command.Start             => "start"`
   }
 ```
+
+---
+
+## Type equality
+
+> Type equality is information available to the compiler about each witness type, allowing it to refine pattern matches.
+
+---
+
+## GADT
+
+> A GADT is a sum type with one or more witness types, each equipped with a type equality.
 
 ---
 
@@ -3016,6 +3967,18 @@ def safeGet[A](oa: Some[A]): A =
 def safeGet[A](oa: `Some`[A]): A =
   oa match {
     case `Some`(a) => a
+ // case None    => ???
+  }
+```
+
+---
+
+## Sum type in Scala
+
+```scala
+def safeGet[A](oa: `Some`[A]): A =
+  oa match {
+    case Some(a) => a
  // case `None`    => ???
   }
 ```
@@ -3026,13 +3989,11 @@ def safeGet[A](oa: `Some`[A]): A =
 
 --
 
-* We're all a little bit strange about GADTs.
+* GADTs are sum types with interesting properties for pattern matching.
+
 --
 
-* They have an actual, "easy" to understand definition.
---
-
-* Scala is bad at helping us see it.
+* Scala is bad at helping us see that.
 
 ---
 class: center, middle
@@ -3398,16 +4359,1282 @@ Haskell makes GADTs very clear:
 --
 
 * Sum types.
+
 --
 
 * Witness types.
+
 --
 
 * Type equality.
 
 ---
 
+## What now?
+
+- [Conclusion](#closing)
+- [Algebra of Types](#algebra_of_types)
+
+---
 class: center, middle
+name: algebra_of_types
+
+# The algebra of types
+
+---
+
+## Cardinality
+
+> The cardinality of type `A` is written \\(\\vert A \\vert\\) and is the number of values of type `A`.
+
+---
+
+## Cardinality
+
+.center[![Nothing](img/nothing_novalue.svg)]
+
+---
+
+## Cardinality
+
+.center[![Nothing](img/nothing.svg)]
+
+--
+
+\\(\vert Nothing \\vert = 0\\)
+
+---
+
+## Cardinality
+
+.center[![Unit](img/unit_novalue.svg)]
+
+---
+
+## Cardinality
+
+.center[![Unit](img/unit.svg)]
+
+--
+
+\\(\vert Unit \\vert = 1\\)
+
+---
+
+## Cardinality
+
+.center[![Boolean](img/boolean_novalue.svg)]
+
+---
+
+## Cardinality
+
+.center[![Boolean](img/boolean_true.svg)]
+
+---
+
+## Cardinality
+
+.center[![Boolean](img/boolean.svg)]
+
+--
+
+\\(\vert Boolean \\vert = 2\\)
+
+---
+
+## Sum types
+
+```tut:silent
+sealed trait ⋁[+A, +B]
+
+object ⋁ {
+  case class Left[A](value: A) extends (A ⋁ Nothing)
+  case class Right[B](value: B) extends (Nothing ⋁ B)
+}
+```
+
+---
+
+## Sum types
+
+```scala
+sealed trait `⋁[+A, +B]`
+
+object ⋁ {
+  case class Left[A](value: A) extends (A ⋁ Nothing)
+  case class Right[B](value: B) extends (Nothing ⋁ B)
+}
+```
+
+---
+
+## Sum types
+
+```scala
+sealed trait ⋁[+A, +B]
+
+object ⋁ {
+  case class `Left[A]`(value: A) extends (A ⋁ Nothing)
+  case class Right[B](value: B) extends (Nothing ⋁ B)
+}
+```
+
+---
+
+## Sum types
+
+```scala
+sealed trait ⋁[+A, +B]
+
+object ⋁ {
+  case class Left[A](`value: A`) extends (A ⋁ Nothing)
+  case class Right[B](value: B) extends (Nothing ⋁ B)
+}
+```
+
+---
+
+## Sum types
+
+```scala
+sealed trait ⋁[+A, +B]
+
+object ⋁ {
+  case class Left[A](value: A) extends (A ⋁ Nothing)
+  case class `Right[B]`(value: B) extends (Nothing ⋁ B)
+}
+```
+
+---
+
+## Sum types
+
+```scala
+sealed trait ⋁[+A, +B]
+
+object ⋁ {
+  case class Left[A](value: A) extends (A ⋁ Nothing)
+  case class Right[B](`value: B`) extends (Nothing ⋁ B)
+}
+```
+
+---
+
+## Sum types
+
+```tut:silent
+type IntOrString = ⋁[Int, String]
+```
+
+---
+
+## Sum types
+
+.diff-rm[
+```scala
+*type IntOrString = `⋁[Int, String]`
+```
+]
+
+---
+
+## Sum types
+
+.diff-add[
+```scala
+*type IntOrString = `Int ⋁ String`
+```
+]
+
+---
+
+## Sum types
+
+```tut:silent
+type IntOrString = Int ⋁ String
+```
+
+---
+
+## Sum types
+
+.center[![⋁](img/or_novalue.svg)]
+
+---
+
+## Sum types
+
+.center[![⋁](img/or_left.svg)]
+
+---
+
+## Sum types
+
+.center[![⋁](img/or.svg)]
+
+---
+
+## Sum types
+
+.center[![⋁](img/or_showa.svg)]
+
+\\(\vert A \lor B \\vert = \vert A \vert \ldots\\)
+
+---
+
+## Sum types
+
+.center[![⋁](img/or_showb.svg)]
+
+\\(\vert A \lor B \\vert = \vert A \vert + \vert B \vert \\)
+
+---
+
+## Sum types
+
+.center[![⋁](img/or.svg)]
+
+\\(\vert A \lor B \\vert = \vert A \vert + \vert B \vert \\)
+
+---
+
+## Type equivalence
+
+> We'll say that types `A` and `B` are equivalent if they have the same cardinality, and write `A ~= B`.
+
+---
+
+## Type equivalence
+
+> We'll say that types `A` and `B` are equivalent if they have the same cardinality, and write .highlight[`A ~= B`].
+
+---
+
+## Sum types
+
+.section[Algebra]
+
+```scala
+1 + 1 = 2
+```
+
+--
+
+.section[Types]
+```scala
+Unit ⋁ Unit ~= Boolean
+```
+
+---
+
+## Sum types
+
+.section[Algebra]
+
+```scala
+&#x200B;`1` + `1` = 2
+```
+
+.section[Types]
+```scala
+&#x200B;`Unit` ⋁ `Unit` ~= Boolean
+```
+
+---
+
+## Sum types
+
+.section[Algebra]
+
+```scala
+1 + 1 = `2`
+```
+
+.section[Types]
+```scala
+Unit ⋁ Unit ~= `Boolean`
+```
+
+---
+
+## Sum types
+
+.section[Algebra]
+
+```scala
+1 `+` 1 = 2
+```
+
+.section[Types]
+```scala
+Unit `⋁` Unit ~= Boolean
+```
+
+---
+
+## Sum types
+
+.section[Algebra]
+
+```scala
+1 + 1 `=` 2
+```
+
+.section[Types]
+```scala
+Unit ⋁ Unit `~=` Boolean
+```
+
+---
+
+## Sum types
+
+.section[Algebra]
+
+```scala
+1 + 1 = 2
+```
+
+.section[Types]
+```scala
+Unit ⋁ Unit ~= Boolean
+```
+
+---
+
+## Sum types
+
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_novalue.svg)]
+
+---
+
+## Sum types
+
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_left.svg)]
+
+---
+
+## Sum types
+
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_left_right.svg)]
+
+---
+
+## Sum types
+
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_left_right_true.svg)]
+
+---
+
+## Sum types
+
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_left_right_true_false.svg)]
+
+---
+
+## Sum types
+
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit.svg)]
+
+---
+
+## Sum types
+
+```tut:silent
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.Left(())  => true
+  case ⋁.Right(()) => false
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case true  => ⋁.Left(())
+  case false => ⋁.Right(())
+}
+```
+
+---
+
+## Sum types
+
+```scala
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.`Left(())`  => true
+  case ⋁.Right(()) => false
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case true  => `⋁.Left(())`
+  case false => ⋁.Right(())
+}
+```
+
+---
+
+## Sum types
+
+```scala
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.Left(())  => `true`
+  case ⋁.Right(()) => false
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case `true`  => ⋁.Left(())
+  case false => ⋁.Right(())
+}
+```
+
+---
+
+## Sum types
+
+```scala
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.Left(())  => true
+  case ⋁.`Right(())` => false
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case true  => ⋁.Left(())
+  case false => ⋁.`Right(())`
+}
+```
+
+---
+
+## Sum types
+
+```scala
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.Left(())  => true
+  case ⋁.Right(()) => `false`
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case true  => ⋁.Left(())
+  case `false` => ⋁.Right(())
+}
+```
+
+
+
+---
+
+## Sum types associativity
+
+.section[Algebra]
+
+```scala
+a + (b + c) = (a + b) + c
+```
+
+--
+
+.section[Types]
+```scala
+A ⋁ (B ⋁ C) ~= (A ⋁ B) ⋁ C
+```
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_novalue.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_lefta.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_lefta_rightleftb.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_lefta_rightleftb_rightrightc.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_leftlefta.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_leftlefta_leftrightb.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_leftlefta_leftrightb_rightc.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c.svg)]
+
+---
+
+## Sum types commutativity
+
+.section[Algebra]
+
+```scala
+a + b = b + a
+```
+
+--
+
+.section[Types]
+
+```scala
+A ⋁ B ~= B ⋁ A
+```
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_novalue.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_lefta.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_lefta_rightb.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_righta.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_righta_leftb.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b.svg)]
+
+---
+
+## Sum types neutral element
+
+.section[Algebra]
+
+```scala
+a + 0 = a
+```
+
+--
+
+.section[Types]
+
+```scala
+A ⋁ Nothing ~= A
+```
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing_novalue.svg)]
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing_lefta.svg)]
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing_lefta_nothing.svg)]
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing_a.svg)]
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing.svg)]
+
+---
+
+## Product types
+
+```tut:silent
+case class ⋀[A, B](first: A, second: B)
+```
+
+---
+
+## Product types
+
+```scala
+case class `⋀[A, B]`(first: A, second: B)
+```
+
+---
+
+## Product types
+
+```scala
+case class ⋀[A, B](`first: A`, second: B)
+```
+
+---
+
+## Product types
+
+```scala
+case class ⋀[A, B](first: A, `second: B`)
+```
+
+---
+
+## Product types
+
+```tut:silent
+type IntAndString = ⋀[Int, String]
+```
+
+---
+
+## Product types
+
+.diff-rm[
+```scala
+*type IntAndString = `⋀[Int, String]`
+```
+]
+
+---
+
+## Product types
+
+.diff-add[
+```scala
+*type IntAndString = `Int ⋀ String`
+```
+]
+
+---
+
+## Product types
+
+```tut:silent
+type IntAndString = Int ⋀ String
+```
+
+---
+
+## Product types
+
+```tut:silent
+implicit class AndSyntax[A](a: A) {
+  def ⋀[B](b: B): A ⋀ B = new ⋀(a, b)
+}
+```
+
+---
+
+## Product types
+
+```tut:silent
+val ios: Int ⋀ String = 1 ⋀ "foo"
+```
+
+---
+
+## Product types
+
+```scala
+val ios: `Int ⋀ String` = 1 ⋀ "foo"
+```
+
+---
+
+## Product types
+
+```scala
+val ios: Int ⋀ String = `1 ⋀ "foo"`
+```
+
+
+---
+
+## Product types
+
+.center[![⋀](img/and_novalue.svg)]
+
+---
+
+## Product types
+
+.center[![⋀](img/and_a1.svg)]
+
+---
+
+## Product types
+
+.center[![⋀](img/and_an.svg)]
+
+---
+
+## Product types
+
+.center[![⋀](img/and.svg)]
+
+---
+
+## Product types
+
+.center[![⋀](img/and_showa.svg)]
+
+\\(\vert A \land B \\vert = \vert A \vert \ldots\\)
+
+
+---
+
+## Product types
+
+.center[![⋀](img/and_showb.svg)]
+
+\\(\vert A \land B \\vert = \vert A \vert \times \vert B \vert \\)
+
+---
+
+## Product types
+
+.center[![⋀](img/and.svg)]
+
+\\(\vert A \land B \\vert = \vert A \vert \times \vert B \vert \\)
+
+---
+
+## Product types
+
+.section[Algebra]
+
+```scala
+a + a = 2 * a
+```
+
+--
+
+.section[Types]
+
+```scala
+A ⋁ A ~= Boolean ⋀ A
+```
+
+---
+
+## Product types
+
+.section[Algebra]
+
+```scala
+a + a = 2 `*` a
+```
+
+.section[Types]
+
+```scala
+A ⋁ A ~= Boolean `⋀` A
+```
+
+---
+
+## Product types
+
+.section[Algebra]
+
+```scala
+a + a = 2 * a
+```
+
+.section[Types]
+
+```scala
+A ⋁ A ~= Boolean ⋀ A
+```
+
+---
+
+## Product types
+
+.center[![A ⋁ A](img/a_or_a_novalue.svg)]
+
+---
+
+## Product types
+
+.center[![A ⋁ A](img/a_or_a_lefta.svg)]
+
+---
+
+## Product types
+
+.center[![A ⋁ A](img/a_or_a_lefta_righta.svg)]
+
+---
+
+## Product types
+
+.center[![A ⋁ A](img/a_or_a_false_a.svg)]
+
+---
+
+## Product types
+
+.center[![A ⋁ A](img/a_or_a_true_a.svg)]
+
+---
+
+## Product types
+
+.center[![A ⋁ A](img/a_or_a.svg)]
+
+---
+
+## Product types associativity
+
+.section[Algebra]
+
+```scala
+(a * b) * c = a * (b * c)
+```
+
+--
+
+.section[Types]
+
+```scala
+(A ⋀ B) ⋀ C ~= A ⋀ (B ⋀ C)
+```
+
+---
+
+## Product types associativity
+
+.center[![A ⋀ B ⋀ C](img/a_and_b_and_c_novalue.svg)]
+
+---
+
+## Product types associativity
+
+.center[![A ⋀ B ⋀ C](img/a_and_b_and_c_anda.svg)]
+
+---
+
+## Product types associativity
+
+.center[![A ⋀ B ⋀ C](img/a_and_b_and_c_andc.svg)]
+
+---
+
+## Product types associativity
+
+.center[![A ⋀ B ⋀ C](img/a_and_b_and_c.svg)]
+
+---
+
+## Product types commutativity
+
+.section[Algebra]
+```scala
+a * b = b * a
+```
+
+--
+
+.section[Types]
+
+```scala
+A ⋀ B ~= B ⋀ A
+```
+
+---
+
+## Product types commutativity
+
+.center[![A ⋀ B](img/a_and_b_novalue.svg)]
+
+---
+
+## Product types commutativity
+
+.center[![A ⋀ B](img/a_and_b_andab.svg)]
+
+---
+
+## Product types commutativity
+
+.center[![A ⋀ B](img/a_and_b_andba.svg)]
+
+---
+
+## Product types commutativity
+
+.center[![A ⋀ B](img/a_and_b.svg)]
+
+---
+
+## Product types neutral element
+
+.section[Algebra]
+
+```scala
+a * 1 = a
+```
+
+--
+
+.section[Types]
+
+```scala
+A ⋀ Unit ~= A
+```
+
+---
+
+## Product types neutral element
+
+.center[![A ⋀ Unit](img/a_and_unit_novalue.svg)]
+
+---
+
+## Product types neutral element
+
+.center[![A ⋀ Unit](img/a_and_unit_andaunit.svg)]
+
+---
+
+## Product types neutral element
+
+.center[![A ⋀ Unit](img/a_and_unit_a.svg)]
+
+---
+
+## Product types neutral element
+
+.center[![A ⋀ Unit](img/a_and_unit.svg)]
+
+---
+
+## Recursive types
+
+```tut:silent
+sealed trait List[+A]
+
+case object Nil extends List[Nothing]
+
+case class Cons[A](
+  head: A,
+  tail: List[A]
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait `List[+A]`
+
+case object Nil extends List[Nothing]
+
+case class Cons[A](
+  head: A,
+  tail: List[A]
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait List[+A]
+
+case object `Nil` extends List[Nothing]
+
+case class Cons[A](
+  head: A,
+  tail: List[A]
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait List[+A]
+
+case object Nil extends List[Nothing]
+
+case class `Cons[A]`(
+  head: A,
+  tail: List[A]
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait List[+A]
+
+case object Nil extends List[Nothing]
+
+case class Cons[A](
+  `head: A`,
+  tail: List[A]
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait List[+A]
+
+case object Nil extends List[Nothing]
+
+case class Cons[A](
+  head: A,
+  `tail: List[A]`
+) extends List[A]
+```
+
+---
+
+## Recursive types
+
+```scala
+sealed trait `List[+A]`
+
+case object Nil extends List[Nothing]
+
+case class Cons[A](
+  head: A,
+  tail: `List[A]`
+) extends List[A]
+```
+
+---
+
+## List of fixed size
+
+\\( \vert List_0[A] \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_0[A] \vert = \vert Nil \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_0[A] \vert = 1\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_1[A] \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_1[A] \vert = \vert A \land List_0[A] \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_1[A] \vert = \vert A \vert \times \vert List_0[A] \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_1[A] \vert = \vert A \vert \times 1\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_1[A] \vert = \vert A \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_2[A] \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_2[A] \vert = \vert A \land List_1[A] \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_2[A] \vert = \vert A \vert \times \vert List_1[A] \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_2[A] \vert = \vert A \vert \times \vert A \vert\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_2[A] \vert = \vert A \vert^2\\)
+
+---
+
+## List of fixed size
+
+\\( \vert List_n[A] \vert = \vert A \vert^n\\)
+
+---
+
+## List of maximum size
+
+\\( \vert List^n[A] \vert\\)
+
+---
+
+## List of maximum size
+
+\\(\\vert List^n[A] \\vert = \vert \displaystyle\bigvee_{i = 0}^n List_i[A] \vert^i\\)
+
+---
+
+## List of maximum size
+
+\\(\\vert List^n[A] \\vert = \displaystyle\sum_{i = 0}^n \vert List_i[A] \vert\\)
+
+---
+
+## List of maximum size
+
+\\(\\vert List^n[A] \\vert = \displaystyle\sum_{i = 0}^n \vert A \vert^i\\)
+
+---
+
+## List of maximum size
+
+\\(\\vert List^n[A] \\vert = \frac{\vert A \vert^{n + 1} - 1}{\vert A \vert - 1}\\)
+
+---
+
+## List of maximum size
+
+\\(\\vert List^2[Boolean] \\vert = \frac{\vert Boolean \vert^{2 + 1} - 1}{\vert Boolean \vert - 1}\\)
+
+---
+
+## List of maximum size
+
+\\(\\vert List^2[Boolean] \\vert = \frac{2^{2 + 1} - 1}{2 - 1}\\)
+
+---
+
+## List of maximum size
+
+\\(\\vert List^2[Boolean] \\vert = 7\\)
+
+---
+
+## List of maximum size
+
+.center[![List](img/list_novalue.svg)]
+
+---
+
+## List of maximum size
+
+.center[![List](img/list_list0.svg)]
+
+---
+
+## List of maximum size
+
+.center[![List](img/list_list1.svg)]
+
+---
+
+## List of maximum size
+
+.center[![List](img/list.svg)]
+
+---
+
+## List of maximum size
+
+.center[![List](img/list_values.svg)]
+
+---
+
+## Key takeaways
+
+--
+
+* ADTs have a deep connection to the algebra you know.
+
+--
+
+* you can use this connection to prove fun facts about types.
+
+--
+
+* you can also use it to pad talks and look clever.
+
+---
+class: center, middle
+name: closing
 
 # In closing
 
@@ -3417,13 +5644,15 @@ class: center, middle
 
 --
 
-* ADTs and GADTs make illegal values impossible to represent.
+* ADTs make data structures simpler and safer.
+
 --
 
-* They allow the compiler to ensure we're dealing with all necessary cases.
+* So do GADTs, only more so.
+
 --
 
-* But only necessary cases.
+* Thinking about data structures that way will have a lasting impact on the way you write code.
 
 ---
 
@@ -3432,12 +5661,6 @@ class: center, middle
 # Questions?
 
 Nicolas Rinaudo • [@NicolasRinaudo] • [Besedo]
-
----
-## Bonus Material!
-
-* [The algebra of types](./algebra-of-types.html)
-* [What does discriminated mean?](./union-types.html)
 
 [Besedo]:https://twitter.com/besedo_official
 [@NicolasRinaudo]:https://twitter.com/NicolasRinaudo

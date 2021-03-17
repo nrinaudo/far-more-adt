@@ -1,0 +1,34 @@
+digraph {
+    bgcolor=transparent
+
+    // Default theme: enabled
+    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
+    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+
+    List[label="List²[Boolean]" fillcolor="#dddddd" color="#dddddd" fontcolor="#eeeeee"]
+
+    List0[label="List₀[Boolean]" fillcolor="#dddddd" color="#dddddd" fontcolor="#eeeeee"]
+    List1[label="List₁[Boolean]" fillcolor="#dddddd" color="#dddddd" fontcolor="#eeeeee"]
+    List2[label="List₂[Boolean]" fillcolor="#dddddd" color="#dddddd" fontcolor="#eeeeee"]
+
+    Nil[fillcolor="#ffffff" fontcolor="#586E75"]
+    true[label="true :: Nil" fillcolor="#ffffff" fontcolor="#586E75"]
+    false[label="false :: Nil" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    true_true[label="true :: true :: Nil" fillcolor="#ffffff" fontcolor="#586E75"]
+    true_false[label="true :: false :: Nil" fillcolor="#ffffff" fontcolor="#586E75"]
+    false_true[label="false :: true :: Nil" fillcolor="#ffffff" fontcolor="#586E75"]
+    false_false[label="false :: false :: Nil" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    List -> List0[fillcolor="#dddddd" color="#dddddd"]
+    List -> List1[fillcolor="#dddddd" color="#dddddd"]
+    List -> List2[fillcolor="#dddddd" color="#dddddd"]
+
+    List0 -> Nil[fillcolor="#dddddd" color="#dddddd"]
+    List1 -> true[fillcolor="#dddddd" color="#dddddd"]
+    List1 -> false[fillcolor="#dddddd" color="#dddddd"]
+    List2 -> true_true[fillcolor="#dddddd" color="#dddddd"]
+    List2 -> true_false[fillcolor="#dddddd" color="#dddddd"]
+    List2 -> false_true[fillcolor="#dddddd" color="#dddddd"]
+    List2 -> false_false[fillcolor="#dddddd" color="#dddddd"]
+}

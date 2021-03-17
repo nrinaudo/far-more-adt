@@ -1,0 +1,19 @@
+digraph {
+    bgcolor=transparent
+
+    // Default theme: enabled
+    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
+    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+
+    AandUnit[label="A ⋀ Unit"]
+    AndAUnit[label="aᵢ ⋀ ()" fillcolor="#ffffff" fontcolor="#586E75"]
+
+    AandUnit -> AndAUnit
+
+    a[label="aᵢ" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+
+    a -> A[dir=back style=invis]
+
+    AndAUnit -> a[style=invis]
+    a -> AndAUnit[style=invis]
+}

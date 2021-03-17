@@ -1,0 +1,32 @@
+digraph {
+    bgcolor=transparent
+
+    // Default theme: enabled
+    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
+    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+
+    LeftAssoc[label="A ⋁ (B ⋁ C)"]
+    LeftA[label="Left(aᵢ)" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    RightLeftB[label="Right(Left(bⱼ))" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    RightRightC[label="Right(Right(cₖ))" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+
+    LeftAssoc -> LeftA[style=invis]
+    LeftAssoc -> RightLeftB[style=invis]
+    LeftAssoc -> RightRightC[style=invis]
+
+    RightAssoc[label="(A ⋁ B) ⋁ C"]
+    LeftLeftA[label="Left(Left(aᵢ))" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    LeftRightB[label="Left(Right(bⱼ))" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    RightC[label="Right(cₖ)" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+
+    LeftLeftA -> RightAssoc[dir=back style=invis]
+    LeftRightB -> RightAssoc[dir=back style=invis]
+    RightC -> RightAssoc[dir=back style=invis]
+
+    LeftA -> LeftLeftA[style=invis]
+    RightLeftB -> LeftRightB[style=invis]
+    RightRightC -> RightC[style=invis]
+    LeftLeftA -> LeftA[style=invis]
+    LeftRightB -> RightLeftB[style=invis]
+    RightC -> RightRightC[style=invis]
+}
