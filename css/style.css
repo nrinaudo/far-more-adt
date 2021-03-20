@@ -85,7 +85,7 @@ table {
 }
 
 th {
-    background: #2980b9;
+    background: #586E75;
     color:      #ecf0f4;
 }
 
@@ -146,13 +146,6 @@ th .remark-inline-code {
     padding-bottom  : 1px;
 }
 
-.highlight .remark-inline-code, .highlight .remark-code {
-    color:         inherit;
-    background:    inherit;
-    border:        1px solid #52f2c5;
-    padding-bottom: 0;
-}
-
 .annotated img {
     float   : right;
     position: absolute;
@@ -164,7 +157,7 @@ img {
     max-width: 100%;
 }
 
-.diff-rm .remark-code-span-highlighted, .highlight {
+.diff-rm .remark-code-span-highlighted {
     background-color: #fdb8c0;
 }
 
@@ -173,7 +166,7 @@ img {
     position: relative;
 }
 
-.diff-add .remark-code-span-highlighted, .highlight {
+.diff-add .remark-code-span-highlighted {
     background-color: #acf2bd;
 }
 
