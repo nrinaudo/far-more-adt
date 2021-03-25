@@ -333,10 +333,10 @@ def label(d: Int) =
 ```scala
 def label(d: Int) =
   d match {
-    `case Direction.North ⇒ "north"`
-    case Direction.East  ⇒ "east"
-    case Direction.South ⇒ "south"
-    case Direction.West  ⇒ "west"
+    case `Direction.North` ⇒ "north"
+    case `Direction.East`  ⇒ "east"
+    case `Direction.South` ⇒ "south"
+    case `Direction.West`  ⇒ "west"
   }
 ```
 
@@ -347,38 +347,10 @@ def label(d: Int) =
 ```scala
 def label(d: Int) =
   d match {
-    case Direction.North ⇒ "north"
-    `case Direction.East  ⇒ "east"`
-    case Direction.South ⇒ "south"
-    case Direction.West  ⇒ "west"
-  }
-```
-
----
-
-## Magic values
-
-```scala
-def label(d: Int) =
-  d match {
-    case Direction.North ⇒ "north"
-    case Direction.East  ⇒ "east"
-    `case Direction.South ⇒ "south"`
-    case Direction.West  ⇒ "west"
-  }
-```
-
----
-
-## Magic values
-
-```scala
-def label(d: Int) =
-  d match {
-    case Direction.North ⇒ "north"
-    case Direction.East  ⇒ "east"
-    case Direction.South ⇒ "south"
-    `case Direction.West  ⇒ "west"`
+    case Direction.North ⇒ `"north"`
+    case Direction.East  ⇒ `"east"`
+    case Direction.South ⇒ `"south"`
+    case Direction.West  ⇒ `"west"`
   }
 ```
 
@@ -2213,6 +2185,8 @@ def move(d: Direction) =
 
 ## Key takeaways
 
+--
+
 We've completed our data structure by using:
 
 --
@@ -2248,21 +2222,81 @@ Command = Face
 ## Sum types
 
 ```scala
-Command = Face
-        `⋁` Start
-        `⋁` Stop
-        `⋁` Chain
+Command = `Face`
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
 ```
 
 ---
 
 ## Sum types
 
+```scala
+Command = Face
+        ⋁ `Start`
+        ⋁ Stop
+        ⋁ Chain
+```
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ `Stop`
+        ⋁ Chain
+```
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ `Chain`
+```
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
+```
+
 > A sum type is a discriminated union of values, and can be thought of as an `OR` on types.
 
 ---
 
 ## Sum types
+
+```scala
+Command = Face
+        `⋁` Start
+        `⋁` Stop
+        `⋁` Chain
+```
+
+> A sum type is a discriminated union of values, and can be thought of as an .highlight[`OR`] on types.
+
+---
+
+## Sum types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
+```
 
 > A sum type is a .highlight[discriminated] union of values, and can be thought of as an `OR` on types.
 
@@ -2394,9 +2428,26 @@ union int_or_string {
 
 ## Manually discriminated union types
 
+.diff-add[
+```c
+union int_or_string {
+*   `enum typetag discriminator;`
+*
+    int   as_int;
+    char* as_string;
+};
+```
+]
+
+---
+
+## Manually discriminated union types
+
 .diff-rm[
 ```c
 *&#x200B;`union` int_or_string {
+    enum typetag discriminator;
+
     int   as_int;
     char* as_string;
 };
@@ -2410,21 +2461,8 @@ union int_or_string {
 .diff-add[
 ```c
 *&#x200B;`struct` int_or_string {
-    int   as_int;
-    char* as_string;
-};
-```
-]
+    enum typetag discriminator;
 
----
-
-## Manually discriminated union types
-
-.diff-add[
-```c
-struct int_or_string {
-*   `enum typetag discriminator;`
-*
     int   as_int;
     char* as_string;
 };
@@ -2604,6 +2642,13 @@ void print_union(struct int_or_string e) {
 
 ## Sum types
 
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Chain
+```
+
 > A sum type is a .highlight[discriminated] union of values, and can be thought of as an `OR` on types.
 
 ---
@@ -2657,14 +2702,45 @@ Command = Face
 Command = Face
         ⋁ Start
         ⋁ Stop
-        ⋁ Command `⋀` Command
+        ⋁ `Command` ⋀ Command
 ```
 
 ---
 
 ## Product types
 
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Command ⋀ `Command`
+```
+
+---
+
+## Product types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Command ⋀ Command
+```
+
 > A product type is an aggregation of values, and can be thought of as an `AND` on types.
+
+---
+
+## Product types
+
+```scala
+Command = Face
+        ⋁ Start
+        ⋁ Stop
+        ⋁ Command `⋀` Command
+```
+
+> A product type is an aggregation of values, and can be thought of as an .highlight[`AND`] on types.
 
 ---
 
@@ -2715,6 +2791,8 @@ Command = Face
 ---
 
 ## Key takeaways
+
+--
 
 Algebraic Data Types are:
 
@@ -2928,6 +3006,25 @@ object Command {
 
 ## Tracking state
 
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  `Face`(dir: Direction) extends Command
+  case object Start                extends Command
+  case object Stop                 extends Command
+
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
+}
+```
+
+---
+
+## Tracking state
+
 .diff-add[
 ```scala
 sealed trait Command[Before, After]
@@ -2949,6 +3046,25 @@ object Command {
 
 ## Tracking state
 
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object `Start`                extends Command
+  case object Stop                 extends Command
+
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
+}
+```
+
+---
+
+## Tracking state
+
 .diff-add[
 ```scala
 sealed trait Command[Before, After]
@@ -2965,6 +3081,26 @@ object Command {
 }
 ```
 ]
+
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object `Stop`                 extends Command
+
+  case class Chain(
+    cmd1: Command,
+    cmd2: Command
+  ) extends Command
+}
+```
 
 ---
 
@@ -3047,6 +3183,25 @@ object Command {
 }
 ```
 ]
+
+---
+
+## Tracking state
+
+```scala
+sealed trait Command[Before, After]
+
+object Command {
+  case class  Face(dir: Direction) extends Command[Idle, Idle]
+  case object Start                extends Command[Idle, Moving]
+  case object Stop                 extends Command[Moving, Idle]
+
+  case class Chain(
+    cmd1: Command[A, `B`],
+    cmd2: Command[`B`, C]
+  ) extends Command
+}
+```
 
 ---
 
@@ -3447,6 +3602,19 @@ def movingLabel(cmd: Command[Moving, _]): String =
     case Command.Stop              => "stop"
  // case _: Command.Chain[_, _, _] => "chain"
   }
+```
+
+
+---
+
+## Smarter exhaustivity checks
+
+```scala
+def movingLabel(cmd: Command[Moving, _]): String =
+  cmd match {
+    case Command.Stop              => "stop"
+ // case _: Command.Chain[_, _, _] => "chain"
+  }
 //          cmd match {
 //          ^
 // On line 3: warning: match may not be exhaustive.
@@ -3574,6 +3742,8 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ---
 
 ## Key takeaways
+
+--
 
 We used type constraints on our sum type's members to:
 
@@ -4759,6 +4929,8 @@ case class ::[A](
 
 ## Key takeaways
 
+--
+
 * ADTs have a deep connection to the algebra you know.
 
 --
@@ -4789,7 +4961,7 @@ name: closing
 
 --
 
-*
+* Thinking about data structures that way will have a lasting impact on the way you write code.
 
 ---
 
