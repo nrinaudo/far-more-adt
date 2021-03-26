@@ -2519,6 +2519,36 @@ struct int_or_string {
 ## Manually discriminated union types
 
 ```c
+struct int_or_string {
+    enum typetag discriminator;
+
+*   union {
+*       int   as_int;
+*       char* as_string;
+*   } value;
+};
+```
+
+---
+
+## Manually discriminated union types
+
+```c
+struct int_or_string {
+*   enum typetag discriminator;
+
+    union {
+        int   as_int;
+        char* as_string;
+    } value;
+};
+```
+
+---
+
+## Manually discriminated union types
+
+```c
 #include<stdio.h>
 
 void print_union(union int_or_string e) {
@@ -4409,7 +4439,7 @@ Haskell makes GADTs very clear:
 ## What now?
 
 - [Conclusion](#closing)
-- [Algebra of TYpes](#algebra_of_types)
+- [Algebra of Types](#algebra_of_types)
 
 
 ---
