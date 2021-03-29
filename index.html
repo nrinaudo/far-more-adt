@@ -2473,14 +2473,16 @@ union int_or_string {
 
 ## Manually discriminated union types
 
+.diff-rm[
 ```c
 struct int_or_string {
     enum typetag discriminator;
 
-*   int   as_int;
-*   char* as_string;
+*   `int   as_int;`
+*   `char* as_string;`
 };
 ```
+]
 
 ---
 
@@ -2492,8 +2494,8 @@ struct int_or_string {
     enum typetag discriminator;
 
 *   `union {`
-*   `    `int   as_int;
-*   `    `char* as_string;
+*   `    int   as_int;`
+*   `    char* as_string;`
 *   `} value;`
 };
 ```
@@ -4458,115 +4460,182 @@ name: algebra_of_types
 
 ## Cardinality
 
-.fix3[
- Type            | Inhabitants     | Cardinality
------------------|-----------------|-------------
- `Nothing`      | &nbsp;          | ???
-]
+.center[![Nothing](img/nothing_novalue.svg)]
 
 ---
 
 ## Cardinality
 
-.fix3[
- Type            | Inhabitants     | Cardinality
------------------|-----------------|-------------
- `Nothing`      | &nbsp;          | \\(0\\)
-]
+.center[![Nothing](img/nothing.svg)]
+
+--
+
+\\(\vert Nothing \\vert = 0\\)
 
 ---
 
 ## Cardinality
 
-.fix3[
- Type            | Inhabitants     | Cardinality
------------------|-----------------|-------------
- `Nothing`      | &nbsp;          | \\(0\\)
- `Unit`          | `()`           | ???
-]
+.center[![Unit](img/unit_novalue.svg)]
+
 
 ---
 
 ## Cardinality
 
-.fix3[
- Type            | Inhabitants     | Cardinality
------------------|-----------------|-------------
- `Nothing`      | &nbsp;          | \\(0\\)
- `Unit`          | `()`           | \\(1\\)
-]
+.center[![Unit](img/unit.svg)]
+
+--
+
+\\(\vert Unit \\vert = 1\\)
 
 ---
 
 ## Cardinality
 
-.fix3[
- Type            | Inhabitants     | Cardinality
------------------|-----------------|-------------
- `Nothing`      | &nbsp;          | \\(0\\)
- `Unit`          | `()`           | \\(1\\)
- `Boolean`      | `true`, `false`| ???
-]
+.center[![Boolean](img/boolean_novalue.svg)]
 
 ---
 
 ## Cardinality
 
-.fix3[
- Type            | Inhabitants     | Cardinality
------------------|-----------------|-------------
- `Nothing`      | &nbsp;          | \\(0\\)
- `Unit`          | `()`           | \\(1\\)
- `Boolean`      | `true`, `false`| \\(2\\)
-]
+.center[![Boolean](img/boolean_true.svg)]
+
+---
+
+## Cardinality
+
+.center[![Boolean](img/boolean.svg)]
+
+--
+
+\\(\vert Boolean \\vert = 2\\)
 
 ---
 
 ## Sum types
 
- Type            | Inhabitants              | Cardinality
------------------|--------------------------|-------------
- `Either[A, B]` | `Left[A]`, `Right[B]` | ???
+```scala
+sealed trait Or[+A, +B]
+
+object Or {
+  case class Left[A](value: A) extends Or[A, Nothing]
+  case class Right[B](value: B) extends Or[Nothing, B]
+}
+```
 
 ---
 
 ## Sum types
 
- Type            | Inhabitants              | Cardinality
------------------|--------------------------|-------------
- `Either[A, B]` | `Left[A]`, `Right[B]` | ???
- `Left[A]`      | `Left(a: A)`           | ???
- `Right[B]`     | `Right(b: B)`          | ???
+```scala
+sealed trait `Or[+A, +B]`
+
+object Or {
+  case class Left[A](value: A) extends Or[A, Nothing]
+  case class Right[B](value: B) extends Or[Nothing, B]
+}
+```
 
 ---
 
 ## Sum types
 
- Type            | Inhabitants              | Cardinality
------------------|--------------------------|-------------
- `Either[A, B]` | `Left[A]`, `Right[B]` | ???
- `Left[A]`      | `Left(a: A)`            | \\(\vert A \\vert\\)
- `Right[B]`     | `Right(b: B)`          | ???
+```scala
+sealed trait Or[+A, +B]
+
+object Or {
+  case class `Left[A]`(value: A) extends Or[A, Nothing]
+  case class Right[B](value: B) extends Or[Nothing, B]
+}
+```
 
 ---
 
 ## Sum types
 
- Type            | Inhabitants              | Cardinality
------------------|--------------------------|-------------
- `Either[A, B]` | `Left[A]`, `Right[B]` | ???
- `Left[A]`      | `Left(a: A)`            | \\(\vert A \\vert\\)
- `Right[B]`     | `Right(b: B)`          | \\(\vert B \\vert\\)
+```scala
+sealed trait Or[+A, +B]
+
+object Or {
+  case class Left[A](`value: A`) extends Or[A, Nothing]
+  case class Right[B](value: B) extends Or[Nothing, B]
+}
+```
 
 ---
 
 ## Sum types
 
- Type            | Inhabitants               | Cardinality
------------------|---------------------------|-------------
- `Either[A, B]` | `Left[A]`, `Right[B]`  | \\(\vert A \vert + \vert B \\vert\\)
- `Left[A]`      | `Left(a: A)`            | \\(\vert A \\vert\\)
- `Right[B]`     | `Right(b: B)`          | \\(\vert B \\vert\\)
+```scala
+sealed trait Or[+A, +B]
+
+object Or {
+  case class Left[A](value: A) extends Or[A, Nothing]
+  case class `Right[B]`(value: B) extends Or[Nothing, B]
+}
+```
+
+---
+
+## Sum types
+
+```scala
+sealed trait Or[+A, +B]
+
+object Or {
+  case class Left[A](value: A) extends Or[A, Nothing]
+  case class Right[B](`value: B`) extends Or[Nothing, B]
+}
+```
+
+---
+
+## Sum types
+
+```scala
+type IntOrString = Int Or String
+```
+
+---
+
+## Sum types
+
+```scala
+type IntOrString = `Int Or String`
+```
+
+---
+
+## Sum types
+
+.center[![Or](img/or_novalue.svg)]
+
+---
+
+## Sum types
+
+.center[![Or](img/or_left.svg)]
+
+--
+
+\\(\vert A \mathbin{Or} B \\vert = \vert A \vert ...\\)
+
+---
+
+## Sum types
+
+.center[![Or](img/or.svg)]
+
+\\(\vert A \mathbin{Or} B \\vert = \vert A \vert ...\\)
+
+---
+
+## Sum types
+
+.center[![Or](img/or.svg)]
+
+\\(\vert A \mathbin{Or} B \\vert = \vert A \vert + \vert B \vert \\)
 
 ---
 
@@ -4586,7 +4655,7 @@ name: algebra_of_types
 
 .section[Types]
 ```scala
-Either[Unit, Unit] ~= Boolean
+Unit Or Unit ~= Boolean
 ```
 
 --
@@ -4600,6 +4669,12 @@ Either[Unit, Unit] ~= Boolean
 
 ---
 
+## Sum types
+
+.center[![Unit Or Unit = Boolean](img/unit_or_unit.svg)]
+
+---
+
 ## Sum types associativity
 
 .section[Algebra]
@@ -4610,7 +4685,7 @@ Either[Unit, Unit] ~= Boolean
 
 .section[Types]
 ```scala
-Either[A, Either[B, C]] ~= Either[Either[A, B], C]
+A Or (B Or C) ~= (A Or B) Or C
 ```
 
 --
@@ -4625,6 +4700,10 @@ Either[A, Either[B, C]] ~= Either[Either[A, B], C]
 
 ---
 
+.center[![A Or B Or C](img/a_or_b_or_c.svg)]
+
+---
+
 ## Sum types commutativity
 
 .section[Algebra]
@@ -4636,7 +4715,7 @@ Either[A, Either[B, C]] ~= Either[Either[A, B], C]
 .section[Types]
 
 ```scala
-Either[A, B] ~= Either[B, A]
+A Or B ~= B Or A
 ```
 
 --
@@ -4661,7 +4740,7 @@ Either[A, B] ~= Either[B, A]
 .section[Types]
 
 ```scala
-Either[A, Nothing] ~= A
+A Or Nothing ~= A
 ```
 
 --
@@ -4676,18 +4755,91 @@ Either[A, Nothing] ~= A
 
 ## Product types
 
- Type      | Inhabitants      | Cardinality
------------|------------------|-------------
- `(A, B)` | `(a: A, b: B)` | ???
+```scala
+case class And[A, B](left: A, right: B)
+```
 
 ---
 
 ## Product types
 
- Type      | Inhabitants      | Cardinality
------------|------------------|-------------
- `(A, B)` | `(a: A, b: B)` | \\(\\vert A \\vert \times \\vert B \\vert\\)
+```scala
+case class `And[A, B]`(left: A, right: B)
+```
 
+---
+
+## Product types
+
+```scala
+case class And[A, B](`left: A`, right: B)
+```
+
+---
+
+## Product types
+
+```scala
+case class And[A, B](left: A, `right: B`)
+```
+
+
+---
+
+## Product types
+
+```scala
+type IntAndString = Int And String
+```
+
+---
+
+## Product types
+
+```scala
+type IntAndString = `Int And String`
+```
+
+---
+
+## Product types
+
+.center[![And](img/and_novalue.svg)]
+
+---
+
+## Product types
+
+.center[![And](img/and_a1.svg)]
+
+--
+
+\\(\vert A \mathbin{And} B \\vert = \vert B \vert ... \\)
+
+---
+
+## Product types
+
+.center[![And](img/and_an.svg)]
+
+\\(\vert A \mathbin{And} B \\vert = \vert B \vert ... \\)
+
+---
+
+## Product types
+
+.center[![And](img/and.svg)]
+
+
+\\(\vert A \mathbin{And} B \\vert = \vert B \vert ... \\)
+
+---
+
+## Product types
+
+.center[![And](img/and.svg)]
+
+\\(\vert A \mathbin{And} B \\vert = \vert A \vert \times \vert B \vert \\)
 
 ---
 
@@ -4702,7 +4854,7 @@ Either[A, Nothing] ~= A
 .section[Types]
 
 ```scala
-Either[A, A] ~= (Boolean, A)
+A Or A ~= Boolean And A
 ```
 
 --
@@ -4727,7 +4879,7 @@ Either[A, A] ~= (Boolean, A)
 .section[Types]
 
 ```scala
-((A, B), C) ~= (A, (B, C))
+(And And B) And C ~= A And (B And C)
 ```
 
 --
@@ -4752,7 +4904,7 @@ Either[A, A] ~= (Boolean, A)
 .section[Types]
 
 ```scala
-(A, B) ~= (B, A)
+A And B ~= B And A
 ```
 
 --
@@ -4777,7 +4929,7 @@ Either[A, A] ~= (Boolean, A)
 .section[Types]
 
 ```scala
-(A, Unit) ~= A
+A And Unit ~= A
 ```
 
 --
