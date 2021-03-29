@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Nothing</title>
 <path fill="#586e75" stroke="#586e75" d="M56,-108C56,-108 12,-108 12,-108 6,-108 0,-102 0,-96 0,-96 0,-84 0,-84 0,-78 6,-72 12,-72 12,-72 56,-72 56,-72 62,-72 68,-78 68,-84 68,-84 68,-96 68,-96 68,-102 62,-108 56,-108"/>
-<text text-anchor="middle" x="34" y="-86.3" font-family="Inter" font-size="14.00" fill="#ffffff">Nothing</text>
+<text text-anchor="middle" x="34" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">Nothing</text>
 </g>
 <!-- na -->
 <!-- Nothing&#45;&gt;na -->

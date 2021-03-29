@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>AndAB</title>
 <path fill="#586e75" stroke="#586e75" d="M392.5,-108C392.5,-108 346.5,-108 346.5,-108 340.5,-108 334.5,-102 334.5,-96 334.5,-96 334.5,-84 334.5,-84 334.5,-78 340.5,-72 346.5,-72 346.5,-72 392.5,-72 392.5,-72 398.5,-72 404.5,-78 404.5,-84 404.5,-84 404.5,-96 404.5,-96 404.5,-102 398.5,-108 392.5,-108"/>
-<text text-anchor="middle" x="369.5" y="-86.3" font-family="Inter" font-size="14.00" fill="#ffffff">A And B</text>
+<text text-anchor="middle" x="369.5" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A And B</text>
 </g>
 <!-- AndA1B1 -->
 <!-- AndAB&#45;&gt;AndA1B1 -->

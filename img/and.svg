@@ -12,13 +12,13 @@
 <g id="node1" class="node">
 <title>AndAB</title>
 <path fill="#586e75" stroke="#586e75" d="M392.5,-108C392.5,-108 346.5,-108 346.5,-108 340.5,-108 334.5,-102 334.5,-96 334.5,-96 334.5,-84 334.5,-84 334.5,-78 340.5,-72 346.5,-72 346.5,-72 392.5,-72 392.5,-72 398.5,-72 404.5,-78 404.5,-84 404.5,-84 404.5,-96 404.5,-96 404.5,-102 398.5,-108 392.5,-108"/>
-<text text-anchor="middle" x="369.5" y="-86.3" font-family="Inter" font-size="14.00" fill="#ffffff">A And B</text>
+<text text-anchor="middle" x="369.5" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A And B</text>
 </g>
 <!-- AndA1B1 -->
 <g id="node2" class="node">
 <title>AndA1B1</title>
 <path fill="#ffffff" stroke="#586e75" d="M79,-36C79,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 79,0 79,0 85,0 91,-6 91,-12 91,-12 91,-24 91,-24 91,-30 85,-36 79,-36"/>
-<text text-anchor="middle" x="45.5" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">And(a1, b1)</text>
+<text text-anchor="middle" x="45.5" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">And(a1, b1)</text>
 </g>
 <!-- AndAB&#45;&gt;AndA1B1 -->
 <g id="edge1" class="edge">
@@ -30,7 +30,7 @@
 <g id="node3" class="node">
 <title>AndA1BE</title>
 <path fill="#ffffff" stroke="#586e75" d="M183.5,-36C183.5,-36 121.5,-36 121.5,-36 115.5,-36 109.5,-30 109.5,-24 109.5,-24 109.5,-12 109.5,-12 109.5,-6 115.5,0 121.5,0 121.5,0 183.5,0 183.5,0 189.5,0 195.5,-6 195.5,-12 195.5,-12 195.5,-24 195.5,-24 195.5,-30 189.5,-36 183.5,-36"/>
-<text text-anchor="middle" x="152.5" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">And(a1, ...)</text>
+<text text-anchor="middle" x="152.5" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">And(a1, ...)</text>
 </g>
 <!-- AndAB&#45;&gt;AndA1BE -->
 <g id="edge2" class="edge">
@@ -42,7 +42,7 @@
 <g id="node4" class="node">
 <title>AndA1BN</title>
 <path fill="#ffffff" stroke="#586e75" d="M297,-36C297,-36 226,-36 226,-36 220,-36 214,-30 214,-24 214,-24 214,-12 214,-12 214,-6 220,0 226,0 226,0 297,0 297,0 303,0 309,-6 309,-12 309,-12 309,-24 309,-24 309,-30 303,-36 297,-36"/>
-<text text-anchor="middle" x="261.5" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">And(a1, bN)</text>
+<text text-anchor="middle" x="261.5" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">And(a1, bN)</text>
 </g>
 <!-- AndAB&#45;&gt;AndA1BN -->
 <g id="edge3" class="edge">
@@ -54,7 +54,7 @@
 <g id="node5" class="node">
 <title>AndAEBE</title>
 <path fill="#ffffff" stroke="#586e75" d="M399.5,-36C399.5,-36 339.5,-36 339.5,-36 333.5,-36 327.5,-30 327.5,-24 327.5,-24 327.5,-12 327.5,-12 327.5,-6 333.5,0 339.5,0 339.5,0 399.5,0 399.5,0 405.5,0 411.5,-6 411.5,-12 411.5,-12 411.5,-24 411.5,-24 411.5,-30 405.5,-36 399.5,-36"/>
-<text text-anchor="middle" x="369.5" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">And(..., ...)</text>
+<text text-anchor="middle" x="369.5" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">And(..., ...)</text>
 </g>
 <!-- AndAB&#45;&gt;AndAEBE -->
 <g id="edge4" class="edge">
@@ -66,7 +66,7 @@
 <g id="node6" class="node">
 <title>AndANB1</title>
 <path fill="#ffffff" stroke="#586e75" d="M513.5,-36C513.5,-36 441.5,-36 441.5,-36 435.5,-36 429.5,-30 429.5,-24 429.5,-24 429.5,-12 429.5,-12 429.5,-6 435.5,0 441.5,0 441.5,0 513.5,0 513.5,0 519.5,0 525.5,-6 525.5,-12 525.5,-12 525.5,-24 525.5,-24 525.5,-30 519.5,-36 513.5,-36"/>
-<text text-anchor="middle" x="477.5" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">And(aN, b1)</text>
+<text text-anchor="middle" x="477.5" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">And(aN, b1)</text>
 </g>
 <!-- AndAB&#45;&gt;AndANB1 -->
 <g id="edge5" class="edge">
@@ -78,7 +78,7 @@
 <g id="node7" class="node">
 <title>AndANBE</title>
 <path fill="#ffffff" stroke="#586e75" d="M623.5,-36C623.5,-36 555.5,-36 555.5,-36 549.5,-36 543.5,-30 543.5,-24 543.5,-24 543.5,-12 543.5,-12 543.5,-6 549.5,0 555.5,0 555.5,0 623.5,0 623.5,0 629.5,0 635.5,-6 635.5,-12 635.5,-12 635.5,-24 635.5,-24 635.5,-30 629.5,-36 623.5,-36"/>
-<text text-anchor="middle" x="589.5" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">And(aN, ...)</text>
+<text text-anchor="middle" x="589.5" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">And(aN, ...)</text>
 </g>
 <!-- AndAB&#45;&gt;AndANBE -->
 <g id="edge6" class="edge">
@@ -90,7 +90,7 @@
 <g id="node8" class="node">
 <title>AndANBN</title>
 <path fill="#ffffff" stroke="#586e75" d="M741.5,-36C741.5,-36 665.5,-36 665.5,-36 659.5,-36 653.5,-30 653.5,-24 653.5,-24 653.5,-12 653.5,-12 653.5,-6 659.5,0 665.5,0 665.5,0 741.5,0 741.5,0 747.5,0 753.5,-6 753.5,-12 753.5,-12 753.5,-24 753.5,-24 753.5,-30 747.5,-36 741.5,-36"/>
-<text text-anchor="middle" x="703.5" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">And(aN, bN)</text>
+<text text-anchor="middle" x="703.5" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">And(aN, bN)</text>
 </g>
 <!-- AndAB&#45;&gt;AndANBN -->
 <g id="edge7" class="edge">

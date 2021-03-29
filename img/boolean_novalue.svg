@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Boolean</title>
 <path fill="#586e75" stroke="#586e75" d="M86,-108C86,-108 40,-108 40,-108 34,-108 28,-102 28,-96 28,-96 28,-84 28,-84 28,-78 34,-72 40,-72 40,-72 86,-72 86,-72 92,-72 98,-78 98,-84 98,-84 98,-96 98,-96 98,-102 92,-108 86,-108"/>
-<text text-anchor="middle" x="63" y="-86.3" font-family="Inter" font-size="14.00" fill="#ffffff">Boolean</text>
+<text text-anchor="middle" x="63" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">Boolean</text>
 </g>
 <!-- true -->
 <!-- Boolean&#45;&gt;true -->

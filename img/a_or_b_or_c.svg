@@ -12,13 +12,13 @@
 <g id="node1" class="node">
 <title>LeftAssoc</title>
 <path fill="#586e75" stroke="#586e75" d="M201.5,-252C201.5,-252 122.5,-252 122.5,-252 116.5,-252 110.5,-246 110.5,-240 110.5,-240 110.5,-228 110.5,-228 110.5,-222 116.5,-216 122.5,-216 122.5,-216 201.5,-216 201.5,-216 207.5,-216 213.5,-222 213.5,-228 213.5,-228 213.5,-240 213.5,-240 213.5,-246 207.5,-252 201.5,-252"/>
-<text text-anchor="middle" x="162" y="-230.3" font-family="Inter" font-size="14.00" fill="#ffffff">A Or (B Or C)</text>
+<text text-anchor="middle" x="162" y="-230.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A Or (B Or C)</text>
 </g>
 <!-- LeftA -->
 <g id="node2" class="node">
 <title>LeftA</title>
 <path fill="#ffffff" stroke="#586e75" d="M69,-180C69,-180 31,-180 31,-180 25,-180 19,-174 19,-168 19,-168 19,-156 19,-156 19,-150 25,-144 31,-144 31,-144 69,-144 69,-144 75,-144 81,-150 81,-156 81,-156 81,-168 81,-168 81,-174 75,-180 69,-180"/>
-<text text-anchor="middle" x="50" y="-158.3" font-family="Inter" font-size="14.00" fill="#586e75">Left(a)</text>
+<text text-anchor="middle" x="50" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(a)</text>
 </g>
 <!-- LeftAssoc&#45;&gt;LeftA -->
 <g id="edge1" class="edge">
@@ -30,7 +30,7 @@
 <g id="node3" class="node">
 <title>RightLeftB</title>
 <path fill="#ffffff" stroke="#586e75" d="M203.5,-180C203.5,-180 120.5,-180 120.5,-180 114.5,-180 108.5,-174 108.5,-168 108.5,-168 108.5,-156 108.5,-156 108.5,-150 114.5,-144 120.5,-144 120.5,-144 203.5,-144 203.5,-144 209.5,-144 215.5,-150 215.5,-156 215.5,-156 215.5,-168 215.5,-168 215.5,-174 209.5,-180 203.5,-180"/>
-<text text-anchor="middle" x="162" y="-158.3" font-family="Inter" font-size="14.00" fill="#586e75">Right(Left(b))</text>
+<text text-anchor="middle" x="162" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Right(Left(b))</text>
 </g>
 <!-- LeftAssoc&#45;&gt;RightLeftB -->
 <g id="edge2" class="edge">
@@ -42,7 +42,7 @@
 <g id="node4" class="node">
 <title>RightRightC</title>
 <path fill="#ffffff" stroke="#586e75" d="M334.5,-180C334.5,-180 245.5,-180 245.5,-180 239.5,-180 233.5,-174 233.5,-168 233.5,-168 233.5,-156 233.5,-156 233.5,-150 239.5,-144 245.5,-144 245.5,-144 334.5,-144 334.5,-144 340.5,-144 346.5,-150 346.5,-156 346.5,-156 346.5,-168 346.5,-168 346.5,-174 340.5,-180 334.5,-180"/>
-<text text-anchor="middle" x="290" y="-158.3" font-family="Inter" font-size="14.00" fill="#586e75">Right(Right(c))</text>
+<text text-anchor="middle" x="290" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Right(Right(c))</text>
 </g>
 <!-- LeftAssoc&#45;&gt;RightRightC -->
 <g id="edge3" class="edge">
@@ -54,7 +54,7 @@
 <g id="node6" class="node">
 <title>LeftLeftA</title>
 <path fill="#ffffff" stroke="#586e75" d="M88,-108C88,-108 12,-108 12,-108 6,-108 0,-102 0,-96 0,-96 0,-84 0,-84 0,-78 6,-72 12,-72 12,-72 88,-72 88,-72 94,-72 100,-78 100,-84 100,-84 100,-96 100,-96 100,-102 94,-108 88,-108"/>
-<text text-anchor="middle" x="50" y="-86.3" font-family="Inter" font-size="14.00" fill="#586e75">Left(Left(a))</text>
+<text text-anchor="middle" x="50" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(Left(a))</text>
 </g>
 <!-- LeftA&#45;&gt;LeftLeftA -->
 <g id="edge7" class="edge">
@@ -66,7 +66,7 @@
 <g id="node7" class="node">
 <title>LeftRightB</title>
 <path fill="#ffffff" stroke="#586e75" d="M213.5,-108C213.5,-108 130.5,-108 130.5,-108 124.5,-108 118.5,-102 118.5,-96 118.5,-96 118.5,-84 118.5,-84 118.5,-78 124.5,-72 130.5,-72 130.5,-72 213.5,-72 213.5,-72 219.5,-72 225.5,-78 225.5,-84 225.5,-84 225.5,-96 225.5,-96 225.5,-102 219.5,-108 213.5,-108"/>
-<text text-anchor="middle" x="172" y="-86.3" font-family="Inter" font-size="14.00" fill="#586e75">Left(Right(b))</text>
+<text text-anchor="middle" x="172" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(Right(b))</text>
 </g>
 <!-- RightLeftB&#45;&gt;LeftRightB -->
 <g id="edge8" class="edge">
@@ -78,7 +78,7 @@
 <g id="node8" class="node">
 <title>RightC</title>
 <path fill="#ffffff" stroke="#586e75" d="M312,-108C312,-108 268,-108 268,-108 262,-108 256,-102 256,-96 256,-96 256,-84 256,-84 256,-78 262,-72 268,-72 268,-72 312,-72 312,-72 318,-72 324,-78 324,-84 324,-84 324,-96 324,-96 324,-102 318,-108 312,-108"/>
-<text text-anchor="middle" x="290" y="-86.3" font-family="Inter" font-size="14.00" fill="#586e75">Right(c)</text>
+<text text-anchor="middle" x="290" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Right(c)</text>
 </g>
 <!-- RightRightC&#45;&gt;RightC -->
 <g id="edge9" class="edge">
@@ -90,7 +90,7 @@
 <g id="node5" class="node">
 <title>RightAssoc</title>
 <path fill="#586e75" stroke="#586e75" d="M211.5,-36C211.5,-36 132.5,-36 132.5,-36 126.5,-36 120.5,-30 120.5,-24 120.5,-24 120.5,-12 120.5,-12 120.5,-6 126.5,0 132.5,0 132.5,0 211.5,0 211.5,0 217.5,0 223.5,-6 223.5,-12 223.5,-12 223.5,-24 223.5,-24 223.5,-30 217.5,-36 211.5,-36"/>
-<text text-anchor="middle" x="172" y="-14.3" font-family="Inter" font-size="14.00" fill="#ffffff">(A Or B) Or C</text>
+<text text-anchor="middle" x="172" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">(A Or B) Or C</text>
 </g>
 <!-- LeftLeftA&#45;&gt;LeftA -->
 <g id="edge10" class="edge">

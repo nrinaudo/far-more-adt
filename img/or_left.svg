@@ -12,13 +12,13 @@
 <g id="node1" class="node">
 <title>OrAB</title>
 <path fill="#586e75" stroke="#586e75" d="M269.5,-108C269.5,-108 234.5,-108 234.5,-108 228.5,-108 222.5,-102 222.5,-96 222.5,-96 222.5,-84 222.5,-84 222.5,-78 228.5,-72 234.5,-72 234.5,-72 269.5,-72 269.5,-72 275.5,-72 281.5,-78 281.5,-84 281.5,-84 281.5,-96 281.5,-96 281.5,-102 275.5,-108 269.5,-108"/>
-<text text-anchor="middle" x="252" y="-86.3" font-family="Inter" font-size="14.00" fill="#ffffff">A Or B</text>
+<text text-anchor="middle" x="252" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A Or B</text>
 </g>
 <!-- LeftA1 -->
 <g id="node2" class="node">
 <title>LeftA1</title>
 <path fill="#ffffff" stroke="#586e75" d="M56,-36C56,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 56,0 56,0 62,0 68,-6 68,-12 68,-12 68,-24 68,-24 68,-30 62,-36 56,-36"/>
-<text text-anchor="middle" x="34" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">Left(a1)</text>
+<text text-anchor="middle" x="34" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(a1)</text>
 </g>
 <!-- OrAB&#45;&gt;LeftA1 -->
 <g id="edge1" class="edge">
@@ -30,7 +30,7 @@
 <g id="node3" class="node">
 <title>LeftAE</title>
 <path fill="#ffffff" stroke="#586e75" d="M139.5,-36C139.5,-36 98.5,-36 98.5,-36 92.5,-36 86.5,-30 86.5,-24 86.5,-24 86.5,-12 86.5,-12 86.5,-6 92.5,0 98.5,0 98.5,0 139.5,0 139.5,0 145.5,0 151.5,-6 151.5,-12 151.5,-12 151.5,-24 151.5,-24 151.5,-30 145.5,-36 139.5,-36"/>
-<text text-anchor="middle" x="119" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">Left(...)</text>
+<text text-anchor="middle" x="119" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(...)</text>
 </g>
 <!-- OrAB&#45;&gt;LeftAE -->
 <g id="edge2" class="edge">
@@ -42,7 +42,7 @@
 <g id="node4" class="node">
 <title>LeftAN</title>
 <path fill="#ffffff" stroke="#586e75" d="M230.5,-36C230.5,-36 181.5,-36 181.5,-36 175.5,-36 169.5,-30 169.5,-24 169.5,-24 169.5,-12 169.5,-12 169.5,-6 175.5,0 181.5,0 181.5,0 230.5,0 230.5,0 236.5,0 242.5,-6 242.5,-12 242.5,-12 242.5,-24 242.5,-24 242.5,-30 236.5,-36 230.5,-36"/>
-<text text-anchor="middle" x="206" y="-14.3" font-family="Inter" font-size="14.00" fill="#586e75">Left(aN)</text>
+<text text-anchor="middle" x="206" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(aN)</text>
 </g>
 <!-- OrAB&#45;&gt;LeftAN -->
 <g id="edge3" class="edge">
