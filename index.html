@@ -4625,7 +4625,17 @@ type IntOrString = Int ⋁ String
 
 .center[![⋁](img/or_left.svg)]
 
---
+---
+
+## Sum types
+
+.center[![⋁](img/or.svg)]
+
+---
+
+## Sum types
+
+.center[![⋁](img/or_showa.svg)]
 
 \\(\vert A \lor B \\vert = \vert A \vert \ldots\\)
 
@@ -4633,9 +4643,9 @@ type IntOrString = Int ⋁ String
 
 ## Sum types
 
-.center[![⋁](img/or.svg)]
+.center[![⋁](img/or_showb.svg)]
 
-\\(\vert A \lor B \\vert = \vert A \vert \ldots\\)
+\\(\vert A \lor B \\vert = \vert A \vert + \vert B \vert \\)
 
 ---
 
@@ -5013,6 +5023,31 @@ implicit class AndSyntax[A](a: A) {
 
 ## Product types
 
+```scala
+val ios: Int ⋀ String = 1 ⋀ "foo"
+```
+
+---
+
+## Product types
+
+```scala
+val ios: `Int ⋀ String` = 1 ⋀ "foo"
+```
+
+---
+
+## Product types
+
+```scala
+val ios: Int ⋀ String = `1 ⋀ "foo"`
+```
+
+
+---
+
+## Product types
+
 .center[![⋀](img/and_novalue.svg)]
 
 ---
@@ -5021,17 +5056,11 @@ implicit class AndSyntax[A](a: A) {
 
 .center[![⋀](img/and_a1.svg)]
 
---
-
-\\(\vert A \land B \\vert = \vert B \vert \ldots\\)
-
 ---
 
 ## Product types
 
 .center[![⋀](img/and_an.svg)]
-
-\\(\vert A \land B \\vert = \vert B \vert \ldots\\)
 
 ---
 
@@ -5039,7 +5068,22 @@ implicit class AndSyntax[A](a: A) {
 
 .center[![⋀](img/and.svg)]
 
-\\(\vert A \land B \\vert = \vert B \vert \ldots\\)
+---
+
+## Product types
+
+.center[![⋀](img/and_showa.svg)]
+
+\\(\vert A \land B \\vert = \vert A \vert \ldots\\)
+
+
+---
+
+## Product types
+
+.center[![⋀](img/and_showb.svg)]
+
+\\(\vert A \land B \\vert = \vert A \vert \times \vert B \vert \\)
 
 ---
 
