@@ -2414,7 +2414,6 @@ enum typetag {
 
 ---
 
-
 ## Manually discriminated union types
 
 ```c
@@ -2778,7 +2777,6 @@ Command = Face
 
 ## Product types
 
-
 > An ADT is a sum type of product types [...]
 
 ---
@@ -2839,7 +2837,6 @@ Algebraic Data Types are:
 --
 
 * potentially recursive.
-
 
 ---
 class: center, middle
@@ -3113,7 +3110,6 @@ object Command {
 }
 ```
 ]
-
 
 ---
 
@@ -3636,7 +3632,6 @@ def movingLabel(cmd: Command[Moving, _]): String =
   }
 ```
 
-
 ---
 
 ## Smarter exhaustivity checks
@@ -3853,7 +3848,6 @@ object Command {
 }
 ```
 
-
 ---
 
 ## Sum type
@@ -3898,13 +3892,11 @@ object Command {
 }
 ```
 
-
 ---
 
 ## Witness type
 
 > A witness type describes properties of a sum type's branches at the type level.
-
 
 ---
 
@@ -3962,7 +3954,6 @@ def movingLabel(cmd: Command[Moving, _]): String =
 ## GADT
 
 > A GADT is a sum type with one or more witness types, each equipped with a type equality.
-
 
 ---
 
@@ -4049,7 +4040,6 @@ def safeGet[A](oa: `Some`[A]): A =
  // case `None`    => ???
   }
 ```
-
 
 ---
 
@@ -4443,7 +4433,6 @@ Haskell makes GADTs very clear:
 - [Conclusion](#closing)
 - [Algebra of Types](#algebra_of_types)
 
-
 ---
 class: center, middle
 name: algebra_of_types
@@ -4477,7 +4466,6 @@ name: algebra_of_types
 ## Cardinality
 
 .center[![Unit](img/unit_novalue.svg)]
-
 
 ---
 
@@ -4516,11 +4504,11 @@ name: algebra_of_types
 ## Sum types
 
 ```scala
-sealed trait Or[+A, +B]
+sealed trait ⋁[+A, +B]
 
-object Or {
-  case class Left[A](value: A) extends Or[A, Nothing]
-  case class Right[B](value: B) extends Or[Nothing, B]
+object ⋁ {
+  case class Left[A](value: A) extends (A ⋁ Nothing)
+  case class Right[B](value: B) extends (Nothing ⋁ B)
 }
 ```
 
@@ -4529,11 +4517,11 @@ object Or {
 ## Sum types
 
 ```scala
-sealed trait `Or[+A, +B]`
+sealed trait `⋁[+A, +B]`
 
-object Or {
-  case class Left[A](value: A) extends Or[A, Nothing]
-  case class Right[B](value: B) extends Or[Nothing, B]
+object ⋁ {
+  case class Left[A](value: A) extends (A ⋁ Nothing)
+  case class Right[B](value: B) extends (Nothing ⋁ B)
 }
 ```
 
@@ -4542,11 +4530,11 @@ object Or {
 ## Sum types
 
 ```scala
-sealed trait Or[+A, +B]
+sealed trait ⋁[+A, +B]
 
-object Or {
-  case class `Left[A]`(value: A) extends Or[A, Nothing]
-  case class Right[B](value: B) extends Or[Nothing, B]
+object ⋁ {
+  case class `Left[A]`(value: A) extends (A ⋁ Nothing)
+  case class Right[B](value: B) extends (Nothing ⋁ B)
 }
 ```
 
@@ -4555,11 +4543,11 @@ object Or {
 ## Sum types
 
 ```scala
-sealed trait Or[+A, +B]
+sealed trait ⋁[+A, +B]
 
-object Or {
-  case class Left[A](`value: A`) extends Or[A, Nothing]
-  case class Right[B](value: B) extends Or[Nothing, B]
+object ⋁ {
+  case class Left[A](`value: A`) extends (A ⋁ Nothing)
+  case class Right[B](value: B) extends (Nothing ⋁ B)
 }
 ```
 
@@ -4568,11 +4556,11 @@ object Or {
 ## Sum types
 
 ```scala
-sealed trait Or[+A, +B]
+sealed trait ⋁[+A, +B]
 
-object Or {
-  case class Left[A](value: A) extends Or[A, Nothing]
-  case class `Right[B]`(value: B) extends Or[Nothing, B]
+object ⋁ {
+  case class Left[A](value: A) extends (A ⋁ Nothing)
+  case class `Right[B]`(value: B) extends (Nothing ⋁ B)
 }
 ```
 
@@ -4581,11 +4569,11 @@ object Or {
 ## Sum types
 
 ```scala
-sealed trait Or[+A, +B]
+sealed trait ⋁[+A, +B]
 
-object Or {
-  case class Left[A](value: A) extends Or[A, Nothing]
-  case class Right[B](`value: B`) extends Or[Nothing, B]
+object ⋁ {
+  case class Left[A](value: A) extends (A ⋁ Nothing)
+  case class Right[B](`value: B`) extends (Nothing ⋁ B)
 }
 ```
 
@@ -4594,48 +4582,68 @@ object Or {
 ## Sum types
 
 ```scala
-type IntOrString = Int Or String
+type IntOrString = ⋁[Int, String]
 ```
+
+---
+
+## Sum types
+
+.diff-rm[
+```scala
+*type IntOrString = `⋁[Int, String]`
+```
+]
+
+---
+
+## Sum types
+
+.diff-add[
+```scala
+*type IntOrString = `Int ⋁ String`
+```
+]
 
 ---
 
 ## Sum types
 
 ```scala
-type IntOrString = `Int Or String`
+type IntOrString = Int ⋁ String
 ```
 
 ---
 
 ## Sum types
 
-.center[![Or](img/or_novalue.svg)]
+.center[![⋁](img/or_novalue.svg)]
 
 ---
 
 ## Sum types
 
-.center[![Or](img/or_left.svg)]
+.center[![⋁](img/or_left.svg)]
 
 --
 
-\\(\vert A \mathbin{Or} B \\vert = \vert A \vert \ldots\\)
+\\(\vert A \lor B \\vert = \vert A \vert \ldots\\)
 
 ---
 
 ## Sum types
 
-.center[![Or](img/or.svg)]
+.center[![⋁](img/or.svg)]
 
-\\(\vert A \mathbin{Or} B \\vert = \vert A \vert \ldots\\)
+\\(\vert A \lor B \\vert = \vert A \vert \ldots\\)
 
 ---
 
 ## Sum types
 
-.center[![Or](img/or.svg)]
+.center[![⋁](img/or.svg)]
 
-\\(\vert A \mathbin{Or} B \\vert = \vert A \vert + \vert B \vert \\)
+\\(\vert A \lor B \\vert = \vert A \vert + \vert B \vert \\)
 
 ---
 
@@ -4653,24 +4661,11 @@ type IntOrString = `Int Or String`
 1 + 1 = 2
 ```
 
-.section[Types]
-```scala
-Unit Or Unit ~= Boolean
-```
-
----
-
-## Sum types
-
-.section[Algebra]
-
-```scala
-&#x200B;`1 + 1 = 2`
-```
+--
 
 .section[Types]
 ```scala
-Unit Or Unit ~= Boolean
+Unit ⋁ Unit ~= Boolean
 ```
 
 ---
@@ -4685,7 +4680,7 @@ Unit Or Unit ~= Boolean
 
 .section[Types]
 ```scala
-&#x200B;`Unit` Or `Unit` ~= Boolean
+&#x200B;`Unit` ⋁ `Unit` ~= Boolean
 ```
 
 ---
@@ -4700,7 +4695,7 @@ Unit Or Unit ~= Boolean
 
 .section[Types]
 ```scala
-Unit Or Unit ~= `Boolean`
+Unit ⋁ Unit ~= `Boolean`
 ```
 
 ---
@@ -4715,7 +4710,7 @@ Unit Or Unit ~= `Boolean`
 
 .section[Types]
 ```scala
-Unit `Or` Unit ~= Boolean
+Unit `⋁` Unit ~= Boolean
 ```
 
 ---
@@ -4730,61 +4725,44 @@ Unit `Or` Unit ~= Boolean
 
 .section[Types]
 ```scala
-Unit Or Unit `~=` Boolean
+Unit ⋁ Unit `~=` Boolean
 ```
 
 ---
 
 ## Sum types
 
-.section[Algebra]
-
-```scala
-1 + 1 = 2
-```
-
-.section[Types]
-```scala
-&#x200B;`Unit Or Unit ~= Boolean`
-```
-
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_novalue.svg)]
 
 ---
 
 ## Sum types
 
-.center[![Unit Or Unit = Boolean](img/unit_or_unit_novalue.svg)]
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_left.svg)]
 
 ---
 
 ## Sum types
 
-.center[![Unit Or Unit = Boolean](img/unit_or_unit_left.svg)]
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_left_right.svg)]
 
 ---
 
 ## Sum types
 
-.center[![Unit Or Unit = Boolean](img/unit_or_unit_left_right.svg)]
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_left_right_true.svg)]
 
 ---
 
 ## Sum types
 
-.center[![Unit Or Unit = Boolean](img/unit_or_unit_left_right_true.svg)]
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit_left_right_true_false.svg)]
 
 ---
 
 ## Sum types
 
-.center[![Unit Or Unit = Boolean](img/unit_or_unit_left_right_true_false.svg)]
-
-
----
-
-## Sum types
-
-.center[![Unit Or Unit = Boolean](img/unit_or_unit.svg)]
+.center[![Unit ⋁ Unit = Boolean](img/unit_or_unit.svg)]
 
 ---
 
@@ -4795,547 +4773,281 @@ Unit Or Unit `~=` Boolean
 ```scala
 a + (b + c) = (a + b) + c
 ```
-
-.section[Types]
-```scala
-A Or (B Or C) ~= (A Or B) Or C
-```
-
----
-
-## Sum types associativity
-
-.section[Algebra]
-
-```scala
-&#x200B;`a + (b + c) = (a + b) + c`
-```
-
-.section[Types]
-```scala
-A Or (B Or C) ~= (A Or B) Or C
-```
-
----
-
-## Sum types associativity
-
-.section[Algebra]
-
-```scala
-&#x200B;`a` + (b + c) = (`a` + b) + c
-```
-
-.section[Types]
-```scala
-&#x200B;`A` Or (B Or C) ~= (`A` Or B) Or C
-```
-
----
-
-## Sum types associativity
-
-.section[Algebra]
-
-```scala
-a + (`b` + c) = (a + `b`) + c
-```
-
-.section[Types]
-```scala
-A Or (`B` Or C) ~= (A Or `B`) Or C
-```
-
----
-
-## Sum types associativity
-
-.section[Algebra]
-
-```scala
-a + (b + `c`) = (a + b) + `c`
-```
-
-.section[Types]
-```scala
-A Or (B Or `C`) ~= (A Or B) Or `C`
-```
-
----
-
-## Sum types associativity
-
-.section[Algebra]
-
-```scala
-a `+` (b `+` c) = (a `+` b) `+` c
-```
-
-.section[Types]
-```scala
-A `Or` (B `Or` C) ~= (A `Or` B) `Or` C
-```
-
----
-
-## Sum types associativity
-
-.section[Algebra]
-
-```scala
-a + (b + c) `=` (a + b) + c
-```
-
-.section[Types]
-```scala
-A Or (B Or C) `~=` (A Or B) Or C
-```
-
----
-
-## Sum types associativity
-
-.section[Algebra]
-
-```scala
-a + (b + c) = (a + b) + c
-```
-
-.section[Types]
-```scala
-&#x200B;`A Or (B Or C) ~= (A Or B) Or C`
-```
-
----
-
-## Sum types associativity
-
-.center[![A Or B Or C](img/a_or_b_or_c_novalue.svg)]
-
----
-
-## Sum types associativity
-
-.center[![A Or B Or C](img/a_or_b_or_c_lefta.svg)]
-
----
-
-## Sum types associativity
-
-.center[![A Or B Or C](img/a_or_b_or_c_lefta_rightleftb.svg)]
-
----
-
-## Sum types associativity
-
-.center[![A Or B Or C](img/a_or_b_or_c_lefta_rightleftb_rightrightc.svg)]
-
----
-
-## Sum types associativity
-
-.center[![A Or B Or C](img/a_or_b_or_c_leftlefta.svg)]
-
----
-
-## Sum types associativity
-
-.center[![A Or B Or C](img/a_or_b_or_c_leftlefta_leftrightb.svg)]
-
----
-
-## Sum types associativity
-
-.center[![A Or B Or C](img/a_or_b_or_c_leftlefta_leftrightb_rightc.svg)]
-
-
----
-
-## Sum types associativity
-
-.center[![A Or B Or C](img/a_or_b_or_c.svg)]
-
----
-
-## Sum types commutativity
-
-.section[Algebra]
-
-```scala
-a + b = b + a
-```
-
-.section[Types]
-
-```scala
-A Or B ~= B Or A
-```
-
----
-
-## Sum types commutativity
-
-.section[Algebra]
-
-```scala
-&#x200B;`a + b = b + a`
-```
-
-.section[Types]
-
-```scala
-A Or B ~= B Or A
-```
-
----
-
-## Sum types commutativity
-
-.section[Algebra]
-
-```scala
-&#x200B;`a` + b = b + `a`
-```
-
-.section[Types]
-
-```scala
-&#x200B;`A` Or B ~= B Or `A`
-```
-
----
-
-## Sum types commutativity
-
-.section[Algebra]
-
-```scala
-a + `b` = `b` + a
-```
-
-.section[Types]
-
-```scala
-A Or `B` ~= `B` Or A
-```
-
----
-
-## Sum types commutativity
-
-.section[Algebra]
-
-```scala
-a `+` b = b `+` a
-```
-
-.section[Types]
-
-```scala
-A `Or` B ~= B `Or` A
-```
-
----
-
-## Sum types commutativity
-
-.section[Algebra]
-
-```scala
-a + b `=` b + a
-```
-
-.section[Types]
-
-```scala
-A Or B `~=` B Or A
-```
-
----
-
-## Sum types commutativity
-
-.section[Algebra]
-
-```scala
-a + b = b + a
-```
-
-.section[Types]
-
-```scala
-&#x200B;`A Or B ~= B Or A`
-```
-
----
-
-## Sum types commutativity
-
-.center[![A Or B](img/a_or_b_novalue.svg)]
-
----
-
-## Sum types commutativity
-
-.center[![A Or B](img/a_or_b_lefta.svg)]
-
----
-
-## Sum types commutativity
-
-.center[![A Or B](img/a_or_b_lefta_rightb.svg)]
-
----
-
-## Sum types commutativity
-
-.center[![A Or B](img/a_or_b_righta.svg)]
-
----
-
-## Sum types commutativity
-
-.center[![A Or B](img/a_or_b_righta_leftb.svg)]
-
-
----
-
-## Sum types commutativity
-
-.center[![A Or B](img/a_or_b.svg)]
-
----
-
-## Sum types neutral element
-
-.section[Algebra]
-
-```scala
-a + 0 = a
-```
-
-.section[Types]
-
-```scala
-A Or Nothing ~= A
-```
-
----
-
-## Sum types neutral element
-
-.section[Algebra]
-
-```scala
-&#x200B;`a + 0 = a`
-```
-
-.section[Types]
-
-```scala
-A Or Nothing ~= A
-```
-
----
-
-## Sum types neutral element
-
-.section[Algebra]
-
-```scala
-&#x200B;`a` + 0 = `a`
-```
-
-.section[Types]
-
-```scala
-&#x200B;`A` Or Nothing ~= `A`
-```
-
----
-
-## Sum types neutral element
-
-.section[Algebra]
-
-```scala
-a + `0` = a
-```
-
-.section[Types]
-
-```scala
-A Or `Nothing` ~= A
-```
-
----
-
-## Sum types neutral element
-
-.section[Algebra]
-
-```scala
-a `+` 0 = a
-```
-
-.section[Types]
-
-```scala
-A `Or` Nothing ~= A
-```
-
----
-
-## Sum types neutral element
-
-.section[Algebra]
-
-```scala
-a + 0 `=` a
-```
-
-.section[Types]
-
-```scala
-A Or Nothing `~=` A
-```
-
----
-
-## Sum types neutral element
-
-.section[Algebra]
-
-```scala
-a + 0 = a
-```
-
-.section[Types]
-
-```scala
-&#x200B;`A Or Nothing ~= A`
-```
-
----
-
-## Sum types neutral element
-
-.center[![A Or B](img/a_or_nothing_novalue.svg)]
-
----
-
-## Sum types neutral element
-
-.center[![A Or B](img/a_or_nothing_lefta.svg)]
-
----
-
-## Sum types neutral element
-
-.center[![A Or B](img/a_or_nothing_lefta_nothing.svg)]
-
----
-
-## Sum types neutral element
-
-.center[![A Or B](img/a_or_nothing_a.svg)]
-
-
----
-
-## Sum types neutral element
-
-.center[![A Or B](img/a_or_nothing.svg)]
-
----
-
-## Product types
-
-```scala
-case class And[A, B](left: A, right: B)
-```
-
----
-
-## Product types
-
-```scala
-case class `And[A, B]`(left: A, right: B)
-```
-
----
-
-## Product types
-
-```scala
-case class And[A, B](`left: A`, right: B)
-```
-
----
-
-## Product types
-
-```scala
-case class And[A, B](left: A, `right: B`)
-```
-
-
----
-
-## Product types
-
-```scala
-type IntAndString = Int And String
-```
-
----
-
-## Product types
-
-```scala
-type IntAndString = `Int And String`
-```
-
----
-
-## Product types
-
-.center[![And](img/and_novalue.svg)]
-
----
-
-## Product types
-
-.center[![And](img/and_a1.svg)]
 
 --
 
-\\(\vert A \mathbin{And} B \\vert = \vert B \vert \ldots\\)
+.section[Types]
+```scala
+A ⋁ (B ⋁ C) ~= (A ⋁ B) ⋁ C
+```
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_novalue.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_lefta.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_lefta_rightleftb.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_lefta_rightleftb_rightrightc.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_leftlefta.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_leftlefta_leftrightb.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c_leftlefta_leftrightb_rightc.svg)]
+
+---
+
+## Sum types associativity
+
+.center[![A ⋁ B ⋁ C](img/a_or_b_or_c.svg)]
+
+---
+
+## Sum types commutativity
+
+.section[Algebra]
+
+```scala
+a + b = b + a
+```
+
+--
+
+.section[Types]
+
+```scala
+A ⋁ B ~= B ⋁ A
+```
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_novalue.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_lefta.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_lefta_rightb.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_righta.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b_righta_leftb.svg)]
+
+---
+
+## Sum types commutativity
+
+.center[![A ⋁ B](img/a_or_b.svg)]
+
+---
+
+## Sum types neutral element
+
+.section[Algebra]
+
+```scala
+a + 0 = a
+```
+
+--
+
+.section[Types]
+
+```scala
+A ⋁ Nothing ~= A
+```
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing_novalue.svg)]
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing_lefta.svg)]
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing_lefta_nothing.svg)]
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing_a.svg)]
+
+---
+
+## Sum types neutral element
+
+.center[![A ⋁ B](img/a_or_nothing.svg)]
 
 ---
 
 ## Product types
 
-.center[![And](img/and_an.svg)]
-
-\\(\vert A \mathbin{And} B \\vert = \vert B \vert \ldots\\)
-
----
-
-## Product types
-
-.center[![And](img/and.svg)]
-
-
-\\(\vert A \mathbin{And} B \\vert = \vert B \vert \ldots\\)
+```scala
+case class ⋀[A, B](left: A, right: B)
+```
 
 ---
 
 ## Product types
 
-.center[![And](img/and.svg)]
+```scala
+case class `⋀[A, B]`(left: A, right: B)
+```
 
-\\(\vert A \mathbin{And} B \\vert = \vert A \vert \times \vert B \vert \\)
+---
+
+## Product types
+
+```scala
+case class ⋀[A, B](`left: A`, right: B)
+```
+
+---
+
+## Product types
+
+```scala
+case class ⋀[A, B](left: A, `right: B`)
+```
+
+---
+
+## Product types
+
+```scala
+type IntAndString = ⋀[Int, String]
+```
+
+---
+
+## Product types
+
+.diff-rm[
+```scala
+*type IntAndString = `⋀[Int, String]`
+```
+]
+
+---
+
+## Product types
+
+.diff-add[
+```scala
+*type IntAndString = `Int ⋀ String`
+```
+]
+
+---
+
+## Product types
+
+```scala
+type IntAndString = Int ⋀ String
+```
+
+---
+
+## Product types
+
+```scala
+implicit class AndSyntax[A](a: A) {
+  def ⋀[B](b: B): A ⋀ B = new ⋀(a, b)
+}
+```
+
+---
+
+## Product types
+
+.center[![⋀](img/and_novalue.svg)]
+
+---
+
+## Product types
+
+.center[![⋀](img/and_a1.svg)]
+
+--
+
+\\(\vert A \land B \\vert = \vert B \vert \ldots\\)
+
+---
+
+## Product types
+
+.center[![⋀](img/and_an.svg)]
+
+\\(\vert A \land B \\vert = \vert B \vert \ldots\\)
+
+---
+
+## Product types
+
+.center[![⋀](img/and.svg)]
+
+\\(\vert A \land B \\vert = \vert B \vert \ldots\\)
+
+---
+
+## Product types
+
+.center[![⋀](img/and.svg)]
+
+\\(\vert A \land B \\vert = \vert A \vert \times \vert B \vert \\)
 
 ---
 
@@ -5347,47 +5059,65 @@ type IntAndString = `Int And String`
 a + a = 2 * a
 ```
 
+--
+
 .section[Types]
 
 ```scala
-A Or A ~= Boolean And A
+A ⋁ A ~= Boolean ⋀ A
 ```
 
 ---
 
 ## Product types
 
-.center[![A Or A](img/a_or_a_novalue.svg)]
+.section[Algebra]
+
+```scala
+a + a = 2 `*` a
+```
+
+.section[Types]
+
+```scala
+A ⋁ A ~= Boolean `⋀` A
+```
 
 ---
 
 ## Product types
 
-.center[![A Or A](img/a_or_a_lefta.svg)]
+.center[![A ⋁ A](img/a_or_a_novalue.svg)]
 
 ---
 
 ## Product types
 
-.center[![A Or A](img/a_or_a_lefta_righta.svg)]
+.center[![A ⋁ A](img/a_or_a_lefta.svg)]
 
 ---
 
 ## Product types
 
-.center[![A Or A](img/a_or_a_false_a.svg)]
+.center[![A ⋁ A](img/a_or_a_lefta_righta.svg)]
 
 ---
 
 ## Product types
 
-.center[![A Or A](img/a_or_a_true_a.svg)]
+.center[![A ⋁ A](img/a_or_a_false_a.svg)]
 
 ---
 
 ## Product types
 
-.center[![A Or A](img/a_or_a.svg)]
+.center[![A ⋁ A](img/a_or_a_true_a.svg)]
+
+---
+
+## Product types
+
+.center[![A ⋁ A](img/a_or_a.svg)]
 
 ---
 
@@ -5399,37 +5129,37 @@ A Or A ~= Boolean And A
 (a * b) * c = a * (b * c)
 ```
 
+--
+
 .section[Types]
 
 ```scala
-(And And B) And C ~= A And (B And C)
+(A ⋀ B) ⋀ C ~= A ⋀ (B ⋀ C)
 ```
 
 ---
 
 ## Product types associativity
 
-.center[![A And B And C](img/a_and_b_and_c_novalue.svg)]
-
-
----
-
-## Product types associativity
-
-.center[![A And B And C](img/a_and_b_and_c_anda.svg)]
+.center[![A ⋀ B ⋀ C](img/a_and_b_and_c_novalue.svg)]
 
 ---
 
 ## Product types associativity
 
-.center[![A And B And C](img/a_and_b_and_c_andc.svg)]
-
+.center[![A ⋀ B ⋀ C](img/a_and_b_and_c_anda.svg)]
 
 ---
 
 ## Product types associativity
 
-.center[![A And B And C](img/a_and_b_and_c.svg)]
+.center[![A ⋀ B ⋀ C](img/a_and_b_and_c_andc.svg)]
+
+---
+
+## Product types associativity
+
+.center[![A ⋀ B ⋀ C](img/a_and_b_and_c.svg)]
 
 ---
 
@@ -5440,36 +5170,37 @@ A Or A ~= Boolean And A
 a * b = b * a
 ```
 
+--
+
 .section[Types]
 
 ```scala
-A And B ~= B And A
+A ⋀ B ~= B ⋀ A
 ```
 
 ---
 
 ## Product types commutativity
 
-.center[![A And B](img/a_and_b_novalue.svg)]
+.center[![A ⋀ B](img/a_and_b_novalue.svg)]
 
 ---
 
 ## Product types commutativity
 
-.center[![A And B](img/a_and_b_andab.svg)]
+.center[![A ⋀ B](img/a_and_b_andab.svg)]
 
 ---
 
 ## Product types commutativity
 
-.center[![A And B](img/a_and_b_andba.svg)]
-
+.center[![A ⋀ B](img/a_and_b_andba.svg)]
 
 ---
 
 ## Product types commutativity
 
-.center[![A And B](img/a_and_b.svg)]
+.center[![A ⋀ B](img/a_and_b.svg)]
 
 ---
 
@@ -5481,36 +5212,37 @@ A And B ~= B And A
 a * 1 = a
 ```
 
+--
+
 .section[Types]
 
 ```scala
-A And Unit ~= A
+A ⋀ Unit ~= A
 ```
 
 ---
 
 ## Product types netural element
 
-.center[![A And Unit](img/a_and_unit_novalue.svg)]
+.center[![A ⋀ Unit](img/a_and_unit_novalue.svg)]
 
 ---
 
 ## Product types netural element
 
-.center[![A And Unit](img/a_and_unit_andaunit.svg)]
+.center[![A ⋀ Unit](img/a_and_unit_andaunit.svg)]
 
 ---
 
 ## Product types netural element
 
-.center[![A And Unit](img/a_and_unit_a.svg)]
-
+.center[![A ⋀ Unit](img/a_and_unit_a.svg)]
 
 ---
 
 ## Product types netural element
 
-.center[![A And Unit](img/a_and_unit.svg)]
+.center[![A ⋀ Unit](img/a_and_unit.svg)]
 
 ---
 
@@ -5601,7 +5333,6 @@ case class ::[A](
   `tail: List[A]`
 ) extends List[A]
 ```
-
 
 ---
 
