@@ -4751,7 +4751,7 @@ Unit ⋁ Unit `~=` Boolean
 .section[Algebra]
 
 ```scala
-1 + 1 `=` 2
+1 + 1 = 2
 ```
 
 .section[Types]
@@ -4794,6 +4794,88 @@ Unit ⋁ Unit ~= Boolean
 ## Sum types
 
 .center[![Unit ⋁ Unit = Boolean](img/unit_or_unit.svg)]
+
+---
+
+## Sum types
+
+```scala
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.Left(())  => true
+  case ⋁.Right(()) => false
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case true  => ⋁.Left(())
+  case false => ⋁.Right(())
+}
+```
+
+---
+
+## Sum types
+
+```scala
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.`Left(())`  => true
+  case ⋁.Right(()) => false
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case true  => `⋁.Left(())`
+  case false => ⋁.Right(())
+}
+```
+
+---
+
+## Sum types
+
+```scala
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.Left(())  => `true`
+  case ⋁.Right(()) => false
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case `true`  => ⋁.Left(())
+  case false => ⋁.Right(())
+}
+```
+
+---
+
+## Sum types
+
+```scala
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.Left(())  => true
+  case ⋁.`Right(())` => false
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case true  => ⋁.Left(())
+  case false => ⋁.`Right(())`
+}
+```
+
+---
+
+## Sum types
+
+```scala
+def from(u: Unit ⋁ Unit): Boolean = u match {
+  case ⋁.Left(())  => true
+  case ⋁.Right(()) => `false`
+}
+
+def to(b: Boolean): Unit ⋁ Unit = b match {
+  case true  => ⋁.Left(())
+  case `false` => ⋁.Right(())
+}
+```
+
+
 
 ---
 
@@ -5416,163 +5498,163 @@ case class Cons[A](
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_0[A] \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_0[A] \vert = \vert Nil \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_0[A] \vert = 1\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_1[A] \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_1[A] \vert = \vert A \land List_0[A] \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_1[A] \vert = \vert A \vert \times \vert List_0[A] \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_1[A] \vert = \vert A \vert \times 1\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_1[A] \vert = \vert A \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_2[A] \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_2[A] \vert = \vert A \land List_1[A] \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_2[A] \vert = \vert A \vert \times \vert List_1[A] \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_2[A] \vert = \vert A \vert \times \vert A \vert\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_2[A] \vert = \vert A \vert^2\\)
 
 ---
 
-## Recursive types
+## List of fixed size
 
 \\( \vert List_n[A] \vert = \vert A \vert^n\\)
 
 ---
 
-## Recursive types
+## List of maximum size
 
 \\( \vert List^n[A] \vert\\)
 
 ---
 
-## Recursive types
+## List of maximum size
 
 \\(\\vert List^n[A] \\vert = \vert \displaystyle\bigvee_{i = 0}^n List_i[A] \vert^i\\)
 
 ---
 
-## Recursive types
+## List of maximum size
 
 \\(\\vert List^n[A] \\vert = \displaystyle\sum_{i = 0}^n \vert List_i[A] \vert\\)
 
 ---
 
-## Recursive types
+## List of maximum size
 
 \\(\\vert List^n[A] \\vert = \displaystyle\sum_{i = 0}^n \vert A \vert^i\\)
 
 ---
 
-## Recursive types
+## List of maximum size
 
 \\(\\vert List^n[A] \\vert = \frac{\vert A \vert^{n + 1} - 1}{\vert A \vert - 1}\\)
 
 ---
 
-## Recursive types
+## List of maximum size
 
 \\(\\vert List^2[Boolean] \\vert = \frac{\vert Boolean \vert^{2 + 1} - 1}{\vert Boolean \vert - 1}\\)
 
 ---
 
-## Recursive types
+## List of maximum size
 
 \\(\\vert List^2[Boolean] \\vert = \frac{2^{2 + 1} - 1}{2 - 1}\\)
 
 ---
 
-## Recursive types
+## List of maximum size
 
 \\(\\vert List^2[Boolean] \\vert = 7\\)
 
 ---
 
-## Recursive types
+## List of maximum size
 
 .center[![List](img/list_novalue.svg)]
 
 ---
 
-## Recursive types
+## List of maximum size
 
 .center[![List](img/list_list0.svg)]
 
 ---
 
-## Recursive types
+## List of maximum size
 
 .center[![List](img/list_list1.svg)]
 
 ---
 
-## Recursive types
+## List of maximum size
 
 .center[![List](img/list.svg)]
 
 ---
 
-## Recursive types
+## List of maximum size
 
 .center[![List](img/list_values.svg)]
 
