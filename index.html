@@ -4663,6 +4663,12 @@ type IntOrString = Int ⋁ String
 
 ---
 
+## Type equivalence
+
+> We'll say that types `A` and `B` are equivalent if they have the same cardinality, and write .highlight[`A ~= B`].
+
+---
+
 ## Sum types
 
 .section[Algebra]
@@ -4736,6 +4742,21 @@ Unit `⋁` Unit ~= Boolean
 .section[Types]
 ```scala
 Unit ⋁ Unit `~=` Boolean
+```
+
+---
+
+## Sum types
+
+.section[Algebra]
+
+```scala
+1 + 1 `=` 2
+```
+
+.section[Types]
+```scala
+Unit ⋁ Unit ~= Boolean
 ```
 
 ---
@@ -5266,25 +5287,25 @@ A ⋀ Unit ~= A
 
 ---
 
-## Product types netural element
+## Product types neutral element
 
 .center[![A ⋀ Unit](img/a_and_unit_novalue.svg)]
 
 ---
 
-## Product types netural element
+## Product types neutral element
 
 .center[![A ⋀ Unit](img/a_and_unit_andaunit.svg)]
 
 ---
 
-## Product types netural element
+## Product types neutral element
 
 .center[![A ⋀ Unit](img/a_and_unit_a.svg)]
 
 ---
 
-## Product types netural element
+## Product types neutral element
 
 .center[![A ⋀ Unit](img/a_and_unit.svg)]
 
@@ -5293,11 +5314,11 @@ A ⋀ Unit ~= A
 ## Recursive types
 
 ```scala
-sealed trait List[A]
+sealed trait List[+A]
 
-case class Nil[A]() extends List[A]
+case object Nil extends List[Nothing]
 
-case class ::[A](
+case class Cons[A](
   head: A,
   tail: List[A]
 ) extends List[A]
@@ -5308,11 +5329,11 @@ case class ::[A](
 ## Recursive types
 
 ```scala
-*sealed trait List[A]
+sealed trait `List[+A]`
 
-case class Nil[A]() extends List[A]
+case object Nil extends List[Nothing]
 
-case class ::[A](
+case class Cons[A](
   head: A,
   tail: List[A]
 ) extends List[A]
@@ -5323,11 +5344,11 @@ case class ::[A](
 ## Recursive types
 
 ```scala
-sealed trait List[A]
+sealed trait List[+A]
 
-*case class Nil[A]() extends List[A]
+case object `Nil` extends List[Nothing]
 
-case class ::[A](
+case class Cons[A](
   head: A,
   tail: List[A]
 ) extends List[A]
@@ -5338,14 +5359,14 @@ case class ::[A](
 ## Recursive types
 
 ```scala
-sealed trait List[A]
+sealed trait List[+A]
 
-case class Nil[A]() extends List[A]
+case object Nil extends List[Nothing]
 
-case `class ::`[A](
+case class `Cons[A]`(
   head: A,
   tail: List[A]
-) `extends List[A]`
+) extends List[A]
 ```
 
 ---
@@ -5353,11 +5374,11 @@ case `class ::`[A](
 ## Recursive types
 
 ```scala
-sealed trait List[A]
+sealed trait List[+A]
 
-case class Nil[A]() extends List[A]
+case object Nil extends List[Nothing]
 
-case class ::[A](
+case class Cons[A](
   `head: A`,
   tail: List[A]
 ) extends List[A]
@@ -5368,11 +5389,11 @@ case class ::[A](
 ## Recursive types
 
 ```scala
-sealed trait List[A]
+sealed trait List[+A]
 
-case class Nil[A]() extends List[A]
+case object Nil extends List[Nothing]
 
-case class ::[A](
+case class Cons[A](
   head: A,
   `tail: List[A]`
 ) extends List[A]
@@ -5382,77 +5403,178 @@ case class ::[A](
 
 ## Recursive types
 
-.fix2[
- Type                     | Cardinality
---------------------------|--------------
- `Nil`                    | \\(1\\)
-]
+```scala
+sealed trait `List[+A]`
+
+case object Nil extends List[Nothing]
+
+case class Cons[A](
+  head: A,
+  tail: `List[A]`
+) extends List[A]
+```
 
 ---
 
 ## Recursive types
 
-.fix2[
- Type                     | Cardinality
---------------------------|--------------
- `Nil`                    | \\(1\\)
- `A :: Nil`              | \\(\vert A \vert\\)
-]
+\\( \vert List_0[A] \vert\\)
 
 ---
 
 ## Recursive types
 
-.fix2[
- Type                     | Cardinality
---------------------------|--------------
- `Nil`                    | \\(1\\)
- `A :: Nil`              | \\(\vert A \vert\\)
- `A :: A :: Nil`        | \\(\vert A \vert^2\\)
-]
+\\( \vert List_0[A] \vert = \vert Nil \vert\\)
 
 ---
 
 ## Recursive types
 
-.fix2[
- Type                     | Cardinality
---------------------------|--------------
- `Nil`                    | \\(1\\)
- `A :: Nil`              | \\(\vert A \vert\\)
- `A :: A :: Nil`        | \\(\vert A \vert^2\\)
-...                       | ...
- `List[A]` (of size `n`) | \\(\vert A \vert^n\\)
-]
+\\( \vert List_0[A] \vert = 1\\)
 
 ---
 
 ## Recursive types
 
-\\(\\vert List[A]^n \\vert = \displaystyle\sum_{i = 0}^n \vert A \vert^i\\)
+\\( \vert List_1[A] \vert\\)
 
 ---
 
 ## Recursive types
 
-\\(\\vert List[A]^n \\vert = \frac{\vert A \vert^{n + 1} - 1}{\vert A \vert - 1}\\)
-
---
-
- Type                     | Cardinality | Detail
---------------------------|-------------|--------------------
- \\(List[Boolean]^2)\\)   | \\(7\\)     | `Nil`, `Boolean :: Nil`, `Boolean :: Boolean :: Nil`
+\\( \vert List_1[A] \vert = \vert A \land List_0[A] \vert\\)
 
 ---
 
 ## Recursive types
 
-\\(\\vert List[A]^n \\vert = \frac{\vert A \vert^{n + 1} - 1}{\vert A \vert - 1}\\)
+\\( \vert List_1[A] \vert = \vert A \vert \times \vert List_0[A] \vert\\)
 
- Type                     | Cardinality | Detail
---------------------------|-------------|--------------------
- \\(List[Boolean]^2)\\)   | \\(7\\)     | `Nil`, `Boolean :: Nil`, `Boolean :: Boolean :: Nil`
- \\(List[Boolean]^3)\\)   | \\(15\\)   | `Nil`, `Boolean :: Nil`, `Boolean :: Boolean :: Nil`, `Boolean :: Boolean :: Boolean :: Nil`
+---
+
+## Recursive types
+
+\\( \vert List_1[A] \vert = \vert A \vert \times 1\\)
+
+---
+
+## Recursive types
+
+\\( \vert List_1[A] \vert = \vert A \vert\\)
+
+---
+
+## Recursive types
+
+\\( \vert List_2[A] \vert\\)
+
+---
+
+## Recursive types
+
+\\( \vert List_2[A] \vert = \vert A \land List_1[A] \vert\\)
+
+---
+
+## Recursive types
+
+\\( \vert List_2[A] \vert = \vert A \vert \times \vert List_1[A] \vert\\)
+
+---
+
+## Recursive types
+
+\\( \vert List_2[A] \vert = \vert A \vert \times \vert A \vert\\)
+
+---
+
+## Recursive types
+
+\\( \vert List_2[A] \vert = \vert A \vert^2\\)
+
+---
+
+## Recursive types
+
+\\( \vert List_n[A] \vert = \vert A \vert^n\\)
+
+---
+
+## Recursive types
+
+\\( \vert List^n[A] \vert\\)
+
+---
+
+## Recursive types
+
+\\(\\vert List^n[A] \\vert = \vert \displaystyle\bigvee_{i = 0}^n List_i[A] \vert^i\\)
+
+---
+
+## Recursive types
+
+\\(\\vert List^n[A] \\vert = \displaystyle\sum_{i = 0}^n \vert List_i[A] \vert\\)
+
+---
+
+## Recursive types
+
+\\(\\vert List^n[A] \\vert = \displaystyle\sum_{i = 0}^n \vert A \vert^i\\)
+
+---
+
+## Recursive types
+
+\\(\\vert List^n[A] \\vert = \frac{\vert A \vert^{n + 1} - 1}{\vert A \vert - 1}\\)
+
+---
+
+## Recursive types
+
+\\(\\vert List^2[Boolean] \\vert = \frac{\vert Boolean \vert^{2 + 1} - 1}{\vert Boolean \vert - 1}\\)
+
+---
+
+## Recursive types
+
+\\(\\vert List^2[Boolean] \\vert = \frac{2^{2 + 1} - 1}{2 - 1}\\)
+
+---
+
+## Recursive types
+
+\\(\\vert List^2[Boolean] \\vert = 7\\)
+
+---
+
+## Recursive types
+
+.center[![List](img/list_novalue.svg)]
+
+---
+
+## Recursive types
+
+.center[![List](img/list_list0.svg)]
+
+---
+
+## Recursive types
+
+.center[![List](img/list_list1.svg)]
+
+---
+
+## Recursive types
+
+.center[![List](img/list.svg)]
+
+---
+
+## Recursive types
+
+.center[![List](img/list_values.svg)]
 
 ---
 
