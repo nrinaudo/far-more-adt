@@ -5049,7 +5049,7 @@ A ⋁ Nothing ~= A
 ## Product types
 
 ```scala
-case class ⋀[A, B](left: A, right: B)
+case class ⋀[A, B](first: A, second: B)
 ```
 
 ---
@@ -5057,7 +5057,7 @@ case class ⋀[A, B](left: A, right: B)
 ## Product types
 
 ```scala
-case class `⋀[A, B]`(left: A, right: B)
+case class `⋀[A, B]`(first: A, second: B)
 ```
 
 ---
@@ -5065,7 +5065,7 @@ case class `⋀[A, B]`(left: A, right: B)
 ## Product types
 
 ```scala
-case class ⋀[A, B](`left: A`, right: B)
+case class ⋀[A, B](`first: A`, second: B)
 ```
 
 ---
@@ -5073,7 +5073,7 @@ case class ⋀[A, B](`left: A`, right: B)
 ## Product types
 
 ```scala
-case class ⋀[A, B](left: A, `right: B`)
+case class ⋀[A, B](first: A, `second: B`)
 ```
 
 ---
@@ -5228,6 +5228,22 @@ a + a = 2 `*` a
 
 ```scala
 A ⋁ A ~= Boolean `⋀` A
+```
+
+---
+
+## Product types
+
+.section[Algebra]
+
+```scala
+a + a = 2 `*` a
+```
+
+.section[Types]
+
+```scala
+A ⋁ A ~= Boolean ⋀ A
 ```
 
 ---
