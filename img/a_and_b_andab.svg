@@ -18,7 +18,7 @@
 <g id="node2" class="node">
 <title>AndAB</title>
 <path fill="#ffffff" stroke="#586e75" d="M46,-180C46,-180 12,-180 12,-180 6,-180 0,-174 0,-168 0,-168 0,-156 0,-156 0,-150 6,-144 12,-144 12,-144 46,-144 46,-144 52,-144 58,-150 58,-156 58,-156 58,-168 58,-168 58,-174 52,-180 46,-180"/>
-<text text-anchor="middle" x="29" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">aᵢ ⋀ bᵢ</text>
+<text text-anchor="middle" x="29" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">aᵢ ⋀ bⱼ</text>
 </g>
 <!-- AandB&#45;&gt;AndAB -->
 <g id="edge1" class="edge">

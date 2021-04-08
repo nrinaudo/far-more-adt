@@ -30,7 +30,7 @@
 <g id="node3" class="node">
 <title>RightB</title>
 <path fill="#ffffff" stroke="#586e75" d="M146.5,-180C146.5,-180 98.5,-180 98.5,-180 92.5,-180 86.5,-174 86.5,-168 86.5,-168 86.5,-156 86.5,-156 86.5,-150 92.5,-144 98.5,-144 98.5,-144 146.5,-144 146.5,-144 152.5,-144 158.5,-150 158.5,-156 158.5,-156 158.5,-168 158.5,-168 158.5,-174 152.5,-180 146.5,-180"/>
-<text text-anchor="middle" x="122.5" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Right(bᵢ)</text>
+<text text-anchor="middle" x="122.5" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Right(bⱼ)</text>
 </g>
 <!-- AorB&#45;&gt;RightB -->
 <g id="edge2" class="edge">
@@ -49,7 +49,7 @@
 <g id="node5" class="node">
 <title>LeftB</title>
 <path fill="#ffffff" stroke="#586e75" d="M143,-108C143,-108 102,-108 102,-108 96,-108 90,-102 90,-96 90,-96 90,-84 90,-84 90,-78 96,-72 102,-72 102,-72 143,-72 143,-72 149,-72 155,-78 155,-84 155,-84 155,-96 155,-96 155,-102 149,-108 143,-108"/>
-<text text-anchor="middle" x="122.5" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(bᵢ)</text>
+<text text-anchor="middle" x="122.5" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(bⱼ)</text>
 </g>
 <!-- RightB&#45;&gt;LeftB -->
 <!-- BorA -->
