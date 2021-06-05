@@ -1,23 +1,17 @@
 digraph {
-    bgcolor=transparent
-
-    // Default theme: enabled
-    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
-    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
-
     LeftAssoc[label="A ⋁ (B ⋁ C)"]
-    LeftA[label="Left(aᵢ)" fillcolor="#ffffff" fontcolor="#586E75"]
-    RightLeftB[label="Right(Left(bⱼ))" fillcolor="#ffffff" fontcolor="#586E75"]
-    RightRightC[label="Right(Right(cₖ))" fillcolor="#ffffff" fontcolor="#586E75"]
+    LeftA[label="Left(aᵢ)" class="value"]
+    RightLeftB[label="Right(Left(bⱼ))" class="value"]
+    RightRightC[label="Right(Right(cₖ))" class="value"]
 
     LeftAssoc -> LeftA
     LeftAssoc -> RightLeftB
     LeftAssoc -> RightRightC
 
     RightAssoc[label="(A ⋁ B) ⋁ C"]
-    LeftLeftA[label="Left(Left(aᵢ))" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    LeftRightB[label="Left(Right(bⱼ))" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    RightC[label="Right(cₖ)" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    LeftLeftA[label="Left(Left(aᵢ))" class="value" style=invis]
+    LeftRightB[label="Left(Right(bⱼ))" class="value" style=invis]
+    RightC[label="Right(cₖ)" class="value" style=invis]
 
     LeftLeftA -> RightAssoc[dir=back style=invis]
     LeftRightB -> RightAssoc[dir=back style=invis]

@@ -1,25 +1,19 @@
 digraph {
-    bgcolor=transparent
+    OrAB[label="A ⋁ B" class="disabled"]
 
-    // Default theme: enabled
-    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
-    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+    LeftA1[label="Left(a₁)" class="value,disabled"]
+    LeftAE[label="Left(⋯)" class="value,disabled"]
+    LeftAN[label="Left(aₙ)" class="value,disabled"]
 
-    OrAB[label="A ⋁ B" fillcolor="#dddddd" color="#dddddd" fontcolor="#eeeeee"]
+    RightB1[label="Right(b₁)" class="value"]
+    RightBE[label="Right(⋯)" class="value"]
+    RightBN[label="Right(bₙ)" class="value"]
 
-    LeftA1[label="Left(a₁)" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
-    LeftAE[label="Left(⋯)" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
-    LeftAN[label="Left(aₙ)" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
+    OrAB -> LeftA1[class="disabled"]
+    OrAB -> LeftAE[class="disabled"]
+    OrAB -> LeftAN[class="disabled"]
 
-    RightB1[label="Right(b₁)" fillcolor="#ffffff" fontcolor="#586E75"]
-    RightBE[label="Right(⋯)" fillcolor="#ffffff" fontcolor="#586E75"]
-    RightBN[label="Right(bₙ)" fillcolor="#ffffff" fontcolor="#586E75"]
-
-    OrAB -> LeftA1[fillcolor="#dddddd" color="#dddddd"]
-    OrAB -> LeftAE[fillcolor="#dddddd" color="#dddddd"]
-    OrAB -> LeftAN[fillcolor="#dddddd" color="#dddddd"]
-
-    OrAB -> RightB1[fillcolor="#dddddd" color="#dddddd"]
-    OrAB -> RightBE[fillcolor="#dddddd" color="#dddddd"]
-    OrAB -> RightBN[fillcolor="#dddddd" color="#dddddd"]
+    OrAB -> RightB1[class="disabled"]
+    OrAB -> RightBE[class="disabled"]
+    OrAB -> RightBN[class="disabled"]
 }

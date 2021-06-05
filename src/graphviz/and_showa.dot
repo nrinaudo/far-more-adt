@@ -1,29 +1,19 @@
 digraph {
-    bgcolor=transparent
+    AndAB[label="A ⋀ B" class="disabled"]
 
-    // Default theme: enabled
-    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
-    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
+    AndA1B1[label="a₁ ⋀ b₁" class="value"]
+    AndA1BE[label="a₁ ⋀ ⋯" class="value,disabled"]
+    AndA1BN[label="a₁ ⋀ bₙ" class="value,disabled"]
 
-    AndAB[label="A ⋀ B" fillcolor="#dddddd" color="#dddddd" fontcolor="#eeeeee"]
+    AndAEBE[label="⋯ ⋀ ⋯" class="value"]
 
-    AndA1B1[label="a₁ ⋀ b₁" fillcolor="#ffffff" fontcolor="#586E75"]
-    AndA1BE[label="a₁ ⋀ ⋯" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
-    AndA1BN[label="a₁ ⋀ bₙ" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
+    AndANB1[label="aₙ ⋀ b₁" class="value"]
+    AndANBE[label="aₙ ⋀ ⋯" class="value,disabled"]
+    AndANBN[label="aₙ ⋀ bₙ" class="value,disabled"]
 
-    AndAEBE[label="⋯ ⋀ ⋯" fillcolor="#ffffff" fontcolor="#586E75"]
+    AndAB -> AndA1B1, AndA1BE, AndA1BN[class="disabled"]
 
-    AndANB1[label="aₙ ⋀ b₁" fillcolor="#ffffff" fontcolor="#586E75"]
-    AndANBE[label="aₙ ⋀ ⋯" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
-    AndANBN[label="aₙ ⋀ bₙ" fillcolor="#ffffff" color="#dddddd" fontcolor="#eeeeee"]
+    AndAB -> AndAEBE[class="disabled"]
 
-    AndAB -> AndA1B1[fillcolor="#dddddd" color="#dddddd"]
-    AndAB -> AndA1BE[fillcolor="#dddddd" color="#dddddd"]
-    AndAB -> AndA1BN[fillcolor="#dddddd" color="#dddddd"]
-
-    AndAB -> AndAEBE[fillcolor="#dddddd" color="#dddddd"]
-
-    AndAB -> AndANB1[fillcolor="#dddddd" color="#dddddd"]
-    AndAB -> AndANBE[fillcolor="#dddddd" color="#dddddd"]
-    AndAB -> AndANBN[fillcolor="#dddddd" color="#dddddd"]
+    AndAB -> AndANB1, AndANBE, AndANBN[class="disabled"]
 }

@@ -1,19 +1,13 @@
 digraph {
-    bgcolor=transparent
-
-    // Default theme: enabled
-    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
-    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
-
     AorNothing[label="A ⋁ Nothing"]
-    LeftA[label="Left(aᵢ)" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    na[label="∅" style="" fillcolor="transparent" color="transparent" fontcolor="#586E75" style=invis]
+    LeftA[label="Left(aᵢ)" class="value" style=invis]
+    na[class="na,value" style=invis]
 
     AorNothing -> LeftA[style=invis]
     AorNothing -> na[style=invis]
 
-    na2[label="" style="" fillcolor="transparent" color="transparent" fontcolor="transparent" style=invis]
-    a[label="aᵢ" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    na2[class="na,value" style=invis]
+    a[label="aᵢ" class="value" style=invis]
 
     na2 -> A[style=invis]
     a -> A[dir=back style=invis]

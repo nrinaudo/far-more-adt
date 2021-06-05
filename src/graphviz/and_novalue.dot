@@ -1,21 +1,15 @@
 digraph {
-    bgcolor=transparent
-
-    // Default theme: enabled
-    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
-    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
-
     AndAB[label="A ⋀ B"]
 
-    AndA1B1[label="a₁ ⋀ b₁" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    AndA1BE[label="a₁ ⋀ ⋯" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    AndA1BN[label="a₁ ⋀ bₙ" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    AndA1B1[label="a₁ ⋀ b₁" class="value" style=invis]
+    AndA1BE[label="a₁ ⋀ ⋯" class="value" style=invis]
+    AndA1BN[label="a₁ ⋀ bₙ" class="value" style=invis]
 
-    AndAEBE[label="⋯ ⋀ ⋯" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    AndAEBE[label="⋯ ⋀ ⋯" class="value" style=invis]
 
-    AndANB1[label="aₙ ⋀ b₁" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    AndANBE[label="aₙ ⋀ ⋯" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    AndANBN[label="aₙ ⋀ bₙ" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    AndANB1[label="aₙ ⋀ b₁" class="value" style=invis]
+    AndANBE[label="aₙ ⋀ ⋯" class="value" style=invis]
+    AndANBN[label="aₙ ⋀ bₙ" class="value" style=invis]
 
 
     AndAB -> AndA1B1[style=invis]

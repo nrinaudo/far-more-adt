@@ -1,19 +1,13 @@
 digraph {
-    bgcolor=transparent
-
-    // Default theme: enabled
-    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
-    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
-
     UnitOrUnit[label="Unit ⋁ Unit"]
-    Left[label="Left(())" fillcolor="#ffffff" fontcolor="#586E75"]
-    Right[label="Right(())" fillcolor="#ffffff" fontcolor="#586E75"]
+    Left[label="Left(())" class="value"]
+    Right[label="Right(())" class="value"]
 
     UnitOrUnit -> Left
     UnitOrUnit -> Right
 
-    true[fillcolor="#ffffff" fontcolor="#586E75"]
-    false[fillcolor="#ffffff" fontcolor="#586E75"]
+    true[class="value"]
+    false[class="value"]
 
     Left -> true
     true -> Left

@@ -1,10 +1,4 @@
 digraph {
-    bgcolor=transparent
-
-    // Default theme: enabled
-    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
-    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
-
-    value[label="()" fillcolor="#ffffff" fontcolor="#586E75"]
+    value[label="()" class="value"]
     Unit -> value
 }

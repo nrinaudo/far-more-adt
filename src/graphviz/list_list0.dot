@@ -1,24 +1,18 @@
 digraph {
-    bgcolor=transparent
-
-    // Default theme: enabled
-    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
-    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
-
     List[label="List²[Boolean]"]
 
     List0[label="List₀[Boolean]"]
     List1[label="List₁[Boolean]" style=invis]
     List2[label="List₂[Boolean]" style=invis]
 
-    Nil[fillcolor="#ffffff" fontcolor="#586E75"]
-    true[label="true :: Nil" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    false[label="false :: Nil" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    Nil[class="value"]
+    true[label="true :: Nil" class="value" style=invis]
+    false[label="false :: Nil" class="value" style=invis]
 
-    true_true[label="true :: true :: Nil" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    true_false[label="true :: false :: Nil" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    false_true[label="false :: true :: Nil" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    false_false[label="false :: false :: Nil" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    true_true[label="true :: true :: Nil" class="value" style=invis]
+    true_false[label="true :: false :: Nil" class="value" style=invis]
+    false_true[label="false :: true :: Nil" class="value" style=invis]
+    false_false[label="false :: false :: Nil" class="value" style=invis]
 
     List -> List0
     List -> List1[style=invis]

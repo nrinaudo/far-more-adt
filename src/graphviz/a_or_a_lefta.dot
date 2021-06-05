@@ -1,20 +1,14 @@
 digraph {
-    bgcolor=transparent
-
-    // Default theme: enabled
-    node[shape="rectangle" style="rounded,filled" color="#586E75" fillcolor="#586E75" fontcolor="#ffffff" fontname="Inter,Arial"]
-    edge [color="#586E75" fontcolor="#000000" fontname="Inter,Arial" fontsize=11]
-
     AorA[label="A ⋁ A"]
-    LeftA[label="Left(aᵢ)" fillcolor="#ffffff" fontcolor="#586E75"]
-    RightA[label="Right(aⱼ)" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    LeftA[label="Left(aᵢ)" class="value"]
+    RightA[label="Right(aⱼ)" class="value" style=invis]
 
     AorA -> LeftA
     AorA -> RightA[style=invis]
 
     BooleanAndA[label="Boolean ⋀ A"]
-    trueAndA[label="true ⋀ aⱼ" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
-    falseAndA[label="false ⋀ aᵢ" fillcolor="#ffffff" fontcolor="#586E75" style=invis]
+    trueAndA[label="true ⋀ aⱼ" class="value" style=invis]
+    falseAndA[label="false ⋀ aᵢ" class="value" style=invis]
 
     trueAndA -> BooleanAndA[dir=back style=invis]
     falseAndA -> BooleanAndA[dir=back style=invis]
@@ -23,5 +17,4 @@ digraph {
     falseAndA -> LeftA[style=invis]
     RightA -> trueAndA[style=invis]
     trueAndA -> RightA[style=invis]
-
 }
