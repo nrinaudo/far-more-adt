@@ -1,0 +1,19 @@
+digraph {
+    AorNothing[label="A ⋁ Nothing"]
+    LeftA[label="Left(aᵢ)" class="value"]
+    na[class="na,value"]
+
+    AorNothing -> LeftA
+    AorNothing -> na
+
+    na2[class="na,value" style=invis]
+    a[label="aᵢ" class="value"]
+
+    na2 -> A[style=invis]
+    a -> A[dir=back]
+
+    a -> LeftA
+    LeftA -> a
+    na2 -> na[style=invis]
+    na -> na2[style=invis]
+}

@@ -1,0 +1,28 @@
+digraph {
+    List[label="List²[Boolean]"]
+
+    List0[label="List₀[Boolean]"]
+    List1[label="List₁[Boolean]" style=invis]
+    List2[label="List₂[Boolean]" style=invis]
+
+    Nil[class="value"]
+    true[label="true :: Nil" class="value" style=invis]
+    false[label="false :: Nil" class="value" style=invis]
+
+    true_true[label="true :: true :: Nil" class="value" style=invis]
+    true_false[label="true :: false :: Nil" class="value" style=invis]
+    false_true[label="false :: true :: Nil" class="value" style=invis]
+    false_false[label="false :: false :: Nil" class="value" style=invis]
+
+    List -> List0
+    List -> List1[style=invis]
+    List -> List2[style=invis]
+
+    List0 -> Nil
+    List1 -> true[style=invis]
+    List1 -> false[style=invis]
+    List2 -> true_true[style=invis]
+    List2 -> true_false[style=invis]
+    List2 -> false_true[style=invis]
+    List2 -> false_false[style=invis]
+}

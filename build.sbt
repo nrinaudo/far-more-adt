@@ -2,16 +2,17 @@ enablePlugins(TutPlugin, GhpagesPlugin)
 
 organization := "com.nrinaudo"
 scalaVersion := "2.13.0"
+graphvizStylesheet := Some(graphvizSourceDirectory.value / "style.dss")
 
-val tutDirName = settingKey[String]("tut output directory")
-tutDirName := "./"
+Tut / siteSubdirName := "./"
 
-addMappingsToSiteDir(tut, tutDirName)
-includeFilter in SitePlugin.autoImport.makeSite :=
+addMappingsToSiteDir(tut, Tut / siteSubdirName)
+
+SitePlugin.autoImport.makeSite / includeFilter :=
     "*.yml" | "*.md" | "*.html" | "*.css" | "*.png" | "*.jpg" | "*.gif" | "*.js" | "*.eot" | "*.svg" | "*.ttf" |
     "*.woff" | "*.woff2" | "*.otf"
 
 git.remoteRepo := "git@github.com:nrinaudo/far-mode-adt.git"
 
 
-(scalacOptions in Tut) += "-Xfatal-warnings"
+Tut / scalacOptions += "-Xfatal-warnings"

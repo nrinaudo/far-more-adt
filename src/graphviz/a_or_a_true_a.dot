@@ -1,0 +1,20 @@
+digraph {
+    AorA[label="A ⋁ A"]
+    LeftA[label="Left(aᵢ)" class="value"]
+    RightA[label="Right(aⱼ)" class="value"]
+
+    AorA -> LeftA
+    AorA -> RightA
+
+    BooleanAndA[label="Boolean ⋀ A"]
+    trueAndA[label="true ⋀ aⱼ" class="value"]
+    falseAndA[label="false ⋀ aᵢ" class="value"]
+
+    trueAndA -> BooleanAndA[dir=back]
+    falseAndA -> BooleanAndA[dir=back]
+
+    LeftA -> falseAndA[style=invis]
+    falseAndA -> LeftA[style=invis]
+    RightA -> trueAndA[style=invis]
+    trueAndA -> RightA[style=invis]
+}

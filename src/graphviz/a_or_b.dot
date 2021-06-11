@@ -1,0 +1,20 @@
+digraph {
+    AorB[label="A ⋁ B"]
+    LeftA[label="Left(aᵢ)" class="value"]
+    RightB[label="Right(bⱼ)" class="value"]
+
+    AorB -> LeftA
+    AorB -> RightB
+
+    BorA[label="B ⋁ A"]
+    LeftB[label="Left(bⱼ)" class="value"]
+    RightA[label="Right(aᵢ)" class="value"]
+
+    LeftB -> BorA[dir=back]
+    RightA -> BorA[dir=back]
+
+    LeftA -> RightA
+    RightA -> LeftA
+    LeftB -> RightB
+    RightB -> LeftB
+}

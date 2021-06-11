@@ -1,0 +1,20 @@
+digraph {
+    AndAB[label="A ⋀ B"]
+
+    AndA1B1[label="a₁ ⋀ b₁" class="value"]
+    AndA1BE[label="a₁ ⋀ ⋯" class="value"]
+    AndA1BN[label="a₁ ⋀ bₙ" class="value"]
+
+    AndAEBE[label="⋯ ⋀ ⋯" class="value"]
+
+    AndANB1[label="aₙ ⋀ b₁" class="value"]
+    AndANBE[label="aₙ ⋀ ⋯" class="value"]
+    AndANBN[label="aₙ ⋀ bₙ" class="value"]
+
+    AndAB -> AndA1B1, AndA1BE, AndA1BN
+
+    AndAB -> AndAEBE
+
+    AndAB -> AndANB1, AndANBE, AndANBN
+
+}

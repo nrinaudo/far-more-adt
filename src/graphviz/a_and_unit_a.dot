@@ -1,0 +1,13 @@
+digraph {
+    AandUnit[label="A ⋀ Unit"]
+    AndAUnit[label="aᵢ ⋀ ()" class="value"]
+
+    AandUnit -> AndAUnit
+
+    a[label="aᵢ" class="value"]
+
+    a -> A[dir=back]
+
+    AndAUnit -> a[style=invis]
+    a -> AndAUnit[style=invis]
+}

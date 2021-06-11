@@ -1,0 +1,14 @@
+digraph {
+    AandB[label="A ⋀ B"]
+    AndAB[label="aᵢ ⋀ bⱼ" class="value"]
+
+    AandB -> AndAB
+
+    BandA[label="B ⋀ A"]
+    AndBA[label="bⱼ ⋀ aᵢ" class="value"]
+
+    AndBA -> BandA[dir=back]
+
+    AndAB -> AndBA[style=invis]
+    AndBA -> AndAB[style=invis]
+}

@@ -1,0 +1,6 @@
+digraph {
+    Nothing
+    na[class="na"]
+
+    Nothing -> na
+}

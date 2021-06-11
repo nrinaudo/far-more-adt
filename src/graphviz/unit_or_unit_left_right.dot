@@ -1,0 +1,19 @@
+digraph {
+    UnitOrUnit[label="Unit ⋁ Unit"]
+    Left[label="Left(())" class="value"]
+    Right[label="Right(())" class="value"]
+
+    UnitOrUnit -> Left
+    UnitOrUnit -> Right
+
+    true[class="value" style=invis]
+    false[class="value" style=invis]
+
+    Left -> true[style=invis]
+    true -> Left[style=invis]
+    Right -> false[style=invis]
+    false -> Right[style=invis]
+
+    true -> Boolean[dir=back style=invis]
+    false -> Boolean[dir=back style=invis]
+}

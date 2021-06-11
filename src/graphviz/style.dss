@@ -1,0 +1,49 @@
+graph {
+    bgcolor: transparent;
+}
+
+node {
+    shape: "rectangle";
+    style: "rounded,filled";
+    color: "#586E75";
+    fillcolor: "#586E75";
+    fontcolor: "#ffffff";
+    fontname: "Inter,Arial";
+}
+
+edge {
+    color: "#586E75";
+    fontcolor: "#000000";
+    fontname: "Inter,Arial";
+    fontsize: 11;
+}
+
+node.na {
+    label: "∅";
+    style: "";
+    fillcolor: "transparent";
+    color: "transparent";
+    fontcolor: "#586E75";
+}
+
+node.value {
+    fillcolor: "#ffffff";
+    fontcolor: "#586E75";
+}
+
+node.disabled {
+    fillcolor: "#D0DCE3";
+    color: "#D0DCE3";
+    fontcolor: "#ffffff";
+}
+
+node.value.disabled {
+    fillcolor: "#ffffff";
+    color: "#D0DCE3";
+    fontcolor: "#D0DCE3";
+}
+
+edge.disabled {
+    fillcolor: "#D0DCE3";
+    color: "#D0DCE3";
+}

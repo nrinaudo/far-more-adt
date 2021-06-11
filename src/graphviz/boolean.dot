@@ -1,0 +1,6 @@
+digraph {
+    Boolean -> true
+    Boolean -> false
+    true[class="value"]
+    false[class="value"]
+}

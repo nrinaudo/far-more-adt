@@ -1,0 +1,26 @@
+digraph {
+    LeftAssoc[label="A ⋁ (B ⋁ C)"]
+    LeftA[label="Left(aᵢ)" class="value"]
+    RightLeftB[label="Right(Left(bⱼ))" class="value"]
+    RightRightC[label="Right(Right(cₖ))" class="value"]
+
+    LeftAssoc -> LeftA
+    LeftAssoc -> RightLeftB
+    LeftAssoc -> RightRightC
+
+    RightAssoc[label="(A ⋁ B) ⋁ C"]
+    LeftLeftA[label="Left(Left(aᵢ))" class="value"]
+    LeftRightB[label="Left(Right(bⱼ))" class="value"]
+    RightC[label="Right(cₖ)" class="value"]
+
+    LeftLeftA -> RightAssoc[dir=back]
+    LeftRightB -> RightAssoc[dir=back]
+    RightC -> RightAssoc[dir=back]
+
+    LeftA -> LeftLeftA
+    RightLeftB -> LeftRightB
+    RightRightC -> RightC
+    LeftLeftA -> LeftA
+    LeftRightB -> RightLeftB
+    RightC -> RightRightC
+}

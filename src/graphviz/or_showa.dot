@@ -1,0 +1,19 @@
+digraph {
+    OrAB[label="A ⋁ B" class="disabled"]
+
+    LeftA1[label="Left(a₁)" class="value"]
+    LeftAE[label="Left(⋯)" class="value"]
+    LeftAN[label="Left(aₙ)" class="value"]
+
+    RightB1[label="Right(b₁)" class="value,disabled"]
+    RightBE[label="Right(⋯)" class="value,disabled"]
+    RightBN[label="Right(bₙ)" class="value,disabled"]
+
+    OrAB -> LeftA1[class="disabled"]
+    OrAB -> LeftAE[class="disabled"]
+    OrAB -> LeftAN[class="disabled"]
+
+    OrAB -> RightB1[class="disabled"]
+    OrAB -> RightBE[class="disabled"]
+    OrAB -> RightBN[class="disabled"]
+}
