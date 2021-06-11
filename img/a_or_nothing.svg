@@ -15,7 +15,7 @@
 <text text-anchor="middle" x="71.5" y="-230.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A ⋁ Nothing</text>
 </g>
 <!-- LeftA -->
-<g id="node2" class="node">
+<g id="node2" class="node value">
 <title>LeftA</title>
 <path fill="#ffffff" stroke="#586e75" d="M53,-180C53,-180 12,-180 12,-180 6,-180 0,-174 0,-168 0,-168 0,-156 0,-156 0,-150 6,-144 12,-144 12,-144 53,-144 53,-144 59,-144 65,-150 65,-156 65,-156 65,-168 65,-168 65,-174 59,-180 53,-180"/>
 <text text-anchor="middle" x="32.5" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(aᵢ)</text>
@@ -27,7 +27,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="49.95,-187.14 42.03,-180.1 43.84,-190.54 49.95,-187.14"/>
 </g>
 <!-- na -->
-<g id="node3" class="node">
+<g id="node3" class="node na,value">
 <title>na</title>
 <polygon fill="none" stroke="transparent" points="137.5,-180 83.5,-180 83.5,-144 137.5,-144 137.5,-180"/>
 <text text-anchor="middle" x="110.5" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">∅</text>
@@ -39,7 +39,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="99.16,-190.54 100.97,-180.1 93.05,-187.14 99.16,-190.54"/>
 </g>
 <!-- a -->
-<g id="node5" class="node">
+<g id="node5" class="node value">
 <title>a</title>
 <path fill="#ffffff" stroke="#586e75" d="M47.5,-108C47.5,-108 17.5,-108 17.5,-108 11.5,-108 5.5,-102 5.5,-96 5.5,-96 5.5,-84 5.5,-84 5.5,-78 11.5,-72 17.5,-72 17.5,-72 47.5,-72 47.5,-72 53.5,-72 59.5,-78 59.5,-84 59.5,-84 59.5,-96 59.5,-96 59.5,-102 53.5,-108 47.5,-108"/>
 <text text-anchor="middle" x="32.5" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">aᵢ</text>
@@ -51,10 +51,6 @@
 <polygon fill="#586e75" stroke="#586e75" points="29.4,-118.32 26.6,-108.1 22.42,-117.84 29.4,-118.32"/>
 </g>
 <!-- na2 -->
-<g id="node4" class="node">
-<title>na2</title>
-<polygon fill="none" stroke="transparent" points="137.5,-108 83.5,-108 83.5,-72 137.5,-72 137.5,-108"/>
-</g>
 <!-- na&#45;&gt;na2 -->
 <!-- na2&#45;&gt;na -->
 <!-- A -->

@@ -51,7 +51,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="412.08,-111.31 420.87,-105.4 410.31,-104.54 412.08,-111.31"/>
 </g>
 <!-- Nil -->
-<g id="node5" class="node">
+<g id="node5" class="node value">
 <title>Nil</title>
 <path fill="#ffffff" stroke="#586e75" d="M57,-36C57,-36 27,-36 27,-36 21,-36 15,-30 15,-24 15,-24 15,-12 15,-12 15,-6 21,0 27,0 27,0 57,0 57,0 63,0 69,-6 69,-12 69,-12 69,-24 69,-24 69,-30 63,-36 57,-36"/>
 <text text-anchor="middle" x="42" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Nil</text>
@@ -63,7 +63,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="50.44,-45.3 45.18,-36.1 43.56,-46.58 50.44,-45.3"/>
 </g>
 <!-- true -->
-<g id="node6" class="node">
+<g id="node6" class="node value">
 <title>true</title>
 <path fill="#ffffff" stroke="#586e75" d="M150.5,-36C150.5,-36 99.5,-36 99.5,-36 93.5,-36 87.5,-30 87.5,-24 87.5,-24 87.5,-12 87.5,-12 87.5,-6 93.5,0 99.5,0 99.5,0 150.5,0 150.5,0 156.5,0 162.5,-6 162.5,-12 162.5,-12 162.5,-24 162.5,-24 162.5,-30 156.5,-36 150.5,-36"/>
 <text text-anchor="middle" x="125" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">true :: Nil</text>
@@ -75,7 +75,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="155.18,-39.88 145.28,-36.1 150.67,-45.23 155.18,-39.88"/>
 </g>
 <!-- false -->
-<g id="node7" class="node">
+<g id="node7" class="node value">
 <title>false</title>
 <path fill="#ffffff" stroke="#586e75" d="M249,-36C249,-36 193,-36 193,-36 187,-36 181,-30 181,-24 181,-24 181,-12 181,-12 181,-6 187,0 193,0 193,0 249,0 249,0 255,0 261,-6 261,-12 261,-12 261,-24 261,-24 261,-30 255,-36 249,-36"/>
 <text text-anchor="middle" x="221" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">false :: Nil</text>
@@ -87,7 +87,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="219.44,-46.58 217.82,-36.1 212.56,-45.3 219.44,-46.58"/>
 </g>
 <!-- true_true -->
-<g id="node8" class="node">
+<g id="node8" class="node value">
 <title>true_true</title>
 <path fill="#ffffff" stroke="#586e75" d="M384.5,-36C384.5,-36 291.5,-36 291.5,-36 285.5,-36 279.5,-30 279.5,-24 279.5,-24 279.5,-12 279.5,-12 279.5,-6 285.5,0 291.5,0 291.5,0 384.5,0 384.5,0 390.5,0 396.5,-6 396.5,-12 396.5,-12 396.5,-24 396.5,-24 396.5,-30 390.5,-36 384.5,-36"/>
 <text text-anchor="middle" x="338" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">true :: true :: Nil</text>
@@ -99,7 +99,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="382.39,-37.59 371.89,-36.19 379.22,-43.83 382.39,-37.59"/>
 </g>
 <!-- true_false -->
-<g id="node9" class="node">
+<g id="node9" class="node value">
 <title>true_false</title>
 <path fill="#ffffff" stroke="#586e75" d="M525,-36C525,-36 427,-36 427,-36 421,-36 415,-30 415,-24 415,-24 415,-12 415,-12 415,-6 421,0 427,0 427,0 525,0 525,0 531,0 537,-6 537,-12 537,-12 537,-24 537,-24 537,-30 531,-36 525,-36"/>
 <text text-anchor="middle" x="476" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">true :: false :: Nil</text>
@@ -111,7 +111,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="479.5,-46.1 476,-36.1 472.5,-46.1 479.5,-46.1"/>
 </g>
 <!-- false_true -->
-<g id="node10" class="node">
+<g id="node10" class="node value">
 <title>false_true</title>
 <path fill="#ffffff" stroke="#586e75" d="M665,-36C665,-36 567,-36 567,-36 561,-36 555,-30 555,-24 555,-24 555,-12 555,-12 555,-6 561,0 567,0 567,0 665,0 665,0 671,0 677,-6 677,-12 677,-12 677,-24 677,-24 677,-30 671,-36 665,-36"/>
 <text text-anchor="middle" x="616" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">false :: true :: Nil</text>
@@ -123,7 +123,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="574.24,-43.79 581.62,-36.19 571.11,-37.53 574.24,-43.79"/>
 </g>
 <!-- false_false -->
-<g id="node11" class="node">
+<g id="node11" class="node value">
 <title>false_false</title>
 <path fill="#ffffff" stroke="#586e75" d="M809,-36C809,-36 707,-36 707,-36 701,-36 695,-30 695,-24 695,-24 695,-12 695,-12 695,-6 701,0 707,0 707,0 809,0 809,0 815,0 821,-6 821,-12 821,-12 821,-24 821,-24 821,-30 815,-36 809,-36"/>
 <text text-anchor="middle" x="758" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">false :: false :: Nil</text>

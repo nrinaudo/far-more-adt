@@ -31,7 +31,7 @@
 <!-- List2 -->
 <!-- List&#45;&gt;List2 -->
 <!-- Nil -->
-<g id="node5" class="node">
+<g id="node5" class="node value">
 <title>Nil</title>
 <path fill="#ffffff" stroke="#586e75" d="M57,-36C57,-36 27,-36 27,-36 21,-36 15,-30 15,-24 15,-24 15,-12 15,-12 15,-6 21,0 27,0 27,0 57,0 57,0 63,0 69,-6 69,-12 69,-12 69,-24 69,-24 69,-30 63,-36 57,-36"/>
 <text text-anchor="middle" x="42" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Nil</text>

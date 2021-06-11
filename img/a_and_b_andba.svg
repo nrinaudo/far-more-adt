@@ -15,7 +15,7 @@
 <text text-anchor="middle" x="29" y="-230.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A ⋀ B</text>
 </g>
 <!-- AndAB -->
-<g id="node2" class="node">
+<g id="node2" class="node value">
 <title>AndAB</title>
 <path fill="#ffffff" stroke="#586e75" d="M46,-180C46,-180 12,-180 12,-180 6,-180 0,-174 0,-168 0,-168 0,-156 0,-156 0,-150 6,-144 12,-144 12,-144 46,-144 46,-144 52,-144 58,-150 58,-156 58,-156 58,-168 58,-168 58,-174 52,-180 46,-180"/>
 <text text-anchor="middle" x="29" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">aᵢ ⋀ bⱼ</text>
@@ -27,7 +27,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="32.5,-190.1 29,-180.1 25.5,-190.1 32.5,-190.1"/>
 </g>
 <!-- AndBA -->
-<g id="node4" class="node">
+<g id="node4" class="node value">
 <title>AndBA</title>
 <path fill="#ffffff" stroke="#586e75" d="M46,-108C46,-108 12,-108 12,-108 6,-108 0,-102 0,-96 0,-96 0,-84 0,-84 0,-78 6,-72 12,-72 12,-72 46,-72 46,-72 52,-72 58,-78 58,-84 58,-84 58,-96 58,-96 58,-102 52,-108 46,-108"/>
 <text text-anchor="middle" x="29" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">bⱼ ⋀ aᵢ</text>

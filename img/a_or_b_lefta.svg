@@ -15,7 +15,7 @@
 <text text-anchor="middle" x="78.5" y="-230.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A ⋁ B</text>
 </g>
 <!-- LeftA -->
-<g id="node2" class="node">
+<g id="node2" class="node value">
 <title>LeftA</title>
 <path fill="#ffffff" stroke="#586e75" d="M56,-180C56,-180 15,-180 15,-180 9,-180 3,-174 3,-168 3,-168 3,-156 3,-156 3,-150 9,-144 15,-144 15,-144 56,-144 56,-144 62,-144 68,-150 68,-156 68,-156 68,-168 68,-168 68,-174 62,-180 56,-180"/>
 <text text-anchor="middle" x="35.5" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(aᵢ)</text>

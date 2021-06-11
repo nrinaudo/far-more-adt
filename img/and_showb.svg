@@ -9,94 +9,94 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
 <title>%3</title>
 <!-- AndAB -->
-<g id="node1" class="node">
+<g id="node1" class="node disabled">
 <title>AndAB</title>
-<path fill="#dddddd" stroke="#dddddd" d="M292.5,-108C292.5,-108 261.5,-108 261.5,-108 255.5,-108 249.5,-102 249.5,-96 249.5,-96 249.5,-84 249.5,-84 249.5,-78 255.5,-72 261.5,-72 261.5,-72 292.5,-72 292.5,-72 298.5,-72 304.5,-78 304.5,-84 304.5,-84 304.5,-96 304.5,-96 304.5,-102 298.5,-108 292.5,-108"/>
-<text text-anchor="middle" x="277" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#eeeeee">A ⋀ B</text>
+<path fill="#d0dce3" stroke="#d0dce3" d="M292.5,-108C292.5,-108 261.5,-108 261.5,-108 255.5,-108 249.5,-102 249.5,-96 249.5,-96 249.5,-84 249.5,-84 249.5,-78 255.5,-72 261.5,-72 261.5,-72 292.5,-72 292.5,-72 298.5,-72 304.5,-78 304.5,-84 304.5,-84 304.5,-96 304.5,-96 304.5,-102 298.5,-108 292.5,-108"/>
+<text text-anchor="middle" x="277" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A ⋀ B</text>
 </g>
 <!-- AndA1B1 -->
-<g id="node2" class="node">
+<g id="node2" class="node value">
 <title>AndA1B1</title>
 <path fill="#ffffff" stroke="#586e75" d="M50,-36C50,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 50,0 50,0 56,0 62,-6 62,-12 62,-12 62,-24 62,-24 62,-30 56,-36 50,-36"/>
 <text text-anchor="middle" x="31" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">a₁ ⋀ b₁</text>
 </g>
 <!-- AndAB&#45;&gt;AndA1B1 -->
-<g id="edge1" class="edge">
+<g id="edge1" class="edge disabled">
 <title>AndAB&#45;&gt;AndA1B1</title>
-<path fill="none" stroke="#dddddd" d="M249.29,-83.26C211.17,-75.06 140.34,-58.77 71.91,-36.06"/>
-<polygon fill="#dddddd" stroke="#dddddd" points="72.86,-32.69 62.27,-32.81 70.63,-39.33 72.86,-32.69"/>
+<path fill="none" stroke="#d0dce3" d="M249.29,-83.26C211.17,-75.06 140.34,-58.77 71.91,-36.06"/>
+<polygon fill="#d0dce3" stroke="#d0dce3" points="72.86,-32.69 62.27,-32.81 70.63,-39.33 72.86,-32.69"/>
 </g>
 <!-- AndA1BE -->
-<g id="node3" class="node">
+<g id="node3" class="node value">
 <title>AndA1BE</title>
 <path fill="#ffffff" stroke="#586e75" d="M131.5,-36C131.5,-36 92.5,-36 92.5,-36 86.5,-36 80.5,-30 80.5,-24 80.5,-24 80.5,-12 80.5,-12 80.5,-6 86.5,0 92.5,0 92.5,0 131.5,0 131.5,0 137.5,0 143.5,-6 143.5,-12 143.5,-12 143.5,-24 143.5,-24 143.5,-30 137.5,-36 131.5,-36"/>
 <text text-anchor="middle" x="112" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">a₁ ⋀ ⋯</text>
 </g>
 <!-- AndAB&#45;&gt;AndA1BE -->
-<g id="edge2" class="edge">
+<g id="edge2" class="edge disabled">
 <title>AndAB&#45;&gt;AndA1BE</title>
-<path fill="none" stroke="#dddddd" d="M249.38,-77.28C223.06,-66.12 183.09,-49.16 153.04,-36.41"/>
-<polygon fill="#dddddd" stroke="#dddddd" points="154.23,-33.11 143.66,-32.43 151.5,-39.56 154.23,-33.11"/>
+<path fill="none" stroke="#d0dce3" d="M249.38,-77.28C223.06,-66.12 183.09,-49.16 153.04,-36.41"/>
+<polygon fill="#d0dce3" stroke="#d0dce3" points="154.23,-33.11 143.66,-32.43 151.5,-39.56 154.23,-33.11"/>
 </g>
 <!-- AndA1BN -->
-<g id="node4" class="node">
+<g id="node4" class="node value">
 <title>AndA1BN</title>
 <path fill="#ffffff" stroke="#586e75" d="M214,-36C214,-36 174,-36 174,-36 168,-36 162,-30 162,-24 162,-24 162,-12 162,-12 162,-6 168,0 174,0 174,0 214,0 214,0 220,0 226,-6 226,-12 226,-12 226,-24 226,-24 226,-30 220,-36 214,-36"/>
 <text text-anchor="middle" x="194" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">a₁ ⋀ bₙ</text>
 </g>
 <!-- AndAB&#45;&gt;AndA1BN -->
-<g id="edge3" class="edge">
+<g id="edge3" class="edge disabled">
 <title>AndAB&#45;&gt;AndA1BN</title>
-<path fill="none" stroke="#dddddd" d="M256.48,-71.7C246.13,-62.97 233.41,-52.24 222.16,-42.75"/>
-<polygon fill="#dddddd" stroke="#dddddd" points="224.18,-39.88 214.28,-36.1 219.67,-45.23 224.18,-39.88"/>
+<path fill="none" stroke="#d0dce3" d="M256.48,-71.7C246.13,-62.97 233.41,-52.24 222.16,-42.75"/>
+<polygon fill="#d0dce3" stroke="#d0dce3" points="224.18,-39.88 214.28,-36.1 219.67,-45.23 224.18,-39.88"/>
 </g>
 <!-- AndAEBE -->
-<g id="node5" class="node">
+<g id="node5" class="node value,disabled">
 <title>AndAEBE</title>
-<path fill="#ffffff" stroke="#dddddd" d="M297.5,-36C297.5,-36 256.5,-36 256.5,-36 250.5,-36 244.5,-30 244.5,-24 244.5,-24 244.5,-12 244.5,-12 244.5,-6 250.5,0 256.5,0 256.5,0 297.5,0 297.5,0 303.5,0 309.5,-6 309.5,-12 309.5,-12 309.5,-24 309.5,-24 309.5,-30 303.5,-36 297.5,-36"/>
-<text text-anchor="middle" x="277" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#eeeeee">⋯ ⋀ ⋯</text>
+<path fill="#ffffff" stroke="#d0dce3" d="M297.5,-36C297.5,-36 256.5,-36 256.5,-36 250.5,-36 244.5,-30 244.5,-24 244.5,-24 244.5,-12 244.5,-12 244.5,-6 250.5,0 256.5,0 256.5,0 297.5,0 297.5,0 303.5,0 309.5,-6 309.5,-12 309.5,-12 309.5,-24 309.5,-24 309.5,-30 303.5,-36 297.5,-36"/>
+<text text-anchor="middle" x="277" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#d0dce3">⋯ ⋀ ⋯</text>
 </g>
 <!-- AndAB&#45;&gt;AndAEBE -->
-<g id="edge4" class="edge">
+<g id="edge4" class="edge disabled">
 <title>AndAB&#45;&gt;AndAEBE</title>
-<path fill="none" stroke="#dddddd" d="M277,-71.7C277,-63.98 277,-54.71 277,-46.11"/>
-<polygon fill="#dddddd" stroke="#dddddd" points="280.5,-46.1 277,-36.1 273.5,-46.1 280.5,-46.1"/>
+<path fill="none" stroke="#d0dce3" d="M277,-71.7C277,-63.98 277,-54.71 277,-46.11"/>
+<polygon fill="#d0dce3" stroke="#d0dce3" points="280.5,-46.1 277,-36.1 273.5,-46.1 280.5,-46.1"/>
 </g>
 <!-- AndANB1 -->
-<g id="node6" class="node">
+<g id="node6" class="node value,disabled">
 <title>AndANB1</title>
-<path fill="#ffffff" stroke="#dddddd" d="M380,-36C380,-36 340,-36 340,-36 334,-36 328,-30 328,-24 328,-24 328,-12 328,-12 328,-6 334,0 340,0 340,0 380,0 380,0 386,0 392,-6 392,-12 392,-12 392,-24 392,-24 392,-30 386,-36 380,-36"/>
-<text text-anchor="middle" x="360" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#eeeeee">aₙ ⋀ b₁</text>
+<path fill="#ffffff" stroke="#d0dce3" d="M380,-36C380,-36 340,-36 340,-36 334,-36 328,-30 328,-24 328,-24 328,-12 328,-12 328,-6 334,0 340,0 340,0 380,0 380,0 386,0 392,-6 392,-12 392,-12 392,-24 392,-24 392,-30 386,-36 380,-36"/>
+<text text-anchor="middle" x="360" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#d0dce3">aₙ ⋀ b₁</text>
 </g>
 <!-- AndAB&#45;&gt;AndANB1 -->
-<g id="edge5" class="edge">
+<g id="edge5" class="edge disabled">
 <title>AndAB&#45;&gt;AndANB1</title>
-<path fill="none" stroke="#dddddd" d="M297.52,-71.7C307.87,-62.97 320.59,-52.24 331.84,-42.75"/>
-<polygon fill="#dddddd" stroke="#dddddd" points="334.33,-45.23 339.72,-36.1 329.82,-39.88 334.33,-45.23"/>
+<path fill="none" stroke="#d0dce3" d="M297.52,-71.7C307.87,-62.97 320.59,-52.24 331.84,-42.75"/>
+<polygon fill="#d0dce3" stroke="#d0dce3" points="334.33,-45.23 339.72,-36.1 329.82,-39.88 334.33,-45.23"/>
 </g>
 <!-- AndANBE -->
-<g id="node7" class="node">
+<g id="node7" class="node value,disabled">
 <title>AndANBE</title>
-<path fill="#ffffff" stroke="#dddddd" d="M463.5,-36C463.5,-36 422.5,-36 422.5,-36 416.5,-36 410.5,-30 410.5,-24 410.5,-24 410.5,-12 410.5,-12 410.5,-6 416.5,0 422.5,0 422.5,0 463.5,0 463.5,0 469.5,0 475.5,-6 475.5,-12 475.5,-12 475.5,-24 475.5,-24 475.5,-30 469.5,-36 463.5,-36"/>
-<text text-anchor="middle" x="443" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#eeeeee">aₙ ⋀ ⋯</text>
+<path fill="#ffffff" stroke="#d0dce3" d="M463.5,-36C463.5,-36 422.5,-36 422.5,-36 416.5,-36 410.5,-30 410.5,-24 410.5,-24 410.5,-12 410.5,-12 410.5,-6 416.5,0 422.5,0 422.5,0 463.5,0 463.5,0 469.5,0 475.5,-6 475.5,-12 475.5,-12 475.5,-24 475.5,-24 475.5,-30 469.5,-36 463.5,-36"/>
+<text text-anchor="middle" x="443" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#d0dce3">aₙ ⋀ ⋯</text>
 </g>
 <!-- AndAB&#45;&gt;AndANBE -->
-<g id="edge6" class="edge">
+<g id="edge6" class="edge disabled">
 <title>AndAB&#45;&gt;AndANBE</title>
-<path fill="none" stroke="#dddddd" d="M304.78,-77.28C331.02,-66.22 370.72,-49.48 400.85,-36.77"/>
-<polygon fill="#dddddd" stroke="#dddddd" points="402.42,-39.91 410.27,-32.8 399.7,-33.46 402.42,-39.91"/>
+<path fill="none" stroke="#d0dce3" d="M304.78,-77.28C331.02,-66.22 370.72,-49.48 400.85,-36.77"/>
+<polygon fill="#d0dce3" stroke="#d0dce3" points="402.42,-39.91 410.27,-32.8 399.7,-33.46 402.42,-39.91"/>
 </g>
 <!-- AndANBN -->
-<g id="node8" class="node">
+<g id="node8" class="node value,disabled">
 <title>AndANBN</title>
-<path fill="#ffffff" stroke="#dddddd" d="M546.5,-36C546.5,-36 505.5,-36 505.5,-36 499.5,-36 493.5,-30 493.5,-24 493.5,-24 493.5,-12 493.5,-12 493.5,-6 499.5,0 505.5,0 505.5,0 546.5,0 546.5,0 552.5,0 558.5,-6 558.5,-12 558.5,-12 558.5,-24 558.5,-24 558.5,-30 552.5,-36 546.5,-36"/>
-<text text-anchor="middle" x="526" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#eeeeee">aₙ ⋀ bₙ</text>
+<path fill="#ffffff" stroke="#d0dce3" d="M546.5,-36C546.5,-36 505.5,-36 505.5,-36 499.5,-36 493.5,-30 493.5,-24 493.5,-24 493.5,-12 493.5,-12 493.5,-6 499.5,0 505.5,0 505.5,0 546.5,0 546.5,0 552.5,0 558.5,-6 558.5,-12 558.5,-12 558.5,-24 558.5,-24 558.5,-30 552.5,-36 546.5,-36"/>
+<text text-anchor="middle" x="526" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#d0dce3">aₙ ⋀ bₙ</text>
 </g>
 <!-- AndAB&#45;&gt;AndANBN -->
-<g id="edge7" class="edge">
+<g id="edge7" class="edge disabled">
 <title>AndAB&#45;&gt;AndANBN</title>
-<path fill="none" stroke="#dddddd" d="M304.62,-83.29C343,-75.07 414.71,-58.68 483.76,-36.19"/>
-<polygon fill="#dddddd" stroke="#dddddd" points="485.09,-39.44 493.49,-32.98 482.89,-32.79 485.09,-39.44"/>
+<path fill="none" stroke="#d0dce3" d="M304.62,-83.29C343,-75.07 414.71,-58.68 483.76,-36.19"/>
+<polygon fill="#d0dce3" stroke="#d0dce3" points="485.09,-39.44 493.49,-32.98 482.89,-32.79 485.09,-39.44"/>
 </g>
 </g>
 </svg>

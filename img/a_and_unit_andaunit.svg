@@ -15,7 +15,7 @@
 <text text-anchor="middle" x="36.5" y="-230.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A ⋀ Unit</text>
 </g>
 <!-- AndAUnit -->
-<g id="node2" class="node">
+<g id="node2" class="node value">
 <title>AndAUnit</title>
 <path fill="#ffffff" stroke="#586e75" d="M53,-180C53,-180 20,-180 20,-180 14,-180 8,-174 8,-168 8,-168 8,-156 8,-156 8,-150 14,-144 20,-144 20,-144 53,-144 53,-144 59,-144 65,-150 65,-156 65,-156 65,-168 65,-168 65,-174 59,-180 53,-180"/>
 <text text-anchor="middle" x="36.5" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">aᵢ ⋀ ()</text>

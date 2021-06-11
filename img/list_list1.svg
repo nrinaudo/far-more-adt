@@ -41,7 +41,7 @@
 <!-- List2 -->
 <!-- List&#45;&gt;List2 -->
 <!-- Nil -->
-<g id="node5" class="node">
+<g id="node5" class="node value">
 <title>Nil</title>
 <path fill="#ffffff" stroke="#586e75" d="M57,-36C57,-36 27,-36 27,-36 21,-36 15,-30 15,-24 15,-24 15,-12 15,-12 15,-6 21,0 27,0 27,0 57,0 57,0 63,0 69,-6 69,-12 69,-12 69,-24 69,-24 69,-30 63,-36 57,-36"/>
 <text text-anchor="middle" x="42" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Nil</text>
@@ -53,7 +53,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="50.44,-45.3 45.18,-36.1 43.56,-46.58 50.44,-45.3"/>
 </g>
 <!-- true -->
-<g id="node6" class="node">
+<g id="node6" class="node value">
 <title>true</title>
 <path fill="#ffffff" stroke="#586e75" d="M150.5,-36C150.5,-36 99.5,-36 99.5,-36 93.5,-36 87.5,-30 87.5,-24 87.5,-24 87.5,-12 87.5,-12 87.5,-6 93.5,0 99.5,0 99.5,0 150.5,0 150.5,0 156.5,0 162.5,-6 162.5,-12 162.5,-12 162.5,-24 162.5,-24 162.5,-30 156.5,-36 150.5,-36"/>
 <text text-anchor="middle" x="125" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">true :: Nil</text>
@@ -65,7 +65,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="155.18,-39.88 145.28,-36.1 150.67,-45.23 155.18,-39.88"/>
 </g>
 <!-- false -->
-<g id="node7" class="node">
+<g id="node7" class="node value">
 <title>false</title>
 <path fill="#ffffff" stroke="#586e75" d="M249,-36C249,-36 193,-36 193,-36 187,-36 181,-30 181,-24 181,-24 181,-12 181,-12 181,-6 187,0 193,0 193,0 249,0 249,0 255,0 261,-6 261,-12 261,-12 261,-24 261,-24 261,-30 255,-36 249,-36"/>
 <text text-anchor="middle" x="221" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">false :: Nil</text>

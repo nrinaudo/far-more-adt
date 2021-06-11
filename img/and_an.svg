@@ -15,7 +15,7 @@
 <text text-anchor="middle" x="277" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A ⋀ B</text>
 </g>
 <!-- AndA1B1 -->
-<g id="node2" class="node">
+<g id="node2" class="node value">
 <title>AndA1B1</title>
 <path fill="#ffffff" stroke="#586e75" d="M50,-36C50,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 50,0 50,0 56,0 62,-6 62,-12 62,-12 62,-24 62,-24 62,-30 56,-36 50,-36"/>
 <text text-anchor="middle" x="31" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">a₁ ⋀ b₁</text>
@@ -27,7 +27,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="72.86,-32.69 62.27,-32.81 70.63,-39.33 72.86,-32.69"/>
 </g>
 <!-- AndA1BE -->
-<g id="node3" class="node">
+<g id="node3" class="node value">
 <title>AndA1BE</title>
 <path fill="#ffffff" stroke="#586e75" d="M131.5,-36C131.5,-36 92.5,-36 92.5,-36 86.5,-36 80.5,-30 80.5,-24 80.5,-24 80.5,-12 80.5,-12 80.5,-6 86.5,0 92.5,0 92.5,0 131.5,0 131.5,0 137.5,0 143.5,-6 143.5,-12 143.5,-12 143.5,-24 143.5,-24 143.5,-30 137.5,-36 131.5,-36"/>
 <text text-anchor="middle" x="112" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">a₁ ⋀ ⋯</text>
@@ -39,7 +39,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="154.23,-33.11 143.66,-32.43 151.5,-39.56 154.23,-33.11"/>
 </g>
 <!-- AndA1BN -->
-<g id="node4" class="node">
+<g id="node4" class="node value">
 <title>AndA1BN</title>
 <path fill="#ffffff" stroke="#586e75" d="M214,-36C214,-36 174,-36 174,-36 168,-36 162,-30 162,-24 162,-24 162,-12 162,-12 162,-6 168,0 174,0 174,0 214,0 214,0 220,0 226,-6 226,-12 226,-12 226,-24 226,-24 226,-30 220,-36 214,-36"/>
 <text text-anchor="middle" x="194" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">a₁ ⋀ bₙ</text>
@@ -51,7 +51,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="224.18,-39.88 214.28,-36.1 219.67,-45.23 224.18,-39.88"/>
 </g>
 <!-- AndAEBE -->
-<g id="node5" class="node">
+<g id="node5" class="node value">
 <title>AndAEBE</title>
 <path fill="#ffffff" stroke="#586e75" d="M297.5,-36C297.5,-36 256.5,-36 256.5,-36 250.5,-36 244.5,-30 244.5,-24 244.5,-24 244.5,-12 244.5,-12 244.5,-6 250.5,0 256.5,0 256.5,0 297.5,0 297.5,0 303.5,0 309.5,-6 309.5,-12 309.5,-12 309.5,-24 309.5,-24 309.5,-30 303.5,-36 297.5,-36"/>
 <text text-anchor="middle" x="277" y="-14.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">⋯ ⋀ ⋯</text>

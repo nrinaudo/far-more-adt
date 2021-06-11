@@ -15,7 +15,7 @@
 <text text-anchor="middle" x="166" y="-230.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A ⋁ (B ⋁ C)</text>
 </g>
 <!-- LeftA -->
-<g id="node2" class="node">
+<g id="node2" class="node value">
 <title>LeftA</title>
 <path fill="#ffffff" stroke="#586e75" d="M71.5,-180C71.5,-180 30.5,-180 30.5,-180 24.5,-180 18.5,-174 18.5,-168 18.5,-168 18.5,-156 18.5,-156 18.5,-150 24.5,-144 30.5,-144 30.5,-144 71.5,-144 71.5,-144 77.5,-144 83.5,-150 83.5,-156 83.5,-156 83.5,-168 83.5,-168 83.5,-174 77.5,-180 71.5,-180"/>
 <text text-anchor="middle" x="51" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(aᵢ)</text>
@@ -27,7 +27,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="89.6,-182.4 79.24,-180.19 85.96,-188.38 89.6,-182.4"/>
 </g>
 <!-- RightLeftB -->
-<g id="node3" class="node">
+<g id="node3" class="node value">
 <title>RightLeftB</title>
 <path fill="#ffffff" stroke="#586e75" d="M209,-180C209,-180 123,-180 123,-180 117,-180 111,-174 111,-168 111,-168 111,-156 111,-156 111,-150 117,-144 123,-144 123,-144 209,-144 209,-144 215,-144 221,-150 221,-156 221,-156 221,-168 221,-168 221,-174 215,-180 209,-180"/>
 <text text-anchor="middle" x="166" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Right(Left(bⱼ))</text>
@@ -39,7 +39,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="169.5,-190.1 166,-180.1 162.5,-190.1 169.5,-190.1"/>
 </g>
 <!-- RightRightC -->
-<g id="node4" class="node">
+<g id="node4" class="node value">
 <title>RightRightC</title>
 <path fill="#ffffff" stroke="#586e75" d="M345,-180C345,-180 251,-180 251,-180 245,-180 239,-174 239,-168 239,-168 239,-156 239,-156 239,-150 245,-144 251,-144 251,-144 345,-144 345,-144 351,-144 357,-150 357,-156 357,-156 357,-168 357,-168 357,-174 351,-180 345,-180"/>
 <text text-anchor="middle" x="298" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Right(Right(cₖ))</text>
@@ -51,14 +51,14 @@
 <polygon fill="#586e75" stroke="#586e75" points="258.39,-187.97 265.59,-180.19 255.11,-181.78 258.39,-187.97"/>
 </g>
 <!-- LeftLeftA -->
-<g id="node6" class="node">
+<g id="node6" class="node value">
 <title>LeftLeftA</title>
 <path fill="#ffffff" stroke="#586e75" d="M90,-108C90,-108 12,-108 12,-108 6,-108 0,-102 0,-96 0,-96 0,-84 0,-84 0,-78 6,-72 12,-72 12,-72 90,-72 90,-72 96,-72 102,-78 102,-84 102,-84 102,-96 102,-96 102,-102 96,-108 90,-108"/>
 <text text-anchor="middle" x="51" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(Left(aᵢ))</text>
 </g>
 <!-- LeftA&#45;&gt;LeftLeftA -->
 <!-- LeftRightB -->
-<g id="node7" class="node">
+<g id="node7" class="node value">
 <title>LeftRightB</title>
 <path fill="#ffffff" stroke="#586e75" d="M218,-108C218,-108 132,-108 132,-108 126,-108 120,-102 120,-96 120,-96 120,-84 120,-84 120,-78 126,-72 132,-72 132,-72 218,-72 218,-72 224,-72 230,-78 230,-84 230,-84 230,-96 230,-96 230,-102 224,-108 218,-108"/>
 <text text-anchor="middle" x="175" y="-86.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(Right(bⱼ))</text>

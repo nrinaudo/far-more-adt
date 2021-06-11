@@ -15,7 +15,7 @@
 <text text-anchor="middle" x="78.5" y="-230.3" font-family="Inter,Arial" font-size="14.00" fill="#ffffff">A ⋁ B</text>
 </g>
 <!-- LeftA -->
-<g id="node2" class="node">
+<g id="node2" class="node value">
 <title>LeftA</title>
 <path fill="#ffffff" stroke="#586e75" d="M56,-180C56,-180 15,-180 15,-180 9,-180 3,-174 3,-168 3,-168 3,-156 3,-156 3,-150 9,-144 15,-144 15,-144 56,-144 56,-144 62,-144 68,-150 68,-156 68,-156 68,-168 68,-168 68,-174 62,-180 56,-180"/>
 <text text-anchor="middle" x="35.5" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Left(aᵢ)</text>
@@ -27,7 +27,7 @@
 <polygon fill="#586e75" stroke="#586e75" points="54.22,-186.79 46.01,-180.1 48.26,-190.46 54.22,-186.79"/>
 </g>
 <!-- RightB -->
-<g id="node3" class="node">
+<g id="node3" class="node value">
 <title>RightB</title>
 <path fill="#ffffff" stroke="#586e75" d="M146.5,-180C146.5,-180 98.5,-180 98.5,-180 92.5,-180 86.5,-174 86.5,-168 86.5,-168 86.5,-156 86.5,-156 86.5,-150 92.5,-144 98.5,-144 98.5,-144 146.5,-144 146.5,-144 152.5,-144 158.5,-150 158.5,-156 158.5,-156 158.5,-168 158.5,-168 158.5,-174 152.5,-180 146.5,-180"/>
 <text text-anchor="middle" x="122.5" y="-158.3" font-family="Inter,Arial" font-size="14.00" fill="#586e75">Right(bⱼ)</text>
