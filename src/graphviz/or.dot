@@ -1,5 +1,5 @@
 digraph {
-    OrAB[label="A ⋁ B"]
+    OrAB[label="A + B"]
 
     LeftA1[label="Left(a₁)" class="value"]
     LeftAE[label="Left(⋯)" class="value"]
@@ -7,7 +7,7 @@ digraph {
 
     RightB1[label="Right(b₁)" class="value"]
     RightBE[label="Right(⋯)" class="value"]
-    RightBN[label="Right(bₙ)" class="value"]
+    RightBN[label="Right(bₘ)" class="value"]
 
     OrAB -> LeftA1
     OrAB -> LeftAE

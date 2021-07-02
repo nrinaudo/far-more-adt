@@ -1,15 +1,15 @@
 digraph {
-    AndAB[label="A ⋀ B" class="disabled"]
+    AndAB[label="A ✕ B" class="disabled"]
 
-    AndA1B1[label="a₁ ⋀ b₁" class="value"]
-    AndA1BE[label="a₁ ⋀ ⋯" class="value"]
-    AndA1BN[label="a₁ ⋀ bₙ" class="value"]
+    AndA1B1[label="a₁ ✕ b₁" class="value"]
+    AndA1BE[label="a₁ ✕ ⋯" class="value"]
+    AndA1BN[label="a₁ ✕ bₘ" class="value"]
 
-    AndAEBE[label="⋯ ⋀ ⋯" class="value,disabled"]
+    AndAEBE[label="⋯ ✕ ⋯" class="value,disabled"]
 
-    AndANB1[label="aₙ ⋀ b₁" class="value,disabled"]
-    AndANBE[label="aₙ ⋀ ⋯" class="value,disabled"]
-    AndANBN[label="aₙ ⋀ bₙ" class="value,disabled"]
+    AndANB1[label="aₙ ✕ b₁" class="value,disabled"]
+    AndANBE[label="aₙ ✕ ⋯" class="value,disabled"]
+    AndANBN[label="aₙ ✕ bₘ" class="value,disabled"]
 
     AndAB -> AndA1B1, AndA1BE, AndA1BN[class="disabled"]
 
