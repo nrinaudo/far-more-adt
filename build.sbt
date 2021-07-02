@@ -1,12 +1,9 @@
-enablePlugins(TutPlugin, GhpagesPlugin)
+enablePlugins(GhpagesPlugin)
 
 organization := "com.nrinaudo"
-scalaVersion := "2.13.0"
+scalaVersion := "3.0.1-RC2"
 graphvizStylesheet := Some(graphvizSourceDirectory.value / "style.dss")
 
-Tut / siteSubdirName := "./"
-
-addMappingsToSiteDir(tut, Tut / siteSubdirName)
 
 SitePlugin.autoImport.makeSite / includeFilter :=
     "*.yml" | "*.md" | "*.html" | "*.css" | "*.png" | "*.jpg" | "*.gif" | "*.js" | "*.eot" | "*.svg" | "*.ttf" |
@@ -15,4 +12,4 @@ SitePlugin.autoImport.makeSite / includeFilter :=
 git.remoteRepo := "git@github.com:nrinaudo/far-mode-adt.git"
 
 
-Tut / scalacOptions += "-Xfatal-warnings"
+MdRepl / scalacOptions += "-Xfatal-warnings"
