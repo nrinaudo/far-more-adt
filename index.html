@@ -3583,15 +3583,15 @@ enum +[+A, +B]:
 
 ---
 
-## Type equivalence
+## Type isomorphisms
 
-> We'll say that types `A` and `B` are equivalent if they have the same cardinality, and write `A ~= B`.
+> We'll say that types `A` and `B` are isomorphic if they have the same cardinality, and write `A ~= B`.
 
 ---
 
-## Type equivalence
+## Type isomorphisms
 
-> We'll say that types `A` and `B` are equivalent if they have the same cardinality, and write .highlight[`A ~= B`].
+> We'll say that types `A` and `B` are isomorphic if they have the same cardinality, and write .highlight[`A ~= B`].
 
 ---
 
@@ -4017,14 +4017,6 @@ extension [A](a: A)
 
 ## Product types
 
-.center[![✕](img/and.svg)]
-
-\\(\vert A \times B \\vert = \vert A \vert \times \vert B \vert \\)
-
----
-
-## Product types
-
 .section[Algebra]
 
 ```scala
@@ -4380,7 +4372,7 @@ enum `List[+A]`:
 
 ## List of maximum size
 
-\\(\\vert List^n[A] \\vert = \vert \displaystyle\bigvee_{i = 0}^n List_i[A] \vert^i\\)
+\\(\\vert List^n[A] \\vert = \vert \displaystyle\sum_{i = 0}^n List_i[A] \vert^i\\)
 
 ---
 
