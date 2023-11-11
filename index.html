@@ -557,18 +557,6 @@ label(`-35`)
 
 ## Scala's `Enumeration`
 
-```scala
-def label(d: Direction.Value) = d match
-  case Direction.North ⇒ "north"
-  case Direction.East  ⇒ "east"
-  case Direction.South ⇒ "south"
-  case Direction.West  ⇒ "west"
-```
-
----
-
-## Scala's `Enumeration`
-
 .diff-rm[
 ```scala
 def label(d: Direction.Value) = d match
@@ -1837,9 +1825,9 @@ class: center, middle
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Chain
+        | Start
+        | Stop
+        | Chain
 ```
 
 ---
@@ -1848,9 +1836,9 @@ Command = Face
 
 ```scala
 Command = `Face`
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Chain
+        | Start
+        | Stop
+        | Chain
 ```
 
 ---
@@ -1859,9 +1847,9 @@ Command = `Face`
 
 ```scala
 Command = Face
-        ⋁ `Start`
-        ⋁ Stop
-        ⋁ Chain
+        | `Start`
+        | Stop
+        | Chain
 ```
 
 ---
@@ -1870,9 +1858,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ `Stop`
-        ⋁ Chain
+        | Start
+        | `Stop`
+        | Chain
 ```
 
 ---
@@ -1881,9 +1869,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ `Chain`
+        | Start
+        | Stop
+        | `Chain`
 ```
 
 ---
@@ -1892,9 +1880,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Chain
+        | Start
+        | Stop
+        | Chain
 ```
 
 > A sum type is a discriminated union of values, and can be thought of as an `OR` on types.
@@ -1905,9 +1893,9 @@ Command = Face
 
 ```scala
 Command = Face
-        `⋁` Start
-        `⋁` Stop
-        `⋁` Chain
+        `|` Start
+        `|` Stop
+        `|` Chain
 ```
 
 > A sum type is a discriminated union of values, and can be thought of as an .highlight[`OR`] on types.
@@ -1918,9 +1906,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Chain
+        | Start
+        | Stop
+        | Chain
 ```
 
 > A sum type is a .highlight[discriminated] union of values, and can be thought of as an `OR` on types.
@@ -2273,9 +2261,9 @@ void print_union(struct int_or_string e) {
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Chain
+        | Start
+        | Stop
+        | Chain
 ```
 
 > A sum type is a .highlight[discriminated] union of values, and can be thought of as an `OR` on types.
@@ -2292,9 +2280,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Chain
+        | Start
+        | Stop
+        | Chain
 ```
 
 ---
@@ -2304,9 +2292,9 @@ Command = Face
 .diff-rm[
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-*       ⋁ `Chain`
+        | Start
+        | Stop
+*       | `Chain`
 ```
 ]
 
@@ -2317,9 +2305,9 @@ Command = Face
 .diff-add[
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-*       ⋁ `Command ⋀ Command`
+        | Start
+        | Stop
+*       | `Command & Command`
 ```
 ]
 
@@ -2329,9 +2317,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ `Command` ⋀ Command
+        | Start
+        | Stop
+        | `Command` & Command
 ```
 
 ---
@@ -2340,9 +2328,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Command ⋀ `Command`
+        | Start
+        | Stop
+        | Command & `Command`
 ```
 
 ---
@@ -2351,9 +2339,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Command ⋀ Command
+        | Start
+        | Stop
+        | Command & Command
 ```
 
 > A product type is an aggregation of values, and can be thought of as an `AND` on types.
@@ -2364,9 +2352,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Command `⋀` Command
+        | Start
+        | Stop
+        | Command `&` Command
 ```
 
 > A product type is an aggregation of values, and can be thought of as an .highlight[`AND`] on types.
@@ -2383,9 +2371,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Command ⋀ Command
+        | Start
+        | Stop
+        | Command & Command
 ```
 
 ---
@@ -2394,9 +2382,9 @@ Command = Face
 
 ```scala
 &#x200B;`Command` = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ Command ⋀ Command
+        | Start
+        | Stop
+        | Command & Command
 ```
 
 ---
@@ -2405,9 +2393,9 @@ Command = Face
 
 ```scala
 Command = Face
-        ⋁ Start
-        ⋁ Stop
-        ⋁ `Command` ⋀ `Command`
+        | Start
+        | Stop
+        | `Command` & `Command`
 ```
 
 ---
@@ -3142,11 +3130,13 @@ movingLabel(`Command.Start`)
 
 ## Smarter exhaustivity checks
 
+.diff-rm[
 ```scala
 def movingLabel(cmd: Command[Moving, _]) = cmd match
   case Command.Stop              => "stop"
-  case _: Command.Chain[_, _, _] => "chain"
+* `case _: Command.Chain[_, _, _] => "chain"`
 ```
+]
 
 ---
 
@@ -3325,7 +3315,7 @@ enum Command[Before, `After`]:
 
 ## Witness type
 
-> A witness type describes properties of a sum type's branches at the type level.
+> A witness type describes properties of a sum type's variants at the type level.
 
 ---
 
