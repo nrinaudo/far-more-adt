@@ -1,5 +1,5 @@
 digraph {
-    UnitOrUnit[label="Unit ⋁ Unit"]
+    UnitOrUnit[label="Unit + Unit"]
     Left[label="Left(())" class="value" style=invis]
     Right[label="Right(())" class="value" style=invis]
 

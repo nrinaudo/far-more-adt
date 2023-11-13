@@ -1,12 +1,12 @@
 digraph {
-    AorB[label="A ⋁ B"]
+    AorB[label="A + B"]
     LeftA[label="Left(aᵢ)" class="value" style=invis]
     RightB[label="Right(bⱼ)" class="value" style=invis]
 
     AorB -> LeftA[style=invis]
     AorB -> RightB[style=invis]
 
-    BorA[label="B ⋁ A"]
+    BorA[label="B + A"]
     LeftB[label="Left(bⱼ)" class="value" style=invis]
     RightA[label="Right(aᵢ)" class="value" style=invis]
 

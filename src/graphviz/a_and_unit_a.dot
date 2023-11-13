@@ -1,6 +1,6 @@
 digraph {
-    AandUnit[label="A ⋀ Unit"]
-    AndAUnit[label="aᵢ ⋀ ()" class="value"]
+    AandUnit[label="A ✕ Unit"]
+    AndAUnit[label="aᵢ ✕ ()" class="value"]
 
     AandUnit -> AndAUnit
 

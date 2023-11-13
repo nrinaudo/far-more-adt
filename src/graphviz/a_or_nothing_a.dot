@@ -1,5 +1,5 @@
 digraph {
-    AorNothing[label="A ⋁ Nothing"]
+    AorNothing[label="A + Nothing"]
     LeftA[label="Left(aᵢ)" class="value"]
     na[class="na,value"]
 

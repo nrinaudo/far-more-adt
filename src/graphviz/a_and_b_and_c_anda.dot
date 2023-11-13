@@ -1,11 +1,11 @@
 digraph {
-    LeftAssoc[label="A ⋀ (B ⋀ C)"]
-    Aand[label="aᵢ ⋀ (bⱼ ⋀ cₖ)" class="value"]
+    LeftAssoc[label="A ✕ (B ✕ C)"]
+    Aand[label="aᵢ ✕ (bⱼ ✕ cₖ)" class="value"]
 
     LeftAssoc -> Aand
 
-    RightAssoc[label="(A ⋀ B) ⋀ C"]
-    andC[label="(aᵢ ⋀ bⱼ) ⋀ cₖ" class="value" style=invis]
+    RightAssoc[label="(A ✕ B) ✕ C"]
+    andC[label="(aᵢ ✕ bⱼ) ✕ cₖ" class="value" style=invis]
 
     andC -> RightAssoc[dir=back style=invis]
 

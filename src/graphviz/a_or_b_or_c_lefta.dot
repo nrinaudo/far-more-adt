@@ -1,5 +1,5 @@
 digraph {
-    LeftAssoc[label="A ⋁ (B ⋁ C)"]
+    LeftAssoc[label="A + (B + C)"]
     LeftA[label="Left(aᵢ)" class="value"]
     RightLeftB[label="Right(Left(bⱼ))" class="value" style=invis]
     RightRightC[label="Right(Right(cₖ))" class="value" style=invis]
@@ -8,7 +8,7 @@ digraph {
     LeftAssoc -> RightLeftB[style=invis]
     LeftAssoc -> RightRightC[style=invis]
 
-    RightAssoc[label="(A ⋁ B) ⋁ C"]
+    RightAssoc[label="(A + B) + C"]
     LeftLeftA[label="Left(Left(aᵢ))" class="value" style=invis]
     LeftRightB[label="Left(Right(bⱼ))" class="value" style=invis]
     RightC[label="Right(cₖ)" class="value" style=invis]
