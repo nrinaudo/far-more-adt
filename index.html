@@ -14,6 +14,14 @@ class: center, middle
 [Nicolas Rinaudo] • [@NicolasRinaudo@functional.cafe]
 
 ---
+
+class: center, middle
+
+# Far more than you've ever wanted to know about .highlight[ADTs]
+
+[Nicolas Rinaudo] • [@NicolasRinaudo@functional.cafe]
+
+---
 class: center, middle
 
 .center[![Our proud hero](img/gundam-hero.png)]
@@ -212,9 +220,11 @@ class: center, middle
 
 ## Magic values
 
+.diff-add[
 ```scala
-object Direction
+*&#x200B;`object Direction:`
 ```
+]
 
 ---
 
@@ -347,18 +357,6 @@ label(-35)
 ```scala
 label(`-35`)
 // 💥 scala.MatchError: -35
-```
-
----
-
-## Type aliases
-
-```scala
-object Direction:
-  val North: Int = 1
-  val East:  Int = 2
-  val South: Int = 3
-  val West:  Int = 4
 ```
 
 ---
@@ -606,9 +604,11 @@ label(`Direction.West`)
 
 ## Hand-written enumeration
 
+.diff-add[
 ```scala
-trait Direction
+*&#x200B;`trait Direction`
 ```
+]
 
 ---
 
@@ -727,20 +727,6 @@ label(Direction.West)
 ```scala
 label(`Direction.West`)
 // 💥 scala.MatchError: West
-```
-
----
-
-## Hand-written enumeration
-
-```scala
-trait Direction
-
-object Direction:
-  case object North extends Direction
-  case object East  extends Direction
-  case object South extends Direction
-  case object West  extends Direction
 ```
 
 ---
@@ -912,9 +898,13 @@ Command(
 
 ## `Order` as enumeration
 
+.diff-add[
 ```scala
-sealed trait Order
+*&#x200B;`sealed trait Order`
 ```
+]
+
+
 
 
 ---
@@ -925,7 +915,7 @@ sealed trait Order
 ```scala
 sealed trait Order
 *
-*&#x200B;`object Order`
+*&#x200B;`object Order:`
 ```
 ]
 
@@ -1297,19 +1287,6 @@ start
 
 ## Chaining commands
 
-```scala
-sealed trait Command
-
-object Command:
-  case class  Face(dir: Direction) extends Command
-  case object Start                extends Command
-  case object Stop                 extends Command
-```
-
----
-
-## Chaining commands
-
 .diff-add[
 ```scala
 sealed trait Command
@@ -1602,21 +1579,9 @@ val `startStop`: Command =
 
 ## DSL
 
+.diff-add[
 ```scala
-val start                = ???
-val stop                 = ???
-def face(dir: Direction) = ???
-```
-
----
-
-## DSL
-
-.diff-rm[
-```scala
-*val start                = `???`
-*val stop                 = `???`
-*def face(dir: Direction) = `???`
+*&#x200B;`val start                = Command.Start`
 ```
 ]
 
@@ -1626,33 +1591,21 @@ def face(dir: Direction) = ???
 
 .diff-add[
 ```scala
-*val start                = `Command.Start`
-*val stop                 = `Command.Stop`
-*def face(dir: Direction) = `Command.Face(dir)`
+val start                = Command.Start
+*&#x200B;`val stop                 = Command.Stop`
 ```
 ]
 
----
-
-## DSL
-
-```scala
-val north = ???
-val east  = ???
-val south = ???
-val west  = ???
-```
 
 ---
 
 ## DSL
 
-.diff-rm[
+.diff-add[
 ```scala
-*val north = `???`
-*val east  = `???`
-*val south = `???`
-*val west  = `???`
+val start                = Command.Start
+val stop                 = Command.Stop
+*&#x200B;`def face(dir: Direction) = Command.Face(dir)`
 ```
 ]
 
@@ -1662,10 +1615,44 @@ val west  = ???
 
 .diff-add[
 ```scala
-*val north = `Direction.North`
-*val east  = `Direction.East`
-*val south = `Direction.South`
-*val west  = `Direction.West`
+*&#x200B;`val north = Direction.North`
+```
+]
+
+---
+
+## DSL
+
+.diff-add[
+```scala
+val north = Direction.North
+*&#x200B;`val east  = Direction.East`
+```
+]
+
+---
+
+## DSL
+
+.diff-add[
+```scala
+val north = Direction.North
+val east  = Direction.East
+*&#x200B;`val south = Direction.South`
+```
+]
+
+
+---
+
+## DSL
+
+.diff-add[
+```scala
+val north = Direction.North
+val east  = Direction.East
+val south = Direction.South
+*&#x200B;`val west  = Direction.West`
 ```
 ]
 
@@ -2690,22 +2677,6 @@ final abstract class `Moving`
 
 ## Tracking state
 
-```scala
-enum Command:
-  case Face(dir: Direction)
-  case Start
-  case Stop
-
-  case Chain(
-    cmd1: Command,
-    cmd2: Command
-  )
-```
-
----
-
-## Tracking state
-
 .diff-add[
 ```scala
 *enum Command`[Before, After]`:
@@ -2877,16 +2848,6 @@ enum Command[Before, After]:
   ) extends Command[A, C]
 ```
 ]
-
----
-
-## DSL
-
-```scala
-extension (cmd1: Command)
-  def ~>(cmd2: Command): Command =
-    Command.Chain(cmd1, cmd2)
-```
 
 ---
 
