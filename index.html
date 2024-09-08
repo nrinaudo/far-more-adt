@@ -213,6 +213,7 @@ face -35
 
 ---
 class: center, middle
+name: direction
 
 # Representing `Direction`
 
@@ -773,7 +774,7 @@ def label(d: Direction) = d match
 
 ---
 
-## Key takeaways
+## [Key takeaways](#closing)
 
 --
 
@@ -793,6 +794,7 @@ Enumerations&#x200B;:
 
 ---
 class: center, middle
+name: command
 
 # Representing `Command`
 
@@ -1194,7 +1196,7 @@ Command.Start
 
 ---
 
-## Key takeaways
+## [Key takeaways](#closing)
 
 --
 
@@ -1210,6 +1212,7 @@ Command.Start
 
 ---
 class: center, middle
+name: composition
 
 # Composing commands
 
@@ -1783,7 +1786,7 @@ move(east) ~> `move(west)`
 
 ---
 
-## Key takeaways
+## [Key takeaways](#closing)
 
 --
 
@@ -1803,6 +1806,7 @@ We've completed our data structure by using:
 
 ---
 class: center, middle
+name: adt
 
 # Algebraic Data Types
 
@@ -2502,7 +2506,7 @@ enum Command:
 
 ---
 
-## Key takeaways
+## [Key takeaways](#closing)
 
 --
 
@@ -2522,6 +2526,7 @@ Algebraic Data Types are:
 
 ---
 class: center, middle
+name: safe-composition
 
 # Safe command composition
 
@@ -3163,7 +3168,7 @@ def movingLabel(cmd: Command[Moving, _]) = cmd match
 
 ---
 
-## Key takeaways
+## [Key takeaways](#closing)
 
 --
 
@@ -3183,6 +3188,7 @@ We used type constraints on our sum type's members to:
 
 ---
 class: center, middle
+name: gadt
 
 # Generalised Algebraic Data Types
 
@@ -3331,7 +3337,7 @@ def movingLabel(cmd: Command[Moving, _]) = cmd match
 
 ---
 
-## Key takeaways
+## [Key takeaways](#closing)
 
 --
 
@@ -3339,7 +3345,7 @@ def movingLabel(cmd: Command[Moving, _]) = cmd match
 
 ---
 
-## Key takeaways
+## [Key takeaways](#closing)
 
 * ~~A GADT is a sum type with one or more witness types, each equipped with a type equality.~~
 
@@ -3349,7 +3355,7 @@ def movingLabel(cmd: Command[Moving, _]) = cmd match
 
 ---
 class: center, middle
-name: algebra_of_types
+name: algebra
 
 # The algebra of types
 
@@ -4393,7 +4399,7 @@ enum `List[+A]`:
 
 ---
 
-## Key takeaways
+## [Key takeaways](#closing)
 
 --
 
@@ -4441,6 +4447,19 @@ name: questions
 [@NicolasRinaudo@functional.cafe]:https://functional.cafe/@NicolasRinaudo
 [Nicolas Rinaudo]:https://nrinaudo.github.io/
 [Slides]:https://nrinaudo.github.io/far-more-adt/
+
+---
+
+## Table of contents
+
+* [Representing Direction](#direction)
+* [Representing Command](#command)
+* [Composing commands](#composition)
+* [Algebraic Data Types](#adt)
+* [Safe command composition](#safe-composition)
+* [Generalised Algebraic Data Types](#gadt)
+* [The algebra of types](#algebra)
+
     </textarea>
     <script src="js/remark.js" type="text/javascript"></script>
     <script src="js/katex.js"></script>
